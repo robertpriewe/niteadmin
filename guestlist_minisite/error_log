@@ -1,0 +1,6 @@
+[21-Jul-2020 04:23:44 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/youtubed/niteadmin.com/guestlist_minisite/sql.php on line 14
+[21-Jul-2020 04:23:48 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/youtubed/niteadmin.com/guestlist_minisite/sql.php on line 14
+[21-Jul-2020 04:23:55 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/youtubed/niteadmin.com/guestlist_minisite/sql.php on line 14
+[21-Jul-2020 04:25:21 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/youtubed/niteadmin.com/guestlist_minisite/sql.php on line 14
+[21-Jul-2020 05:57:04 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/youtubed/niteadmin.com/guestlist_minisite/sql.php on line 14
+[21-Jul-2020 05:58:05 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/youtubed/niteadmin.com/guestlist_minisite/sql.php on line 14

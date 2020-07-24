@@ -1,0 +1,58 @@
+TODO:
+---
+Employees: Create contacts
+
+Events: Create shifts for employees
+Events: Assign employees to shifts
+
+CRM: Add timeline / actions for artists, vendors, sponsors per set for calls/messages/emails
+Logs: Create log for all changes
+
+Search: Add 1 second timeout after typing before searching
+XSearch: Basic search dropdown
+
+-Login: Permissions
+-Login: Registration
+-Login: User Management
+XLogin: Login & Logout
+
+-Events: Calendar with set times
+XEvents: Remove artist from event
+XEvents: Event details such as pricing, capacity
+XEvents: Past / upcoming events in list
+
+-Sets: Change contract signed & payments from list through drop down
+-Sets: Fill out $ numbers by managers
+-Sets: Import Rider through PDF
+XSets: B2B sets
+XSets: Riders
+
+-Artist profile: Fill out numbers by managers
+XArtist profile: assign to event
+XArtists: Artist lists
+XArtists: Artist Profile
+
+XVenues: Assign contacts to venue
+XVenues: Venue List
+
+Ticketing: Download ticket prices
+Ticketing: Download sales amounts
+
+XSponsors: Create sponsor list
+XSponsors: Create sponsor details
+XSponsors: Assign sponsor to event
+XSponsors: Assign contact to sponsor
+
+XContacts: Edit contacts
+XContacts: Contact list searchable for artist
+
+XVendors: Assign vendors to event
+XVendors: Vendor list
+XVendors: Detail page....Load in, Electric, number of people for vendor events
+
+-Guestlist: Assign tickets to names
+-Guestlist: E-Mail QR Codes
+-Guestlist: Scan Tickets
+XGuestlist: Add new allocation
+XGuestlist: Dynamic ticket types
+XGuestlist: Export to csv

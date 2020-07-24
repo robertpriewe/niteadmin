@@ -1,0 +1,287 @@
+updateshowfieldrunning..running..running..running..running..testrunning..test1 - CONFIRMEDrunning..test1 - CONFIRMED - Yesaarunning..........1 - CONFIRMED - Yesaarunning..........1 - CONFIRMED - Yesaarunning.......... -  - running.......... -  - running..........1 - CONFIRMED - YesaaUPDATE shows_fields SET ="" WHERE SHOWID = ""running.......... -  - UPDATE shows_fields SET ="" WHERE SHOWID = ""running.......... -  - running..........1 - CONFIRMED - Yesaaarunning..........Array - CONFIRMED - Yesbbrunning..........1 - CONFIRMED - Yebbbrunning..........1 - CONFIRMED - Yerunning..........1 - SIZESQFT - 8005running.......... -  - \nrunning..........1 - CONFIRMED - Yeaaa\nrunning..........1 - CONFIRMED - Yeaa\nrunning.......... -  - \nrunning.......... -  - \nrunning.......... -  - \nrunning.......... -  - \nrunning.......... -  - \nrunning..........1 - CONFIRMED - Yeaasad\nrunning..........1 - CONFIRMED - Yeaaa\nrunning.......... -  - \nrunning.......... -  - \nrunning..........1 - CONFIRMED - Yeaaa\nrunning..........1 - CONFIRMED - Yeaaa\nUPDATE shows_fields SET CONFIRMED="Yeaaa" WHERE SHOWID = "1"running..........1 - CONFIRMED - Ye\nUPDATE shows_fields SET CONFIRMED="Ye" WHERE SHOWID = "1"running..........1 - CONFIRMED - Yeaaa11\nlog..
+    log..
+    addstage..
+    addstage..
+    addstage..
+    
+INSERT INTO stages VENUEID, STAGENAME VALUES ("2", "dasdas")
+INSERT INTO stages VENUEID, STAGENAME VALUES ("2", "test stage")assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    running..........4 - Untitled Stage - Third Stage\nassigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    addingvanue..
+    addingvanue..
+    addingvanue..
+    assigningartist..
+    running..........8 - GUARANTEE - 5000\nrunning..
+8 - shows_fields - CONFIRMED - asdas......running..
+8 - shows_fields - CONFIRMED - dasdas......UPDATE shows_fields SET CONFIRMED="dasdas" WHERE SHOWID = "8"assigningartist..
+    running..
+9 - shows_fields - CONFIRMED - yes......UPDATE shows_fields SET CONFIRMED="yes" WHERE SHOWID = "9"assigningartist..
+    running..
+10 - shows_fields - CONFIRMED - dasads......UPDATE shows_fields SET CONFIRMED="dasads" WHERE SHOWID = "10"assigningartist..
+    running..
+11 - shows_fields - CONFIRMED - Yes......UPDATE shows_fields SET CONFIRMED="Yes" WHERE SHOWID = "11"running..
+11 - shows_fields - PERFORMANCEFEE - 100000......UPDATE shows_fields SET PERFORMANCEFEE="100000" WHERE SHOWID = "11"adding artist..
+    adding artist..
+    assigningartist..
+    addingvenue..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assignstage..
+    assignstage..
+    assignstage..
+    assignstage..
+    assignstage..
+    assignstage..
+    assignstage..
+    assignstage..
+    assignstage..
+    assignstage..
+    addingvenue..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    assigningartist..
+    assigningartist..
+    assignstage..
+    assignstage..
+    assigningartist..
+    assignstage..
+    assigningartist..
+    adding artist..
+    adding artist..
+    assigningartist..
+    assigningartist..
+    addingvenue..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    assigningartist..
+    assignstage..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    adding artist..
+    adding artist..
+    adding artist..
+    adding artist..
+    assigningartist..
+    assigningartist..
+    assignstage..
+    assignstage..
+    assigningartist..
+    assigningartist..
+    assignstage..
+    assignstage..
+    running..
+20 - shows_fields - TIMESTART - 2020-03-21 23:00:00......UPDATE shows_fields SET TIMESTART="2020-03-21 23:00:00" WHERE SHOWID = "20"running..
+20 - shows_fields - TIMEEND - 2020-03-21 23:00:00......UPDATE shows_fields SET TIMEEND="2020-03-21 23:00:00" WHERE SHOWID = "20"running..
+20 - shows_fields - TIMESTART - 2020-03-21 22:00:00......UPDATE shows_fields SET TIMESTART="2020-03-21 22:00:00" WHERE SHOWID = "20"running..
+20 - shows_fields - SOUNDCHECKTIME - 2020-03-21 14:00:00......UPDATE shows_fields SET SOUNDCHECKTIME="2020-03-21 14:00:00" WHERE SHOWID = "20"running..
+20 - shows_fields - SETDURATION - 60......UPDATE shows_fields SET SETDURATION="60" WHERE SHOWID = "20"running..
+20 - shows_fields - GUARANTEE - 10000......UPDATE shows_fields SET GUARANTEE="10000" WHERE SHOWID = "20"running..
+20 - shows_fields - CONFIRMED - Yes......UPDATE shows_fields SET CONFIRMED="Yes" WHERE SHOWID = "20"running..
+20 - shows_fields - RIDERTYPE - Full......UPDATE shows_fields SET RIDERTYPE="Full" WHERE SHOWID = "20"running..
+20 - shows_fields - EXCLUSIVITY - Yes......UPDATE shows_fields SET EXCLUSIVITY="Yes" WHERE SHOWID = "20"running..
+20 - shows_fields - GUARANTEE - 5000......UPDATE shows_fields SET GUARANTEE="5000" WHERE SHOWID = "20"running..
+20 - shows_fields - PERFORMANCEFEE - 5000......UPDATE shows_fields SET PERFORMANCEFEE="5000" WHERE SHOWID = "20"addingvenue..
+    adding artist..
+    adding artist..
+    addingvenue..
+    assigncontact.....
+    assigncontact.....
+    assigncontact.....
+    assigncontact.....
+    assigncontact.....
+    unassigncontact.....
+    unassigncontact.....
+    assigncontact.....
+    assigncontact.....
+    unassigncontact.....
+    assigncontact.....
+    assigncontact.....
+    assigncontact.....
+    addingvendor..
+    assigncontact.....
+    unassigncontact.....
+    unassigncontact.....
+    assigncontact.....
+    assigncontact.....
+    unassigncontact.....
+    assigncontact.....
+    assigncontact.....
+    running..
+{ - { - FIRSTNAME - Tyleraaa......running..
+{ - { - FIRSTNAME - Tyleraaa......running..
+1 - artists - FIRSTNAME - Tylerbbb......running..
+1 - artists - ARTISTFIRSTNAME - Tyleraaaa......running..
+1 - artists - ARTISTLASTNAME - Marenyilol......running..
+1 - artists - ARTISTFIRSTNAME - Tyler......running..
+1 - artists - ARTISTLASTNAME - Marenyi......assigncontact.....
+    unassigncontact.....
+    assigncontact.....
+    running..
+1 - 1 - test - 2012-04-04 03:10......running..
+1 - 1 - test - 2012-04-10 03:10......running..
+20 - shows_fields - TIMESTART - 2014-03-21 22:00:00......UPDATE shows_fields SET TIMESTART="2014-03-21 22:00:00" WHERE SHOWID = "20"running..
+20 - shows_fields - TIMESTART - 2014-03-21 22:15:00......UPDATE shows_fields SET TIMESTART="2014-03-21 22:15:00" WHERE SHOWID = "20"running..
+20 - shows_fields - TIMESTART - 2015-03-21 22:15:00......UPDATE shows_fields SET TIMESTART="2015-03-21 22:15:00" WHERE SHOWID = "20"running..
+21 - shows_fields - TIMESTART - 2015-02-02 03:20:00......UPDATE shows_fields SET TIMESTART="2015-02-02 03:20:00" WHERE SHOWID = "21"running..
+21 - shows_fields - TIMESTART - 2019-02-02 03:20:00......UPDATE shows_fields SET TIMESTART="2019-02-02 03:20:00" WHERE SHOWID = "21"running..
+21 - shows_fields - TIMESTART - 2019-02-02 23:30:00......UPDATE shows_fields SET TIMESTART="2019-02-02 23:30:00" WHERE SHOWID = "21"running..
+21 - shows_fields - TIMESTART - 2019-03-23 22:25:00......UPDATE shows_fields SET TIMESTART="2019-03-23 22:25:00" WHERE SHOWID = "21"running..
+21 - shows_fields - TIMEEND - 2019-03-06 18:30:00......UPDATE shows_fields SET TIMEEND="2019-03-06 18:30:00" WHERE SHOWID = "21"running..
+21 - shows_fields - SOUNDCHECKTIME - Mar 2 2020  04:10 pm......UPDATE shows_fields SET SOUNDCHECKTIME="Mar 2 2020  04:10 pm" WHERE SHOWID = "21"running..
+21 - shows_fields - SOUNDCHECKTIME - Mar 3 2022  02:05 pm......UPDATE shows_fields SET SOUNDCHECKTIME="Mar 3 2022  02:05 pm" WHERE SHOWID = "21"running..
+21 - shows_fields - SOUNDCHECKTIME - 2020-03-04 14:10:00......UPDATE shows_fields SET SOUNDCHECKTIME="2020-03-04 14:10:00" WHERE SHOWID = "21"running..
+21 - shows_fields - SOUNDCHECKTIME - 2020-05-10 00:00:00......UPDATE shows_fields SET SOUNDCHECKTIME="2020-05-10 00:00:00" WHERE SHOWID = "21"running..
+21 - shows_fields - SOUNDCHECKTIME - 2021-08-10 06:00:00......UPDATE shows_fields SET SOUNDCHECKTIME="2021-08-10 06:00:00" WHERE SHOWID = "21"running..
+21 - shows_fields - TIMESTART - 2019-03-23 22:25:00......UPDATE shows_fields SET TIMESTART="2019-03-23 22:25:00" WHERE SHOWID = "21"running..
+21 - shows_fields - SOUNDCHECKTIME - 2021-08-10 20:00:00......UPDATE shows_fields SET SOUNDCHECKTIME="2021-08-10 20:00:00" WHERE SHOWID = "21"running..
+21 - shows_fields - SETDURATION - 60......UPDATE shows_fields SET SETDURATION="60" WHERE SHOWID = "21"running..
+21 - shows_fields - TIMESTART - 2019-03-15 22:25:00......UPDATE shows_fields SET TIMESTART="2019-03-15 22:25:00" WHERE SHOWID = "21"assigncontact.....
+    unassigncontact.....
+    running..
+1 - vendors - Restaurant - Restaurantaa......running..
+1 - vendors - VENDORTYPE - Restaurantaa......running..
+1 - vendors - VENDORTYPE - Restaurant......adding artist..
+    adding artist..
+    assigningartist..
+    assigningartist..
+    assignngvendor..
+    assignngvendor..
+    addingvenue..
+    assigncontact.....
+    assignngvendor..
+    assignngvendor..
+    running..
+5 - events_vendors_fields - LOADIN - 5pm......running..
+5 - events_vendors_fields - ELECTRICITY - Yes......running..
+5 - events_vendors_fields - LOADIN - 5pm......running..
+5 - events_vendors_fields - ELECTRICITY - Yes......running..
+20 - shows_fields - TIMESTART - 2020-03-21 22:15:00......UPDATE shows_fields SET TIMESTART="2020-03-21 22:15:00" WHERE SHOWID = "20"running..
+2 - events - EVENTCAPACITY - 3000......addingvenue..
+    assigncontact.....
+    unassigncontact.....
+    assigncontact.....
+    addingvenue..
+    assigncontact.....
+    assigncontact.....
+    assigncontact.....
+    unassigncontact.....
+    running..
+1 - vendors - VENDORNOTES - Vendor notes......running..
+1 - vendors - VENDORNOTES - ......running..
+1 - vendors - VENDORNOTES - my notes......assignngsponsor..
+    assignngsponsor..
+    running..
+2 - events_sponsors_fields - STAND - Yes......running..
+1 - events_sponsors_fields - STAND - No......running..
+1 - events_sponsors_fields - STAND - Yes......running..
+2 - events_sponsors_fields - STAND - No......running..
+1 - sponsors - SPONSORPHONE - 424-444-22435......running..
+1 - contacts - CONTACTNOTES - some notes......addingsponsor..
+    running..
+2 - sponsors - SPONSORPHONE - 233-535-2324......running..
+2 - sponsors - SPONSORNOTES - notessss......running..
+2 - shows_fields - TIMESTART - 2020-09-02 17:00:00......UPDATE shows_fields SET TIMESTART="2020-09-02 17:00:00" WHERE SHOWID = "2"assigningb2b..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    assigningartist..
+    removing b2b.....
+    assigningartist..
+    removing b2b.....
+    removing b2b.....
+    assigningartist..
+    removing b2b.....
+    assigningartist..
+    unassigncontact.....
+    assigncontact.....
+    removeartistfromshow.....
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    exportcsv..
+    running..
+7 - artists - ARTISTPHONE - 2323......assigncontact.....
+    adding artist..
+    adding artist..
+    adding artist..
+    

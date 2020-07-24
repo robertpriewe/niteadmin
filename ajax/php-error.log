@@ -1,0 +1,6 @@
+[28-Apr-2020 04:31:56 Europe/Berlin] PHP Notice:  Undefined index: pk in /opt/lampp/htdocs/musiccrm2/ajax/updateshowfield.php on line 13
+[28-Apr-2020 04:31:56 Europe/Berlin] PHP Notice:  Trying to access array offset on value of type null in /opt/lampp/htdocs/musiccrm2/ajax/updateshowfield.php on line 13
+[28-Apr-2020 04:31:56 Europe/Berlin] PHP Notice:  Undefined index: pk in /opt/lampp/htdocs/musiccrm2/ajax/updateshowfield.php on line 14
+[28-Apr-2020 04:31:56 Europe/Berlin] PHP Notice:  Trying to access array offset on value of type null in /opt/lampp/htdocs/musiccrm2/ajax/updateshowfield.php on line 14
+[28-Apr-2020 04:31:56 Europe/Berlin] PHP Notice:  Undefined index: name in /opt/lampp/htdocs/musiccrm2/ajax/updateshowfield.php on line 15
+[28-Apr-2020 04:31:56 Europe/Berlin] PHP Notice:  Undefined index: value in /opt/lampp/htdocs/musiccrm2/ajax/updateshowfield.php on line 16

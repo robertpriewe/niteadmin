@@ -1,0 +1,9 @@
+[17-Jul-2020 23:20:02 America/Chicago] PHP Warning:  include(../sql.php): failed to open stream: No such file or directory in /home1/youtubed/niteadmin.com/modules/maintenance/artistprofilepictures.php on line 2
+[17-Jul-2020 23:20:02 America/Chicago] PHP Warning:  include(../sql.php): failed to open stream: No such file or directory in /home1/youtubed/niteadmin.com/modules/maintenance/artistprofilepictures.php on line 2
+[17-Jul-2020 23:20:02 America/Chicago] PHP Warning:  include(): Failed opening '../sql.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home1/youtubed/niteadmin.com/modules/maintenance/artistprofilepictures.php on line 2
+[17-Jul-2020 23:20:12 America/Chicago] PHP Warning:  include(../sql.php): failed to open stream: No such file or directory in /home1/youtubed/niteadmin.com/modules/maintenance/artistprofilepictures.php on line 2
+[17-Jul-2020 23:20:12 America/Chicago] PHP Warning:  include(../sql.php): failed to open stream: No such file or directory in /home1/youtubed/niteadmin.com/modules/maintenance/artistprofilepictures.php on line 2
+[17-Jul-2020 23:20:12 America/Chicago] PHP Warning:  include(): Failed opening '../sql.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home1/youtubed/niteadmin.com/modules/maintenance/artistprofilepictures.php on line 2
+[17-Jul-2020 23:21:04 America/Chicago] PHP Warning:  include(../sql.php): failed to open stream: No such file or directory in /home1/youtubed/niteadmin.com/modules/maintenance/artistprofilepictures.php on line 2
+[17-Jul-2020 23:21:04 America/Chicago] PHP Warning:  include(../sql.php): failed to open stream: No such file or directory in /home1/youtubed/niteadmin.com/modules/maintenance/artistprofilepictures.php on line 2
+[17-Jul-2020 23:21:04 America/Chicago] PHP Warning:  include(): Failed opening '../sql.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home1/youtubed/niteadmin.com/modules/maintenance/artistprofilepictures.php on line 2

@@ -25,10 +25,12 @@
 
 
 
+
         $('.changefield').editable({
             url: 'ajax/updateshowfield.php?page=showevents',
             disabled: true
         });
+
 
         $("#tickets-table").DataTable({
             "aaSorting": [],
@@ -143,6 +145,10 @@
 
 <!-- Modal-Effect -->
 <script src="assets/libs/custombox/custombox.min.js"></script>
+
+<!-- Tippy js-->
+<script src="../assets/libs/tippy.js/tippy.all.min.js"></script>
+
 <!-- App js -->
 <script src="assets/js/app.min.js"></script>
 

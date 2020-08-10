@@ -85,6 +85,7 @@ include("content/components/b2blogic.php");
                                     <a class="btn btn-primary" href="?page=showeventvendors&eventid=<?php echo $_GET['eventid']; ?>">Vendors</a>
                                     <a class="btn btn-primary" href="?page=showeventsponsors&eventid=<?php echo $_GET['eventid']; ?>">Sponsors</a>
                                     <a class="btn btn-dark" href="?page=showeventshifts&eventid=<?php echo $_GET['eventid']; ?>">Shifts</a>
+                                    <a class="btn btn-dark" href="?page=advancing&eventid=<?php echo $_GET['eventid']; ?>">Advancing</a>
                                     <a class="btn btn-success" href="?page=showguestlist&eventid=<?php echo $_GET['eventid']; ?>">Guestlist</a>
                                     <a href="#custom-modal" class="btn btn-danger waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Set','ajax/ajaxmodalartistlist.php?eventid=<?php echo $_GET['eventid']; ?>');"><i class="mdi mdi-plus-circle mr-1"></i> Add New Set</a>
                                 </div>

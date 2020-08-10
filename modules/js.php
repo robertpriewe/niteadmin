@@ -51,6 +51,17 @@
             }
         })
 
+        $("#advancing-table").DataTable({
+            "aaSorting": [],
+            "paging": false,
+            "columnDefs": [
+                {
+                    "targets": ['hide-col'],
+                    "visible": false,
+                    "searchable": true
+                }]
+        })
+
         $(".select2").select2();
 
         $('#customSwitch1').change(function() {

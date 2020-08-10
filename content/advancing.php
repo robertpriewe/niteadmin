@@ -31,7 +31,7 @@ function validateFields($value) {
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="tickets-table">
+                <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="advancing-table">
                     <thead class="bg-light">
                     <tr>
                         <th class="font-weight-medium">Artist</th>

@@ -9,13 +9,24 @@ $page = $_POST['pk']['page'];
 $name = $_POST['name'];
 $value = $_POST['value'];
 $dump = var_export($_POST, true);
-error_log($pk . ' - ' . $page . ' - ' . $name . ' - ' . $value . '......', 3, 'log.txt');
+error_log('......', 3, 'log.txt');
+
+//error_log($pk . ' - ' . $page . ' - ' . $name . ' - ' . $value . '......', 3, 'log.txt');
 error_log($dump, 3, 'log.txt');
 
-if(!empty($value)) {
-    if ($page=='shows_fields') {
-        error_log('UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE SHOWID = "'.mysqli_escape_string($mysqli, $pk).'"', 3, 'log.txt');
-     $result = mysqli_query($mysqli, 'UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE SHOWID = "'.mysqli_escape_string($mysqli, $pk).'"');
+
+
+if ($page=='shows_fields') {
+    error_log('UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE SHOWID = "'.mysqli_escape_string($mysqli, $pk).'"', 3, 'log.txt');
+ $result = mysqli_query($mysqli, 'UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE SHOWID = "'.mysqli_escape_string($mysqli, $pk).'"');
+} elseif ($page=='shows_fields_checkbox') {
+    if($_POST['value'][0] == "1") {
+        error_log('yay', 3, 'log.txt');
+        $result = mysqli_query($mysqli, 'UPDATE shows_fields SET '.mysqli_escape_string($mysqli, $name).'= 1 WHERE SHOWID = "'.mysqli_escape_string($mysqli, $pk).'"');
+    } else {
+        error_log('UPDATE shows_fields SET '.mysqli_escape_string($mysqli, $name).'= 0 WHERE SHOWID = "'.mysqli_escape_string($mysqli, $pk).'"', 3, 'log.txt');
+        $result = mysqli_query($mysqli, 'UPDATE shows_fields SET '.mysqli_escape_string($mysqli, $name).'= 0 WHERE SHOWID = "'.mysqli_escape_string($mysqli, $pk).'"');
+    }
 } elseif ($page=='stages') {
     $result = mysqli_query($mysqli, 'UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE STAGEID = "'.mysqli_escape_string($mysqli, $pk).'"');
 } elseif ($page=='artists') {
@@ -32,11 +43,5 @@ if(!empty($value)) {
     $result = mysqli_query($mysqli, 'UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE EVENTID = "'.mysqli_escape_string($mysqli, $pk).'"');
 } elseif ($page=='contacts') {
         $result = mysqli_query($mysqli, 'UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE CONTACTID = "'.mysqli_escape_string($mysqli, $pk).'"');
-    }
-
-        
-} else {
-    header('HTTP/1.0 400 Bad Request', true, 400);
-    echo "This field is required!";
 }
 ?>

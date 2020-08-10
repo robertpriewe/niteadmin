@@ -4,6 +4,8 @@ if (!isset($_GET['setid'])) {
     die;
 }
 
+include ('content/components/getField.php');
+
 $query = mysqli_query($mysqli, "SELECT * FROM shows_fields_list LEFT JOIN shows_fields_categories ON shows_fields_list.FIELDNAME_CATEGORY = shows_fields_categories.ID WHERE HIDDEN = '0' ORDER BY shows_fields_list.POSITION, shows_fields_list.ID ASC");
 
 
@@ -102,24 +104,11 @@ include("content/components/b2blogic.php");
                                                             } else {
                                                                 $fieldname = $fieldsdescription[$i];
                                                             }
-                                                            if ($fieldstype[$i] == "TEXT") {
-                                                                echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['setid'] . ',page:\'shows_fields\'}" data-name="' . $value . '">' . $rowresults[$value] . '</a></td>
-                                                        </tr>';
-                                                            } else if ($fieldstype[$i] == "DATETIME") {
 
-                                                                if (is_null($rowresults[$value]) == TRUE) {
-                                                                    $datetime = "";
-                                                                } else {
-                                                                    $datetime = date("Y/m/d h:i A", strtotime($rowresults[$value]));
-                                                                }
-
-                                                                echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td><a class="changefield" href="#" data-type="combodate" data-template="MMM D YYYY  hh:mm a" data-format="YYYY-MM-DD HH:mm:ss" data-viewformat="YYYY-MM-DD hh:mm a" data-pk="{id:' . $_GET['setid'] . ',page:\'shows_fields\'}" data-name="' . $value . '">' .  $datetime . '</a></td>
-                                                        </tr>';
-                                                            }
+                                                            echo '<tr>
+                                                            <td style="width: 35%;">' . $fieldname . '</td>
+                                                            <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                            </tr>';
                                                         }
                                                         $i++;
                                                     }
@@ -144,6 +133,7 @@ include("content/components/b2blogic.php");
                                             <table class="table table-centered table-borderless table-striped mb-0">
                                                 <tbody>
                                                 <?php
+
                                                 $i = 0;
                                                 foreach ($fieldsquery as $key => $value) {
                                                     if ($fieldscategory[$i] == "CONTRACTDETAILS") {
@@ -152,45 +142,11 @@ include("content/components/b2blogic.php");
                                                         } else {
                                                             $fieldname = $fieldsdescription[$i];
                                                         }
-                                                        if ($fieldstype[$i] == "TEXT") {
-                                                            echo '<tr>
+
+                                                        echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['setid'] . ',page:\'shows_fields\'}" data-name="' . $value . '">' . $rowresults[$value] . '</a></td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
                                                         </tr>';
-                                                        } else if ($fieldstype[$i] == "CHECKBOX") {
-                                                            echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td><a class="changefield" href="#" data-type="checklist" data-pk="{id:' . $_GET['setid'] . ',page:\'shows_fields\'}" data-source="{\'1\':\'enabled\'}" data-name="' . $value . '">' . $rowresults[$value] . '</a></td>
-                                                        </tr>';
-                                                        } else if ($fieldstype[$i] == "FILE") {
-                                                            echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>';
-
-                                                            if ($rowresults[$value] == "") {
-                                                                echo '<td><form method="POST" enctype="multipart/form-data" name="formdata-' . $fieldsid[$i] . '" id="divUpload-' . $fieldsid[$i] . '">
-                <div class="fileupload btn btn-xs btn-secondary waves-effect mt-1">
-                    <span><i class="mdi mdi-cloud-upload mr-1"></i>Upload</span>
-                    <input type="file" class="upload" id="uploadField-' . $fieldsid[$i] . '" name="uploadField-' . $fieldsid[$i] . '" onChange="javascript:fileUpload(' . $fieldsid[$i] . ', \'' . $value . '\');">
-                </div>
-            </form></td>';
-                                                            } else {
-                                                                echo '<td><a href="files/' . $rowresults[$value] . '" target="_BLANK">' . $rowresults[$value] . '</a> <button type="button" class="btn btn-danger btn-xs waves-effect waves-light mr-1" onclick="javascript:fileDelete(' . $fieldsid[$i] . ', \'' . $value . '\');"><i class="mdi mdi-trash-can"></i></button></td>';
-                                                            }
-
-                                                        echo '</tr>';
-                                                        } else if ($fieldstype[$i] == "DATETIME") {
-
-                                                            if (is_null($rowresults[$value]) == TRUE) {
-                                                                $datetime = "";
-                                                            } else {
-                                                                $datetime = date("Y/m/d h:i A", strtotime($rowresults[$value]));
-                                                            }
-
-                                                            echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td><a class="changefield" href="#" data-type="combodate" data-template="MMM D YYYY  hh:mm a" data-format="YYYY-MM-DD HH:mm:ss" data-viewformat="YYYY-MM-DD hh:mm a" data-pk="{id:' . $_GET['setid'] . ',page:\'shows_fields\'}" data-name="' . $value . '">' .  $datetime . '</a></td>
-                                                        </tr>';
-                                                        }
                                                     }
                                                     $i++;
                                                 }
@@ -221,7 +177,7 @@ include("content/components/b2blogic.php");
                                                         }
                                                         echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['setid'] . ',page:\'shows_fields\'}" data-name="' . $value . '">' . $rowresults[$value] . '</a></td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
                                                         </tr>';
                                                     }
                                                     $i++;

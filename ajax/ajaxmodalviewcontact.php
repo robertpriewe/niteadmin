@@ -15,33 +15,8 @@ while($row = $query->fetch_array()) {
     $rowresults = $row;
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
-
-    <!-- Plugins css-->
-
-    <link href="../assets/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
 
 
-    <!-- App css -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" />
-
-</head>
-
-<body>
-
-<br>
 <div class="col-lg-12">
     <div class="card-box">
         <div class="row">
@@ -125,18 +100,6 @@ while($row = $query->fetch_array()) {
 
 
 
-<!-- Vendor js -->
-<script src="../assets/js/vendor.min.js"></script>
-
-<!-- Plugins Js -->
-<script src="../assets/libs/select2/select2.min.js"></script>
-<script src="../assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
-
-<script src="../assets/libs/x-editable/bootstrap-editable.min.js"></script>
-
-
-<!-- App js -->
-<script src="../assets/js/app.min.js"></script>
 
 
 <script type="text/javascript">
@@ -144,27 +107,7 @@ $(document).ready(function () {
     $(".select2").select2({
         maximumSelectionLength: 2
     });
-
-    $.fn.editable.defaults.mode = 'inline';
-    $.fn.combodate.defaults.maxYear = <?php echo date("Y") + 2; ?>;
-    $.fn.combodate.defaults.minYear = <?php echo date("Y") - 1; ?>;
-
-    $('.changefield').editable({
-        url: 'ajax/updateshowfield.php?page=contacts',
-        disabled: true
-    });
-
-
 });
-
-function clickEdit() {
-    $('.changefield').editable('toggleDisabled');
-}
-
-
-$(function(){$.fn.editableform.buttons='<button type="submit" class="btn btn-primary editable-submit btn-sm waves-effect waves-light"><i class="mdi mdi-check"></i></button><button type="button" class="btn btn-danger editable-cancel btn-sm waves-effect"><i class="mdi mdi-close"></i></button>',$("#inline-username").editable({type:"text",pk:1,name:"username",title:"Enter username",mode:"inline",inputclass:"form-control-sm"}),$("#inline-firstname").editable({validate:function(e){if(""==$.trim(e))return"This field is required"},mode:"inline",inputclass:"form-control-sm"}),$("#inline-sex").editable({prepend:"not selected",mode:"inline",inputclass:"form-control-sm",source:[{value:1,text:"Male"},{value:2,text:"Female"}],display:function(t,e){var n=$.grep(e,function(e){return e.value==t});n.length?$(this).text(n[0].text).css("color",{"":"gray",1:"green",2:"blue"}[t]):$(this).empty()}}),$("#inline-group").editable({showbuttons:!1,mode:"inline",inputclass:"form-control-sm"}),$("#inline-status").editable({mode:"inline",inputclass:"form-control-sm"}),$("#inline-dob").editable({mode:"inline",inputclass:"form-control-sm"}),$("#inline-event").editable({placement:"right",mode:"inline",combodate:{firstItem:"name"},inputclass:"form-control-sm"}),$("#inline-comments").editable({showbuttons:"bottom",mode:"inline",inputclass:"form-control-sm"}),$("#inline-fruits").editable({pk:1,limit:3,mode:"inline",inputclass:"form-control-sm",source:[{value:1,text:"Banana"},{value:2,text:"Peach"},{value:3,text:"Apple"},{value:4,text:"Watermelon"},{value:5,text:"Orange"}]})});
 
 </script>
 
-</body>
-</html>

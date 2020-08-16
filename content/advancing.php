@@ -14,13 +14,13 @@ while($row = $query->fetch_array()) {
 $query = mysqli_query($mysqli, "SELECT * FROM shows RIGHT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID RIGHT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID WHERE EVENTID = " . $_GET['eventid']);
 
 
-function validateFields($value) {
+function validateFields($value, $showid, $columnid) {
     global $completed;
     if(is_null($value) || $value == "" || $value == "0") {
-        return '<i class="ri-checkbox-circle-line"></i>';
+        return '<a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Edit Field\',\'ajax/ajaxmodaleditfield.php?showid=' . $showid . '&columnid=' . $columnid . '\');" class="border-primary text-primary"><i class="ri-checkbox-circle-line"></i></a>';
     } else {
         $completed = $completed + 1;
-        return '<a href="javascript: void(0);" class="border-primary text-primary"><i class="ri-checkbox-circle-fill primary" title="' . $value . '" data-plugin="tippy" data-tippy-arrow="true" data-tippy-animation="fade"></i></a>';
+        return '<a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Edit Field\',\'ajax/ajaxmodaleditfield.php?showid=' . $showid . '&columnid=' . $columnid . '\');" class="border-primary text-primary"><i class="ri-checkbox-circle-fill primary" title="' . $value . '" data-plugin="tippy" data-tippy-arrow="true" data-tippy-animation="fade"></i></a>';
     }
 }
 
@@ -53,7 +53,7 @@ function validateFields($value) {
                             echo '<td><b>' . $row['ARTISTNAME'] . '</b></td>';
                             $completed=0;
                             foreach($colsquery as $colsrow) {
-                                echo '<td><b>' . validateFields($row[$colsrow['FIELDNAME']]) . '</b></td>';
+                                echo '<td><b>' . validateFields($row[$colsrow['FIELDNAME']], $row['SHOWID'], $colsrow['COLUMNID']) . '</b></td>';
                             }
                             $percentage = ($completed/$colNumber)*100;
 

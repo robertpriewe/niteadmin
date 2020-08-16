@@ -66,7 +66,7 @@ include("content/components/b2blogic.php");
                                 <div class="text-lg-right mt-3 mt-lg-0">
                                     <button type="button" class="btn btn-success waves-effect waves-light mr-1" onclick="javascript:clickEdit();"><i class="mdi mdi-settings"></i> Edit</button>
                                     <button type="button" class="btn btn-primary waves-effect waves-light mr-1" onclick="javascript:document.location.href='?page=artistdetails&artistid=<?php echo $rowresults['ARTISTID']; ?>';"><i class="mdi mdi-information"></i> Artist Info</button>
-                                    <a href="#custom-modal" class="btn btn-danger waves-effect waves-light" data-animation="fadein" data-plugin="custommodal" data-overlayColor="#38414a" onclick="javascript:openModal('Remove Artist from Event','ajax/ajaxmodalconfirmdeletion.php?deleteartistfromevent=true&artistid=<?php echo $rowresults['ARTISTID']; ?>&eventid=<?php echo $rowresults['EVENTID']; ?>');"><i class="mdi mdi-recycle mr-1"></i> Remove</a>
+                                    <a href="#custom-modal" class="btn btn-danger waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Remove Artist from Event','ajax/ajaxmodalconfirmdeletion.php?deleteartistfromevent=true&artistid=<?php echo $rowresults['ARTISTID']; ?>&eventid=<?php echo $rowresults['EVENTID']; ?>');"><i class="mdi mdi-recycle mr-1"></i> Remove</a>
 
 
                                 </div>
@@ -248,6 +248,8 @@ include("content/components/b2blogic.php");
                             </div></div></div>
 
                 </div> <!-- end col -->
+
+
 
 
 <script type="text/javascript">

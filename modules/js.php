@@ -15,6 +15,9 @@
 
 <!-- third party js ends -->
 
+<!-- Modal-Effect -->
+<script src="assets/libs/custombox/custombox.min.js"></script>
+
 <!-- init js -->
 
 <script type="text/javascript">
@@ -22,6 +25,7 @@
         $.fn.editable.defaults.mode = 'inline';
         $.fn.combodate.defaults.maxYear = 2022;
         $.fn.combodate.defaults.minYear = 2019;
+        $.fn.editableform.buttons = '<button type="submit" class="btn btn-primary editable-submit btn-sm waves-effect waves-light"><i class="mdi mdi-check"></i></button><button type="button" class="btn btn-danger editable-cancel btn-sm waves-effect"><i class="mdi mdi-close"></i></button>';
 
 
 
@@ -154,14 +158,14 @@
 <!-- Plugins Js -->
 <script src="assets/libs/select2/js/select2.min.js"></script>
 
-<!-- Modal-Effect -->
-<script src="assets/libs/custombox/custombox.min.js"></script>
 
 <!-- Tippy js-->
 <script src="../assets/libs/tippy.js/tippy.all.min.js"></script>
 
 <!-- App js -->
 <script src="assets/js/app.min.js"></script>
+
+
 
 </body>
 </html>

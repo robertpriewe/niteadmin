@@ -106,8 +106,6 @@ include("content/components/b2blogic.php");
                         <div class="tab-content">
 
                             <div class="tab-pane show active" id="setdetails">
-
-
                                 <div class="text-center mb-2">
                                     <div class="row">
                                         <div class="col-md-6 col-xl-3">
@@ -156,7 +154,6 @@ include("content/components/b2blogic.php");
                                     </thead>
 
                                     <tbody class="font-14">
-
 
                                     <?php
                                     if (count($showsquery) > 0) {
@@ -287,3 +284,4 @@ include("content/components/b2blogic.php");
 </div>
                 </div> <!-- end col -->
             </div>  <!-- end row-->
+

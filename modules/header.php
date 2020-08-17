@@ -25,6 +25,7 @@
     <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
     <!-- icons -->
+
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 </head>
 

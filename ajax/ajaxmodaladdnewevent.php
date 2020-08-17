@@ -28,7 +28,7 @@ include ('../modules/sql.php');
                             <div class="input-group">
                                 <input type="text" id="eventStartDate" class="form-control" data-provide="datepicker" data-date-autoclose="true">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="ti-calendar"></i></span>
+                                    <span class="input-group-text"><i class="ri-calendar-event-fill"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@ include ('../modules/sql.php');
                             <div class="input-group">
                                 <input type="text" id="eventEndDate" class="form-control" data-provide="datepicker" data-date-autoclose="true">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="ti-calendar"></i></span>
+                                    <span class="input-group-text"><i class="ri-calendar-event-fill"></i></span>
                                 </div>
                             </div>
                         </div>

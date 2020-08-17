@@ -124,10 +124,23 @@ function loadRider(setid) {
     });
 }
 
+var firstTime;
+function doSearch() {
+    $('#searchBody').html('');
+    $('#searchTitle').html('Searching..<br><div class="spinner-border text-primary m-2" role="status"><span class="sr-only">Loading...</span></div>');
+    firstTime = new Date().getTime();
+    setTimeout(checkSearch, 2000);
+}
+
+function checkSearch() {
+    timeDiff = new Date().getTime() - firstTime;
+    if (timeDiff < 3000) {
+        refreshSearch();
+    }
+}
+
 function refreshSearch() {
     if ($('#top-search').val().length >= 2) {
-        $('#searchBody').html('');
-        $('#searchTitle').html('Searching..<br><div class="spinner-border text-primary m-2" role="status"><span class="sr-only">Loading...</span></div>');
         $.ajax({
             type: "POST",
             data: {'query': $('#top-search').val() },

@@ -90,7 +90,7 @@ while($row = $query->fetch_array()) {
                 <div class="text-center">
                     <div class="form-group">
                         <button type="button" class="btn btn-danger waves-effect waves-light m-l-10"
-                                onclick="Custombox.modal.close();">Close</button>
+                                onclick="javascript:$('#custom-modal').modal('hide');">Close</button>
                     </div>
                 </div>
             </div>

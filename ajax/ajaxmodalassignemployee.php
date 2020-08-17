@@ -32,7 +32,7 @@ if (!isset($_GET['shiftid'])) {
                         <div class="form-group">
                             <button type="button" class="btn btn-success waves-effect waves-light" type="submit" onclick="javascript:assignEmployee();">Assign</button>
                             <button type="button" class="btn btn-danger waves-effect waves-light m-l-10"
-                                    onclick="Custombox.modal.close();javascript:disableKey();">Cancel</button>
+                                    onclick="javascript:$('#custom-modal').modal('hide');javascript:disableKey();">Cancel</button>
 
                         </div>
                     </div>

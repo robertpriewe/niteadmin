@@ -35,7 +35,12 @@ while($row = $query->fetch_array()) {
 <script type="text/javascript">
     $('.changefield').editable({
         url: 'ajax/updateshowfield.php?page=showevents',
-        disabled: false
+        disabled: false,
+        success: function(response, newValue) {
+            if(response.status == 'error') return response.msg;
+            alert('Saved!');
+            location.reload();
+        }
     });
     $('.changefield').editable('show');
 

@@ -60,7 +60,7 @@ while($row = $query->fetch_assoc()) {
                 <div class="text-right">
                     <button type="button" class="btn btn-success waves-effect waves-light" onclick="javscript:addGuestlist();">Add</button>
                     <button type="button" class="btn btn-danger waves-effect waves-light m-l-10"
-                            onclick="Custombox.modal.close();">Cancel</button>
+                            onclick="javascript:$('#custom-modal').modal('hide');">Cancel</button>
                 </div>
             </form>
         </div>

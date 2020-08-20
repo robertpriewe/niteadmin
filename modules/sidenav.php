@@ -32,7 +32,7 @@
                  class="rounded-circle avatar-md">
             <div class="dropdown">
                 <a href="javascript: void(0);" class="text-reset dropdown-toggle h5 mt-2 mb-1 d-block"
-                   data-toggle="dropdown">Nik Patel</a>
+                   data-toggle="dropdown">Rob</a>
                 <div class="dropdown-menu user-pro-dropdown">
 
                     <!-- item-->
@@ -83,25 +83,49 @@
                         <span> Contacts </span>
                     </a>
                 </li>
+
                 <li>
-                    <a href="#sidebarEvents" data-toggle="collapse">
+                    <a href="?page=showevents">
                         <i class="ri-calendar-event-line"></i>
-                        <span class="menu-arrow"></span>
                         <span> Events </span>
                     </a>
-                    <div class="collapse" id="sidebarEvents">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="?page=showevents">Event List</a>
-                            </li>
-                            <li>
-                                <a href="#">Event Calendar</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <?php
+
+                    if (isset($_GET['eventid']) || isset($_GET['setid'])) {
+                    if (isset($_GET['eventid'])) {
+                        echo 'aaaa';
+                        $query = mysqli_query($mysqli, "SELECT EVENTNAME, EVENTID FROM events WHERE EVENTID = " . $_GET['eventid']);
+                    } else {
+                        $query = mysqli_query($mysqli, "SELECT EVENTNAME, events.EVENTID AS EVENTID FROM shows LEFT JOIN events ON shows.EVENTID = events.EVENTID WHERE shows.SHOWID = " . $_GET['setid']);
+                    }
+                    while($row = $query->fetch_assoc()) {
+                        $eventname = $row['EVENTNAME'];
+                        $eventid = $row['EVENTID'];
+                    }
+                        echo '
+                        <div>
+                            <ul class="nav-second-level">
+                                <li>Event Selected: <b>' . $eventname . '</b></li>
+                                <li>
+                                    <a href="?page=advancing&eventid=' . $eventid . '"> Advancing</a>
+                                </li>
+                                <li>
+                                    <a href="?page=showguestlist&eventid=' . $eventid . '"> Guestlist</a>
+                                </li>
+                                <li>
+                                    <a href="?page=showeventshifts&eventid=' . $eventid . '"> Shifts</a>
+                                </li>
+                                <li>
+                                    <a href="?page=showeventvendors&eventid=' . $eventid . '"> Event Vendors</a>
+                                </li>
+                                <li>
+                                    <a href="?page=showeventsponsors&eventid=' . $eventid . '"> Event Sponsors</a>
+                                </li>
+                            </ul>
+                        </div>';
+                }
+                ?>
                 </li>
-
-
                 <li>
                     <a href="?page=showvenues" class="waves-effect">
                         <i class="ri-building-line"></i>

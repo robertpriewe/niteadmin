@@ -93,7 +93,6 @@
 
                     if (isset($_GET['eventid']) || isset($_GET['setid'])) {
                     if (isset($_GET['eventid'])) {
-                        echo 'aaaa';
                         $query = mysqli_query($mysqli, "SELECT EVENTNAME, EVENTID FROM events WHERE EVENTID = " . $_GET['eventid']);
                     } else {
                         $query = mysqli_query($mysqli, "SELECT EVENTNAME, events.EVENTID AS EVENTID FROM shows LEFT JOIN events ON shows.EVENTID = events.EVENTID WHERE shows.SHOWID = " . $_GET['setid']);

@@ -2,6 +2,7 @@
 session_start();
 error_reporting(E_ALL);
 include ('../modules/sql.php');
+include ('addtolog.php');
 error_log('assigncontact.....
     ', 3, 'log.txt');
 
@@ -26,5 +27,8 @@ if (isset($_GET['contactid'])) {
     } elseif (isset($_GET['venueid'])) {
         $result = mysqli_query($mysqli, 'INSERT INTO contacts_link (CONTACTID, LINKTABLE, LINKID) VALUES ("' . $_GET['contactid'] . '", "venues", "' . $_GET['venueid'] . '")');
     }
+
+    addToLog($_SESSION['USERID'], 'assign', 'contacts', '', '', $_GET['contactid'], '', 'Assigned contact id ' . $_GET['contactid']);
+
 }
 ?>

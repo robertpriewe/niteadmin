@@ -2,6 +2,7 @@
 session_start();
 error_reporting(E_ALL);
 include ('../modules/sql.php');
+include ('addtolog.php');
 error_log('unassigncontact.....
     ', 3, 'log.txt');
 
@@ -19,5 +20,7 @@ if (isset($_GET['contactid'])) {
     }
     $result = mysqli_query($mysqli, 'DELETE FROM contacts_link WHERE CONTACTID = ' . $_GET['contactid'] . ' AND LINKID = ' . $id . ' AND LINKTABLE = "' . $linktable . '"');
     echo 'DELETE FROM contacts_link WHERE CONTACTID = ' . $_GET['contactid'] . ' AND LINKID = ' . $id . ' AND LINKTABLE = "' . $linktable . '"';
+    addToLog($_SESSION['USERID'], 'unassign', 'contacts', '', '', $_GET['contactid'], '', 'Unassigned contact id ' . $_GET['contactid'] . ' from ' . $linktable);
+
 }
 ?>

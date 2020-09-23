@@ -2,6 +2,7 @@
 session_start();
 error_reporting(E_ALL);
 include ('../modules/sql.php');
+include ('addtolog.php');
 error_log('assigningartist..
     ', 3, 'log.txt');
 
@@ -19,5 +20,7 @@ if (isset($_GET['eventid']) && isset($_GET['showid'])) {
     } else {
         $result = mysqli_query($mysqli, 'INSERT INTO shows_b2b (B2BID, B2BEVENTID, B2BSETID) VALUES ("' . $_GET['b2bid'] . '", "' . $_GET['eventid'] . '", "' . $_GET['showid'] . '")');
     }
+    addToLog($_SESSION['USERID'], 'assign', 'b2bid', '', '', '', '', 'Edited b2b set for show ' . $_GET['showid']);
+
 }
 ?>

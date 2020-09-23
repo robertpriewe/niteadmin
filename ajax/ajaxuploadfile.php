@@ -2,6 +2,7 @@
 session_start();
 error_reporting(E_ALL);
 include ('../modules/sql.php');
+include ('addtolog.php');
 $target_dir = "../files/";
 $target_file = $target_dir . basename($_FILES["upload_file"]["name"]);
 $uploadOk = 1;
@@ -45,6 +46,7 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["upload_file"]["tmp_name"], $target_file)) {
         $result = mysqli_query($mysqli, "UPDATE shows_fields SET " . urldecode($_GET['fieldname']) . " = '" . basename( $_FILES["upload_file"]["name"]) . "' WHERE SHOWID = '" . $_GET['setid'] . "'");
+        addToLog($_SESSION['USERID'], 'uploaded_file', $page, '', '', urldecode($_GET['fieldname']), basename( $_FILES["upload_file"]["name"]), 'Uploaded file ' . basename( $_FILES["upload_file"]["name"]) . ' for field ' . urldecode($_GET['fieldname']) . ' in show ID ' . $_GET['setid']);
 
         echo "The file ". basename( $_FILES["upload_file"]["name"]). " has been uploaded.";
     } else {

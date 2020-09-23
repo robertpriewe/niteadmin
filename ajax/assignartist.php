@@ -2,6 +2,7 @@
 session_start();
 error_reporting(E_ALL);
 include ('../modules/sql.php');
+include ('addtolog.php');
 error_log('assigningartist..
     ', 3, 'log.txt');
 
@@ -20,6 +21,8 @@ if (isset($_GET['artistid']) && isset($_GET['eventid'])) {
         }
     }
     $result = mysqli_query($mysqli, 'INSERT INTO shows (STAGEID, ARTISTPLAYINGID, EVENTID) VALUES ("' . $stageid . '", "' . $_GET['artistid'] . '", "' . $_GET['eventid'] . '")');
+    addToLog($_SESSION['USERID'], 'new', 'shows', $_GET['eventid'], $_GET['artistid'], '', '', 'Assigned artist to event ' . $_GET['eventid']);
+
     //echo 'INSERT INTO shows (STAGEID, ARTISTPLAYINGID, EVENTID) VALUES ("' . $stageid . '", "' . $_GET['artistid'] . '", "' . $_GET['eventid'] . '")';
 
     $showid = mysqli_insert_id($mysqli);

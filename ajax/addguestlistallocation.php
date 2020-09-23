@@ -11,7 +11,8 @@ foreach($_POST as $key => $value) {
   		for($i=1;$i<=$value;$i++) {
   		$tickethash = "t" . substr(md5('$' . $_GET['eventid'] . '#' . $_POST['email'] . $i . rand(1,99999) . time() . '&' . $_POST['firstName']), 0, 31);
   		mysqli_query($mysqli, "INSERT INTO guestlist (EVENTID, GROUPHASH, ACCESS, TICKETHASH, FIRSTNAME, LASTNAME, EMAIL, NOTES) VALUES ('" . $_GET['eventid'] . "', '" . $grouphash . "', '" . str_replace("access_id_", "", $key) . "', '" . $tickethash . "', '" . $_POST['firstName'] . "', '" . $_POST['lastName'] . "', '" . $_POST['email'] . "', '" . $_POST['notes'] . "')");
-  		}
+  		addToLog($_SESSION['USERID'], 'new', 'guestlist', $_GET['eventid'], '', 'FIRSTNAME/LASTNAME', $_POST['firstName'] . ' ' . $_POST['lastname'], 'Added new guestlist slot for ' . $_POST['firstName'] . ' ' . $_POST['lastname'] . '...access: ' . $key . ' - for event: ' . $_GET['eventid']);
+        }
   	}
   }
 }

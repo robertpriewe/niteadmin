@@ -252,6 +252,14 @@
                         </ul>
                     </div>
                 </li>
+
+
+                <li>
+                    <a href="?page=displaylogs">
+                        <i class="ri-newspaper-line"></i>
+                        <span> Activity Logs </span>
+                    </a>
+                </li>
             </ul>
 
         </div>

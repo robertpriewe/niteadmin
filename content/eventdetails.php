@@ -248,8 +248,20 @@ include("content/components/b2blogic.php");
                                                 <tbody>
                                                 <?php
                                                 echo '<tr>
+                                                <td style="width: 35%;">Event Name</td>
+                                                <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTNAME">' .  $showsquery[0]['EVENTNAME'] . '</a></td>
+                                                </tr>';
+                                                echo '<tr>
+                                                <td style="width: 35%;">Event Start</td>
+                                                <td><a class="changefield" href="#" data-type="combodate" data-type="combodate" data-value="' .  $showsquery[0]['EVENTSTARTDATE'] . '" data-format="MM/DD/YYYY" data-viewformat="MM/DD/YYYY" data-template="D / MMM / YYYY" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTSTARTDATE">' .  $showsquery[0]['EVENTSTARTDATE'] . '</a></td>
+                                                </tr>';
+                                                echo '<tr>
+                                                <td style="width: 35%;">Event End</td>
+                                                <td><a class="changefield" href="#" data-type="combodate" data-type="combodate" data-value="' .  $showsquery[0]['EVENTENDDATE'] . '" data-format="MM/DD/YYYY" data-viewformat="MM/DD/YYYY" data-template="D / MMM / YYYY" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTSTARTDATE">' .  $showsquery[0]['EVENTENDDATE'] . '</a></td>
+                                                </tr>';
+                                                echo '<tr>
                                                 <td style="width: 35%;">Event Capacity</td>
-                                                <td><a class="changefield" href="#" data-type="textarea" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTCAPACITY">' .  $showsquery[0]['EVENTCAPACITY'] . '</a></td>
+                                                <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTCAPACITY">' .  $showsquery[0]['EVENTCAPACITY'] . '</a></td>
                                                 </tr>';
                                                 echo '<tr>
                                                 <td style="width: 35%;">Event Notes</td>

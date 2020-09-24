@@ -7,6 +7,9 @@
                 if (isset($eventname)) {
                     echo ' for Event: ' . $eventname;
                 }
+                if (isset($venuename)) {
+                    echo ' (' . $venuename . ')';
+                }
                 ?></h4>
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">

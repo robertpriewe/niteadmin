@@ -93,13 +93,14 @@
 
                     if (isset($_GET['eventid']) || isset($_GET['setid'])) {
                     if (isset($_GET['eventid'])) {
-                        $query = mysqli_query($mysqli, "SELECT EVENTNAME, EVENTID FROM events WHERE EVENTID = " . $_GET['eventid']);
+                        $query = mysqli_query($mysqli, "SELECT EVENTNAME, events.EVENTID AS EVENTIDSQL, VENUENAME FROM events LEFT JOIN shows ON shows.EVENTID = events.EVENTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON venues.VENUEID = stages.VENUEID WHERE events.EVENTID = " . $_GET['eventid'] . " GROUP BY venues.VENUENAME");
                     } else {
-                        $query = mysqli_query($mysqli, "SELECT EVENTNAME, events.EVENTID AS EVENTID FROM shows LEFT JOIN events ON shows.EVENTID = events.EVENTID WHERE shows.SHOWID = " . $_GET['setid']);
+                        $query = mysqli_query($mysqli, "SELECT EVENTNAME, events.EVENTID AS EVENTIDSQL, VENUENAME FROM shows LEFT JOIN events ON shows.EVENTID = events.EVENTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON venues.VENUEID = stages.VENUEID WHERE shows.SHOWID = " . $_GET['setid'] . " GROUP BY venues.VENUENAME");
                     }
                     while($row = $query->fetch_assoc()) {
                         $eventname = $row['EVENTNAME'];
-                        $eventid = $row['EVENTID'];
+                        $eventid = $row['EVENTIDSQL'];
+                        $venuename = $row['VENUENAME'];
                     }
                         echo '
                         <div>

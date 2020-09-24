@@ -17,10 +17,10 @@ $query = mysqli_query($mysqli, "SELECT * FROM shows RIGHT JOIN shows_fields ON s
 function validateFields($value, $showid, $columnid) {
     global $completed;
     if(is_null($value) || $value == "" || $value == "0") {
-        return '<a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Edit Field\',\'ajax/ajaxmodaleditfield.php?showid=' . $showid . '&columnid=' . $columnid . '\');" class="border-primary text-primary"><i class="ri-checkbox-circle-line"></i></a>';
+        return '<a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Edit Field\',\'ajax/ajaxmodaleditfield.php?showid=' . $showid . '&columnid=' . $columnid . '\');" class="border-danger text-danger"><i class="ri-checkbox-circle-line"></i></a>';
     } else {
         $completed = $completed + 1;
-        return '<a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Edit Field\',\'ajax/ajaxmodaleditfield.php?showid=' . $showid . '&columnid=' . $columnid . '\');" class="border-primary text-primary"><i class="ri-checkbox-circle-fill primary" title="' . $value . '" data-plugin="tippy" data-tippy-arrow="true" data-tippy-animation="fade"></i></a>';
+        return '<a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Edit Field\',\'ajax/ajaxmodaleditfield.php?showid=' . $showid . '&columnid=' . $columnid . '\');" class="border-success text-success"><i class="ri-checkbox-circle-fill primary" title="' . $value . '" data-plugin="tippy" data-tippy-arrow="true" data-tippy-animation="fade"></i></a>';
     }
 }
 
@@ -56,9 +56,16 @@ function validateFields($value, $showid, $columnid) {
                                 echo '<td><b>' . validateFields($row[$colsrow['FIELDNAME']], $row['SHOWID'], $colsrow['COLUMNID']) . '</b></td>';
                             }
                             $percentage = ($completed/$colNumber)*100;
+                            if ($percentage >= 100) {
+                                $progresssolor = 'bg-success';
+                            } elseif ($percentage > 25) {
+                                $progresssolor = 'bg-warning';
+                            } else {
+                                $progresssolor = 'bg-danger';
+                            }
 
                             echo '<td><div class="row"><div class="col-lg-10"><div class="progress mb-0">
-                                            <div class="progress-bar" role="progressbar" style="width: ' . $percentage . '%;" aria-valuenow="' . $percentage . '" aria-valuemin="0" aria-valuemax="100">' . $percentage . '%)</div>
+                                            <div class="progress-bar progress-bar ' . $progresssolor . '" role="progressbar" style="width: ' . $percentage . '%;" aria-valuenow="' . $percentage . '" aria-valuemin="0" aria-valuemax="100">' . $percentage . '%)</div>
                                         </div></div>
                                         <div class="col-lg-2">' . $completed . '/' . $colNumber . '</div></div></td>';
                             echo '</tr>';

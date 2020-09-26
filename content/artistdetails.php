@@ -80,6 +80,33 @@ while($row = $query->fetch_array()) {
 
                     </div> <!-- end card-box-->
                 </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6"><h4 class="mb-4 text-uppercase">Contact History</h4></div>
+                            <div class="col-sm-6 text-right"><a href="#custom-modal" class="btn btn-primary btn-xs waves-effect mb-2 waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Log New Activity','ajax/ajaxmodalnewcontactactivity.php?artistid=<?php echo $_GET['artistid']; ?>');">New Contact Activity</a></div>
+                        </div>
+
+
+                        <ul class="list-unstyled timeline-sm">
+                            <li class="timeline-sm-item">
+                                <span class="timeline-sm-date"><div class="row">15/20/2020</div><div class="row">03:26pm</div></span>
+                                <h5 class="mt-0 mb-1">E-Mail to Tour Manager (Sam Lastname)</h5>
+                                <p>Contacted by Seb</p>
+                                <p class="text-muted mt-2">Emailed TM the form for the technical stage layout</p>
+                            </li>
+                            <li class="timeline-sm-item">
+                                <span class="timeline-sm-date"><div class="row">10/20/2020</div><div class="row">05:22pm</div></span>
+                                <h5 class="mt-0 mb-1">Call to Manager (Joe Example)</h5>
+                                <p>Contacted by Robert</p>
+                                <p class="text-muted mt-2">Called manager to remind them about contract revision. Manager said theyre working on it and just doing a couple of changes</p>
+                            </li>
+                        </ul>
+
+                    </div> <!-- end card-box -->
+                </div>
+
                 </div> <!-- end col-->
 
                 <div class="col-lg-6 col-xl-6">

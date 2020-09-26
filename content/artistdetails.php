@@ -87,21 +87,29 @@ while($row = $query->fetch_array()) {
                             <div class="col-sm-6"><h4 class="mb-4 text-uppercase">Contact History</h4></div>
                             <div class="col-sm-6 text-right"><a href="#custom-modal" class="btn btn-primary btn-xs waves-effect mb-2 waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Log New Activity','ajax/ajaxmodalnewcontactactivity.php?artistid=<?php echo $_GET['artistid']; ?>');">New Contact Activity</a></div>
                         </div>
-
-
                         <ul class="list-unstyled timeline-sm">
-                            <li class="timeline-sm-item">
-                                <span class="timeline-sm-date"><div class="row">15/20/2020</div><div class="row">03:26pm</div></span>
-                                <h5 class="mt-0 mb-1">E-Mail to Tour Manager (Sam Lastname)</h5>
-                                <p>Contacted by Seb</p>
-                                <p class="text-muted mt-2">Emailed TM the form for the technical stage layout</p>
-                            </li>
-                            <li class="timeline-sm-item">
-                                <span class="timeline-sm-date"><div class="row">10/20/2020</div><div class="row">05:22pm</div></span>
-                                <h5 class="mt-0 mb-1">Call to Manager (Joe Example)</h5>
-                                <p>Contacted by Robert</p>
-                                <p class="text-muted mt-2">Called manager to remind them about contract revision. Manager said theyre working on it and just doing a couple of changes</p>
-                            </li>
+                        <?php
+                        $query = mysqli_query($mysqli, 'SELECT *, contacts.ROLE AS CONTACTROLE, contacts.FIRSTNAME AS CONTACTFIRSTNAME, contacts.LASTNAME AS CONTACTLASTNAME FROM contact_activity LEFT JOIN contacts ON contacts.CONTACTID = contact_activity.CONTACTEDLINKID LEFT JOIN events ON contact_activity.CONTACTEDEVENTID = events.EVENTID LEFT JOIN users ON contact_activity.CONTACTEDUSERID = users.USERID WHERE CONTACTEDARTISTID = ' . $_GET['artistid'] . ' GROUP BY contact_activity.CONTACTEDID ORDER BY TIMESTAMP DESC');
+
+                        if ($query->num_rows == 0) {
+                            echo 'No history yet';
+                        }
+
+                        while($row = $query->fetch_array()) {
+                            $contactlink = '<a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'View Contact\',\'ajax/ajaxmodalviewcontact.php?contactid=' . $row['CONTACTID'] . '\');">' . $row['CONTACTFIRSTNAME'] . ' ' . $row['CONTACTLASTNAME'] . '</a>';
+                            echo '<li class="timeline-sm-item">
+                                <span class="timeline-sm-date"><div class="row">' . date("m/d/Y", strtotime($row['TIMESTAMP'])) . '</div><div class="row">' . date("h:i A", strtotime($row['TIMESTAMP'])) . '</div></span>
+                                <h5 class="mt-0 mb-1">' . $row['CONTACTEDTYPE'] . ' to ' . $row['CONTACTROLE'] . ' (' . $contactlink . ')</h5>
+                                <p>Contacted by ' . $row['USERNAME'] . ' - Event: <a href="?page=eventdetails&eventid=' . $row['EVENTID'] . '">' . $row['EVENTNAME'] . '</a></p>
+                                <p class="text-muted mt-2">' . nl2br($row['CONTACTEDNOTE']) . '</p>
+                            </li>';
+                        }
+
+
+                        ?>
+
+
+
                         </ul>
 
                     </div> <!-- end card-box -->

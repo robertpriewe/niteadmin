@@ -5,6 +5,7 @@
 <script src="assets/js/vendor.min.js"></script>
 
 <!-- third party js -->
+<script src="assets/libs/clockpicker/bootstrap-clockpicker.min.js"></script>
 <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
@@ -25,6 +26,7 @@ $(document).ready(function() {
     $.fn.combodate.defaults.maxYear = 2022;
     $.fn.combodate.defaults.minYear = 2019;
     $.fn.editableform.buttons = '<button type="submit" class="btn btn-primary editable-submit btn-sm waves-effect waves-light"><i class="mdi mdi-check"></i></button><button type="button" class="btn btn-danger editable-cancel btn-sm waves-effect"><i class="mdi mdi-close"></i></button>';
+
 
 
     $('.changefield').editable({
@@ -157,6 +159,8 @@ function refreshSearch() {
         $('#searchBody').html('');
     }
 }
+
+
 
 </script>
 

@@ -42,7 +42,7 @@ include ('../modules/sql.php');
                 <div class="form-group">
                     <label for="contactDate"">Contacted Date</label>
                     <div class="input-group">
-                        <input type="text" id="contactDate" class="form-control" data-provide="datepicker" data-date-autoclose="true">
+                        <input type="text" id="contactDate" class="form-control" data-provide="datepicker" value="<?php echo date("m/d/Y"); ?>" data-date-autoclose="true">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="ri-calendar-event-fill"></i></span>
                         </div>
@@ -51,7 +51,7 @@ include ('../modules/sql.php');
                 <div class="form-group">
                     <label for="contactTime"">Contacted Time</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input type="text" id="contactTime" class="form-control">
+                        <input type="text" id="contactTime" value="<?php echo date("H:i"); ?>" class="form-control">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
                         </div>

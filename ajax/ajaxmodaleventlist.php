@@ -8,15 +8,7 @@ include ('../modules/sql.php');
     <div class="card-box">
         <div class="row">
             <h6>Select Upcoming Event</h6>
-            <select class="form-control select2">
-                <option>Select</option>
-                <?php
-                $query = mysqli_query($mysqli, "SELECT * FROM events WHERE STR_TO_DATE(EVENTSTARTDATE,'%m/%d/%Y') > NOW() ORDER BY EVENTSTARTDATE ASC");
-                while($row = $query->fetch_array()) {
-                    echo '<option value="' . $row['EVENTID'] . '">' . $row['EVENTNAME'] . ' (' . $row['EVENTSTARTDATE'] . ')</option>';
-                }
-                ?>
-            </select>
+        <?php include('../content/components/selectupcomingevents.php'); ?>
         </div><br>
         <div class="row">
             <button class="btn btn-success" onclick="javascript:runQuery();">Assign to event</button>

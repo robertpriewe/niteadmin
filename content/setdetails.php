@@ -5,6 +5,7 @@ if (!isset($_GET['setid'])) {
 }
 
 include ('content/components/getField.php');
+include ('content/components/getFieldDescription.php');
 
 $query = mysqli_query($mysqli, "SELECT * FROM shows_fields_list LEFT JOIN shows_fields_categories ON shows_fields_list.FIELDNAME_CATEGORY = shows_fields_categories.ID WHERE HIDDEN = '0' ORDER BY shows_fields_list.POSITION, shows_fields_list.ID ASC");
 
@@ -99,11 +100,7 @@ include("content/components/b2blogic.php");
                                                     $i = 0;
                                                     foreach ($fieldsquery as $key => $value) {
                                                         if ($fieldscategory[$i] == "SETDETAILS") {
-                                                            if ($fieldsdescription[$i] == "") {
-                                                                $fieldname = $value;
-                                                            } else {
-                                                                $fieldname = $fieldsdescription[$i];
-                                                            }
+                                                            $fieldname = getFieldDescription($fieldsdescription[$i], $value);
 
                                                             echo '<tr>
                                                             <td style="width: 35%;">' . $fieldname . '</td>
@@ -137,11 +134,8 @@ include("content/components/b2blogic.php");
                                                 $i = 0;
                                                 foreach ($fieldsquery as $key => $value) {
                                                     if ($fieldscategory[$i] == "CONTRACTDETAILS") {
-                                                        if ($fieldsdescription[$i] == "") {
-                                                            $fieldname = $value;
-                                                        } else {
-                                                            $fieldname = $fieldsdescription[$i];
-                                                        }
+                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
+
 
                                                         echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
@@ -170,11 +164,8 @@ include("content/components/b2blogic.php");
                                                 $i = 0;
                                                 foreach ($fieldsquery as $key => $value) {
                                                     if ($fieldscategory[$i] != "CONTRACTDETAILS" && $fieldscategory[$i] != "SETDETAILS") {
-                                                        if ($fieldsdescription[$i] == "") {
-                                                            $fieldname = $value;
-                                                        } else {
-                                                            $fieldname = $fieldsdescription[$i];
-                                                        }
+                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
+
                                                         echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
                                                         <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>

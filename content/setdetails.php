@@ -42,6 +42,11 @@ include("content/components/b2blogic.php");
                                         </a>
                                     </li>
                                     <li class="nav-item">
+                                        <a href="#artistdetails" data-toggle="tab" aria-expanded="false" class="nav-link" onclick="javascript:loadArtistDetails();">
+                                            <i class="mdi mdi-account mr-1"></i>Artist Details
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="#contract" data-toggle="tab" aria-expanded="false" class="nav-link">
                                             <i class="mdi mdi-paperclip mr-1"></i>Contract Info
                                         </a>
@@ -116,6 +121,17 @@ include("content/components/b2blogic.php");
                                                 </tr>
                                                 </tbody>
                                             </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="tab-pane" id="artistdetails">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive" id="divArtistDetails">
+
                                         </div>
                                     </div>
                                 </div>
@@ -244,6 +260,19 @@ include("content/components/b2blogic.php");
 
 
 <script type="text/javascript">
+    function loadArtistDetails() {
+        $.ajax({
+            type: "GET",
+            url: 'content/components/divArtistDetails.php?artistid=<?php echo $rowresults['ARTISTID']; ?>',
+            context: document.body
+        }).done(function(response) {
+            $('#divArtistDetails').html('<div class="spinner-border text-primary m-2" role="status"><span class="sr-only">Loading...</span></div>');
+            $('#divArtistDetails').html(response);
+        }).fail(function() {
+            alert("Error");
+        });
+    }
+
     function assignStage() {
         var stageId = $('#stageSelect').val();
         $.ajax({

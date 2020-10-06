@@ -32,7 +32,7 @@ $countstageq = mysqli_query($mysqli, "SELECT STAGEID FROM shows " . $wherequery2
 $setcount = $countshowq->num_rows;
 $stagecount = $countstageq->num_rows - 1;
 
-$query = mysqli_query($mysqli, "SELECT * FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID LEFT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON stages.VENUEID = venues.VENUEID LEFT JOIN events ON shows.EVENTID = events.EVENTID LEFT JOIN shows_b2b ON shows.SHOWID = shows_b2b.B2BSETID " . $wherequery . " shows.ARTISTPLAYINGID != 0");
+$query = mysqli_query($mysqli, "SELECT *, shows.SHOWID AS SHOWIDFULL FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID LEFT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON stages.VENUEID = venues.VENUEID LEFT JOIN events ON shows.EVENTID = events.EVENTID LEFT JOIN shows_b2b ON shows.SHOWID = shows_b2b.B2BSETID " . $wherequery . " shows.ARTISTPLAYINGID != 0");
 
 if ($query->num_rows > 0) {
     while($row = $query->fetch_assoc()) {
@@ -184,9 +184,9 @@ include("content/components/b2blogic.php");
 
 
                                             echo '<tr>
-                                                    <td><a href="?page=setdetails&setid=' . $showsrow['SHOWID'] . '"><b>' . $showsrow['SHOWID'] . '</b></a></td>
+                                                    <td><a href="?page=setdetails&setid=' . $showsrow['SHOWIDFULL'] . '"><b>' . $showsrow['SHOWIDFULL'] . '</b></a></td>
                                                     <td>
-                                                        <a href="?page=setdetails&setid=' . $showsrow['SHOWID'] . '" class="text-dark">
+                                                        <a href="?page=setdetails&setid=' . $showsrow['SHOWIDFULL'] . '" class="text-dark">
                                                             <img src="' . $photo . '" alt="contact-img" title="contact-img" class="avatar-sm rounded-circle img-thumbnail" />
                                                             <span class="ml-2">' . $showsrow['ARTISTNAME'] . '</span>
                                                         </a>
@@ -202,7 +202,7 @@ include("content/components/b2blogic.php");
                                                         <span class="badge badge-success">Complete</span>
                                                     </td>
                                                     
-                                                    <td>' . b2blogic($showsrow['B2BID'], $showsrow['SHOWID'], $showsrow['ARTISTNAME'], "NA") . '</td>
+                                                    <td>' . b2blogic($showsrow['B2BID'], $showsrow['SHOWIDFULL'], $showsrow['ARTISTNAME'], "NA") . '</td>
                     
                                                     <td>' . $eventstart . '</td>
                     

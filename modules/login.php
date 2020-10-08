@@ -48,6 +48,8 @@ if (isset($_GET['action'])){
                     setcookie("EMAIL", $email, time() + (86400 * 30), "/"); // 86400 = 1 day
                     setcookie("PASSWORD", $encodedpw, time() + (86400 * 30), "/"); // 86400 = 1 day
                 }
+                mysqli_query($mysqli, "UPDATE users SET LASTLOGIN = NOW() WHERE USERID = " . $uid);
+
                 header("Location: ?");
                 die();
             } else {

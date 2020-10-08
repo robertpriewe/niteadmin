@@ -37,8 +37,8 @@ include("content/components/b2blogic.php");
                             <div class="col-lg-8">
                                 <ul class="nav nav-pills navtab-bg">
                                     <li class="nav-item">
-                                        <a href="#setinfo" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0">
-                                            <i class="mdi mdi-face-profile mr-1"></i>Show/Set Info
+                                        <a href="#general" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0">
+                                            <i class="mdi mdi-face-profile mr-1"></i>General
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -47,18 +47,28 @@ include("content/components/b2blogic.php");
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#contract" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            <i class="mdi mdi-paperclip mr-1"></i>Contract Info
+                                        <a href="#stageinfo" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                            <i class="mdi mdi-headphones mr-1"></i>Stage Info
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#financials" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                            <i class="mdi mdi-account-cash mr-1"></i>Financials
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#documents" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                            <i class="mdi mdi-text mr-1"></i>Contracts/Documents
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#accommodations" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                            <i class="mdi mdi-home mr-1"></i>Accommodations
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#other" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            <i class="mdi mdi-text mr-1"></i>Other
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#stage" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            <i class="mdi mdi-headphones mr-1"></i>Stage/Technical
+                                            <i class="mdi mdi-paperclip mr-1"></i>Other
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -95,7 +105,7 @@ include("content/components/b2blogic.php");
 
 
 
-                        <div class="tab-pane show active" id="setinfo">
+                        <div class="tab-pane show active" id="general">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
@@ -104,7 +114,7 @@ include("content/components/b2blogic.php");
                                                 <?php
                                                     $i = 0;
                                                     foreach ($fieldsquery as $key => $value) {
-                                                        if ($fieldscategory[$i] == "SETDETAILS") {
+                                                        if ($fieldscategory[$i] == "GENERAL") {
                                                             $fieldname = getFieldDescription($fieldsdescription[$i], $value);
 
                                                             echo '<tr>
@@ -119,12 +129,31 @@ include("content/components/b2blogic.php");
                                                     <td>B2B Set</td>
                                                     <td><?php echo b2blogic($rowresults['B2BID'], $_GET['setid'], $rowresults['ARTISTNAME'], "BUTTONS"); ?></td>
                                                 </tr>
+                                                <tr>
+                                                    <td>Stage</td>
+                                                    <td><div class="row"><div class="col-lg-4"><select class="form-control select2" id="stageSelect">
+                                                            <?php
+                                                            $query = mysqli_query($mysqli, 'SELECT stages.STAGENAME, stages.STAGEID FROM shows JOIN stages ON shows.STAGEID = stages.STAGEID WHERE shows.SHOWID = ' . $_GET['setid']);
+                                                            while($row = $query->fetch_array()) {
+                                                                echo '<option value="' . $row['STAGEID'] . '">' . $row['STAGENAME'] . '</option>';
+                                                            }
+
+                                                            $query = mysqli_query($mysqli, 'SELECT * FROM stages WHERE VENUEID = '. $venueid . ' ORDER BY STAGENAME ASC');
+                                                            while($row = $query->fetch_array()) {
+                                                                echo '<option value="' . $row['STAGEID'] . '">' . $row['STAGENAME'] . '</option>';
+                                                            }
+                                                            ?>
+                                                                </select></div> <div class="col-lg-4"><button class="btn btn-success" onclick="javascript:assignStage();">Assign Stage</button></div><div class="col-lg-4"></div></div></td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
 
 
                             <div class="tab-pane" id="artistdetails">
@@ -139,7 +168,7 @@ include("content/components/b2blogic.php");
 
 
 
-                            <div class="tab-pane" id="contract">
+                            <div class="tab-pane" id="stageinfo">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
@@ -149,9 +178,93 @@ include("content/components/b2blogic.php");
 
                                                 $i = 0;
                                                 foreach ($fieldsquery as $key => $value) {
-                                                    if ($fieldscategory[$i] == "CONTRACTDETAILS") {
+                                                    if ($fieldscategory[$i] == "STAGEINFO") {
                                                         $fieldname = getFieldDescription($fieldsdescription[$i], $value);
 
+
+                                                        echo '<tr>
+                                                        <td style="width: 35%;">' . $fieldname . '</td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                        </tr>';
+                                                    }
+                                                    $i++;
+                                                }
+                                                ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="tab-pane" id="financials">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-centered table-borderless table-striped mb-0">
+                                                <tbody>
+                                                <?php
+                                                $i = 0;
+                                                foreach ($fieldsquery as $key => $value) {
+                                                    if ($fieldscategory[$i] == "FINANCIALS") {
+                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
+
+                                                        echo '<tr>
+                                                        <td style="width: 35%;">' . $fieldname . '</td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                        </tr>';
+                                                    }
+                                                    $i++;
+                                                }
+                                                ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="documents">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-centered table-borderless table-striped mb-0">
+                                                <tbody>
+                                                <?php
+                                                $i = 0;
+                                                foreach ($fieldsquery as $key => $value) {
+                                                    if ($fieldscategory[$i] == "DOCUMENTS") {
+                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
+
+                                                        echo '<tr>
+                                                        <td style="width: 35%;">' . $fieldname . '</td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                        </tr>';
+                                                    }
+                                                    $i++;
+                                                }
+                                                ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="tab-pane" id="accommodations">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-centered table-borderless table-striped mb-0">
+                                                <tbody>
+                                                <?php
+                                                $i = 0;
+                                                foreach ($fieldsquery as $key => $value) {
+                                                    if ($fieldscategory[$i] == "ACCOMMODATIONS") {
+                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
 
                                                         echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
@@ -179,7 +292,7 @@ include("content/components/b2blogic.php");
                                                 <?php
                                                 $i = 0;
                                                 foreach ($fieldsquery as $key => $value) {
-                                                    if ($fieldscategory[$i] != "CONTRACTDETAILS" && $fieldscategory[$i] != "SETDETAILS") {
+                                                    if ($fieldscategory[$i] == "OTHER") {
                                                         $fieldname = getFieldDescription($fieldsdescription[$i], $value);
 
                                                         echo '<tr>
@@ -198,36 +311,9 @@ include("content/components/b2blogic.php");
                             </div>
 
 
-
-
-
                             <!-- end timeline content-->
 
-                            <div class="tab-pane" id="stage">
 
-                                    <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle mr-1"></i> Stage Information</h5>
-
-                                    <div class="row">
-                                        <h6>Select Stage</h6>
-                                        <select class="form-control select2" id="stageSelect">
-                                            <?php
-                                            $query = mysqli_query($mysqli, 'SELECT stages.STAGENAME, stages.STAGEID FROM shows JOIN stages ON shows.STAGEID = stages.STAGEID WHERE shows.SHOWID = ' . $_GET['setid']);
-                                            while($row = $query->fetch_array()) {
-                                                echo '<option value="' . $row['STAGEID'] . '">' . $row['STAGENAME'] . '</option>';
-                                            }
-
-                                            $query = mysqli_query($mysqli, 'SELECT * FROM stages WHERE VENUEID = '. $venueid . ' ORDER BY STAGENAME ASC');
-                                            while($row = $query->fetch_array()) {
-                                                echo '<option value="' . $row['STAGEID'] . '">' . $row['STAGENAME'] . '</option>';
-                                            }
-                                            ?>
-                                        </select>
-                                    </div><br>
-                                    <div class="row">
-                                        <button class="btn btn-success" onclick="javascript:assignStage();">Assign Stage</button>
-                                    </div>
-
-                            </div>
 
                     <div class="tab-pane" id="rider">
 

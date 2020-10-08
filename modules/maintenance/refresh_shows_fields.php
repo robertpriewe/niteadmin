@@ -38,6 +38,7 @@ foreach($addfield AS $key => $val) {
     }
 }
 
+echo "Adding fields:...";
 var_dump($addfields);
 
 foreach($removefield AS $key => $val) {
@@ -47,6 +48,7 @@ foreach($removefield AS $key => $val) {
     }
 }
 echo "<br><br>";
+echo "Removing fields:...";
 var_dump($removefields);
 
 ?>

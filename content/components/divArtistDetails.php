@@ -10,6 +10,7 @@ while($row = $query->fetch_array()) {
     $rowcontacts[] = $row;
 }
 ?>
+<div class="table-responsive">
 <table class="table table-centered table-borderless table-striped mb-0">
     <tbody>
     <?php
@@ -75,29 +76,29 @@ while($row = $query->fetch_array()) {
             </tr>';
 
 echo '    </tbody>
-</table>';
-echo '<div class="row">
-<div class="col-12">
-<br><br>
-<h4>Contacts: (to change contacts go to artist page)</h4>
-</div>
-</div>';
-echo '<table class="table table-centered table-borderless table-striped mb-0">
+</table></div>';
+echo '<br><br>
+<h4>Contacts</h4> <a href="#custom-modal" class="btn btn-primary btn-xs waves-effect mb-2 waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Assign New Contact\',\'ajax/ajaxmodalassignnewcontact.php?artistid=' . $_GET['artistid'] . '\');"><i class="mdi mdi-plus-circle mr-1"></i> Assign New Contact</a>';
+echo ' <div class="table-responsive"><table class="table table-centered table-borderless table-striped mb-0">
     <tbody>';
     echo '<tr>
-            <td style="width: 35%;">Manager</td>
-            <td><a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'View Contact\',\'ajax/ajaxmodalviewcontact.php?contactid=' . $rowartists['CONTACTID'] . '\');">' . $rowartists['FIRSTNAME'] . ' ' . $rowartists['LASTNAME'] . ' (' , $rowartists['COMPANY'] . ')</a></td>
-            </tr>';
+            <td style="width: 35%;">Manager</td>';
+            if ($rowartists['CONTACTID'] == "0") {
+                echo '<td>Unassigned</td>';
+            } else {
+                echo '<td><a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'View Contact\',\'ajax/ajaxmodalviewcontact.php?contactid=' . $rowartists['CONTACTID'] . '\');">' . $rowartists['FIRSTNAME'] . ' ' . $rowartists['LASTNAME'] . ' (', $rowartists['COMPANY'] . ')</a></td>';
+            }
+            echo '<td><a href="#custom-modal" class="btn btn-primary btn-xs waves-effect mb-2 waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Change Manager\',\'ajax/ajaxmodalassignnewcontact.php?action=change&artistid=' . $_GET['artistid'] . '\');"><i class="mdi mdi-chart-bubble mr-1"></i> Change Manager</a></td></tr>';
     foreach ($rowcontacts as $contactrow) {
         echo '<tr>
             <td style="width: 35%;">' . $contactrow['ROLE'] . '</td>
             <td><a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'View Contact\',\'ajax/ajaxmodalviewcontact.php?contactid=' . $contactrow['CONTACTID'] . '\');">' . $contactrow['FIRSTNAME'] . ' ' . $contactrow['LASTNAME'] . ' (' , $contactrow['COMPANY'] . ')</a></td>
-            </tr>';
+            <td><a href="#custom-modal" class="btn btn-danger btn-xs waves-effect mb-2 waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Are you sure you want to unassign this contact?\',\'ajax/ajaxmodalconfirmdeletion.php?action=unassigncontact&artistid=' . $_GET['artistid'] . '&contactid=' . $contactrow['CONTACTID'] . '\');"><i class="mdi mdi-delete mr-1"></i> Unassign</a></td></tr>';
     }
     ?>
     </tbody>
 </table>
-
+</div>
 
 <script type="text/javascript">
     $(document).ready(function() {

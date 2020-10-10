@@ -101,10 +101,6 @@ include("content/components/b2blogic.php");
                     <div class="card-body">
                         <div class="tab-content">
 
-
-
-
-
                         <div class="tab-pane show active" id="general">
                                 <div class="row">
                                     <div class="col-12">
@@ -131,19 +127,7 @@ include("content/components/b2blogic.php");
                                                 </tr>
                                                 <tr>
                                                     <td>Stage</td>
-                                                    <td><div class="row"><div class="col-lg-4"><select class="form-control select2" id="stageSelect">
-                                                            <?php
-                                                            $query = mysqli_query($mysqli, 'SELECT stages.STAGENAME, stages.STAGEID FROM shows JOIN stages ON shows.STAGEID = stages.STAGEID WHERE shows.SHOWID = ' . $_GET['setid']);
-                                                            while($row = $query->fetch_array()) {
-                                                                echo '<option value="' . $row['STAGEID'] . '">' . $row['STAGENAME'] . '</option>';
-                                                            }
-
-                                                            $query = mysqli_query($mysqli, 'SELECT * FROM stages WHERE VENUEID = '. $venueid . ' ORDER BY STAGENAME ASC');
-                                                            while($row = $query->fetch_array()) {
-                                                                echo '<option value="' . $row['STAGEID'] . '">' . $row['STAGENAME'] . '</option>';
-                                                            }
-                                                            ?>
-                                                                </select></div> <div class="col-lg-4"><button class="btn btn-success" onclick="javascript:assignStage();">Assign Stage</button></div><div class="col-lg-4"></div></div></td>
+                                                    <td><?php echo $rowresults['STAGENAME']; ?> <a href="#custom-modal" class="btn btn-primary btn-xs waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Assign Stage','ajax/ajaxmodalassignstage.php?setid=<?php echo $_GET['setid']; ?>');"><i class="mdi mdi-database mr-1"></i> Change Stage</a></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -158,10 +142,8 @@ include("content/components/b2blogic.php");
 
                             <div class="tab-pane" id="artistdetails">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <div class="table-responsive" id="divArtistDetails">
+                                    <div class="col-12" id="divArtistDetails">
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -329,16 +311,18 @@ include("content/components/b2blogic.php");
                     <div class="row">
                         <div class="col-lg-12 col-xl-12">
                             <div class="card">
-                            <div class="card-body"><h5 class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i>
-                                    Other shows</h5>
-                                <div class="table-responsive">
-                                    <?php
-                                    $_GET['artistid'] = $rowresults['ARTISTID'];
-                                    include('content/components/eventsplayingwidget.php');
-                                    ?>
-
-                                </div></div>
-                            </div></div></div>
+                                <div class="card-body">
+                                    <h5 class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i> Other shows</h5>
+                                    <div class="table-responsive">
+                                        <?php
+                                        $_GET['artistid'] = $rowresults['ARTISTID'];
+                                        include('content/components/eventsplayingwidget.php');
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div> <!-- end col -->
 

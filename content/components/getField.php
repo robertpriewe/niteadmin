@@ -22,7 +22,7 @@ function getField($type, $fieldid, $fieldname, $fieldvalue, $setid) {
                                                             </div>
                                                         </form>';
         } else {
-            return '<a href="files/' . $fieldvalue . '" target="_BLANK">' . $fieldvalue . '</a> <button type="button" class="btn btn-danger btn-xs waves-effect waves-light mr-1" onclick="javascript:fileDelete(' . $fieldid . ', \'' . $fieldname . '\');"><i class="mdi mdi-trash-can"></i></button>';
+            return '<a href="files/' . $fieldvalue . '" target="_BLANK">' . basename($fieldvalue) . '</a> <button type="button" class="btn btn-danger btn-xs waves-effect waves-light mr-1" onclick="javascript:fileDelete(' . $fieldid . ', \'' . $fieldname . '\');"><i class="mdi mdi-trash-can"></i></button>';
         }
     }
 }

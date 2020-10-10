@@ -38,7 +38,7 @@ function validateFields($value, $showid, $columnid) {
                         <?php
                         $colNumber = 0;
                         foreach($colsquery as $colsrow) {
-                            echo '<th class="font-weight-medium">' . $colsrow['FIELDNAME'] . '</th>';
+                            echo '<th class="font-weight-medium" align="center">' . $colsrow['FIELDNAME_TEXT'] . '</th>';
                             $colNumber++;
                         }
                         ?>
@@ -53,7 +53,7 @@ function validateFields($value, $showid, $columnid) {
                             echo '<td><b>' . $row['ARTISTNAME'] . '</b></td>';
                             $completed=0;
                             foreach($colsquery as $colsrow) {
-                                echo '<td><b>' . validateFields($row[$colsrow['FIELDNAME']], $row['SHOWID'], $colsrow['COLUMNID']) . '</b></td>';
+                                echo '<td align="center"><b>' . validateFields($row[$colsrow['FIELDNAME']], $row['SHOWID'], $colsrow['COLUMNID']) . '</b></td>';
                             }
                             $percentage = ($completed/$colNumber)*100;
                             if ($percentage >= 100) {

@@ -6,8 +6,8 @@ include ('../modules/sql.php');
 <div class="col-lg-12">
     <div class="card-box">
         <div class="row">
-            <form>
-                <div class="form-group">
+`            <form>
+`                <div class="form-group">
                     <label for="name">Artist Name</label>
                     <input type="text" class="form-control" id="artistName" placeholder="Enter artist name">
                 </div>

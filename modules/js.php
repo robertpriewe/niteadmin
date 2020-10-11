@@ -100,8 +100,12 @@ $(document).ready(function() {
             }
         }";
         }
+    if ($_GET['page'] == "showcontacts" && isset($_GET['contactid'])) {
+        echo "
+        openModal('View Contact','ajax/ajaxmodalviewcontact.php?contactid=" . $_GET['contactid'] . "');
+        ";
+    }
     ?>
-
 
 });
 
@@ -118,6 +122,7 @@ function openModal(title, ajaxfilename) {
         $('#modalContent').html(response);
         $(".select2").select2();
         document.styleSheets[0].insertRule('.select2-container--open { z-index: 999999; }', 0);
+        $('#custom-modal').modal('show');
     }).fail(function() {
         alert( "Error" );
     });

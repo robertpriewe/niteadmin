@@ -28,8 +28,6 @@
                             </div>
                         </div>
 
-
-
                         <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="tickets-table">
                             <thead class="bg-light">
                             <tr>

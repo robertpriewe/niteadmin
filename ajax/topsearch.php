@@ -47,7 +47,22 @@ SELECT CONCAT(VENUENAME, ' (', VENUETYPE, ')') AS RESULT, 'VENUE' AS 'TABLE', VE
             } else {
                 $photo = "assets/images/users/avatar-generic.png";
             }
-            echo '<a href="?page=artistdetails&artistid=' . $row['ID'] . '" class="dropdown-item notify-item">
+            if ($row['TABLE'] == 'ARTIST') {
+                $url = '<a href="?page=artistdetails&artistid=' . $row['ID'] . '" class="dropdown-item notify-item">';
+            } elseif ($row['TABLE'] == 'EVENT') {
+                $url = '<a href="?page=eventdetails&eventid=' . $row['ID'] . '" class="dropdown-item notify-item">';
+            } elseif ($row['TABLE'] == 'CONTACT') {
+                $url = '<a href="?page=showcontacts&contactid=' . $row['ID'] . '" class="dropdown-item notify-item">';
+            } elseif ($row['TABLE'] == 'VENUE') {
+                $url = '<a href="?page=venuedetails&venueid=' . $row['ID'] . '" class="dropdown-item notify-item">';
+            } elseif ($row['TABLE'] == 'SPONSOR') {
+                $url = '<a href="?page=sponsordetails&sponsorid=' . $row['ID'] . '" class="dropdown-item notify-item">';
+            } elseif ($row['TABLE'] == 'VENDOR') {
+                $url = '<a href="?page=vendordetails&vendorid=' . $row['ID'] . '" class="dropdown-item notify-item">';
+            } else {
+                $url = '<a href="?" class="dropdown-item notify-item">';
+            }
+            echo $url . '
             <div class="media">
                 <img class="d-flex mr-2 rounded-circle" src="' . $photo . '" alt="Generic placeholder image" width="32" height="32">
                 <div class="media-body">

@@ -88,6 +88,21 @@ $(document).ready(function() {
     }
 
     filterTable();
+
+    <?php
+        if ($_GET['page'] == "setdetails") {
+            echo "
+        if (window.location.hash) {
+            var hash = window.location.hash.substring(1);
+            $('#nav' + hash).tab('show');
+            if (hash == 'artistdetails') {
+                loadArtistDetails();
+            }
+        }";
+        }
+    ?>
+
+
 });
 
 function openModal(title, ajaxfilename) {

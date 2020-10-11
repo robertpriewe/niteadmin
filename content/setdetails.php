@@ -37,42 +37,42 @@ include("content/components/b2blogic.php");
                             <div class="col-lg-8">
                                 <ul class="nav nav-pills navtab-bg">
                                     <li class="nav-item">
-                                        <a href="#general" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0">
+                                        <a href="#general" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0" id="navgeneral">
                                             <i class="mdi mdi-face-profile mr-1"></i>General
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#artistdetails" data-toggle="tab" aria-expanded="false" class="nav-link" onclick="javascript:loadArtistDetails();">
+                                        <a href="#artistdetails" data-toggle="tab" aria-expanded="false" class="nav-link" onclick="javascript:loadArtistDetails();" id="navartistdetails">
                                             <i class="mdi mdi-account mr-1"></i>Artist Details
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#stageinfo" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#stageinfo" data-toggle="tab" aria-expanded="false" class="nav-link" id="navstageinfo">
                                             <i class="mdi mdi-headphones mr-1"></i>Stage Info
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#financials" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#financials" data-toggle="tab" aria-expanded="false" class="nav-link" id="navfinancials">
                                             <i class="mdi mdi-account-cash mr-1"></i>Financials
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#documents" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#documents" data-toggle="tab" aria-expanded="false" class="nav-link" id="navdocuments">
                                             <i class="mdi mdi-text mr-1"></i>Contracts/Documents
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#accommodations" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#accommodations" data-toggle="tab" aria-expanded="false" class="nav-link" id="navaccommodations">
                                             <i class="mdi mdi-home mr-1"></i>Accommodations
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#other" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#other" data-toggle="tab" aria-expanded="false" class="nav-link" id="navother">
                                             <i class="mdi mdi-paperclip mr-1"></i>Other
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#rider" data-toggle="tab" aria-expanded="false" class="nav-link" onclick="javascript:loadRider(<?php echo $_GET['setid']; ?>);">
+                                        <a href="#rider" data-toggle="tab" aria-expanded="false" class="nav-link" onclick="javascript:loadRider(<?php echo $_GET['setid']; ?>);" id="navrider">
                                             <i class="mdi mdi-paper-cut-vertical mr-1"></i>Rider
                                         </a>
                                     </li>
@@ -405,5 +405,6 @@ include("content/components/b2blogic.php");
         });
         return false;
     }
+
 
 </script>

@@ -34,7 +34,7 @@ include("content/components/b2blogic.php");
                     <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-lg-10">
                                 <ul class="nav nav-pills navtab-bg">
                                     <li class="nav-item">
                                         <a href="#general" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0" id="navgeneral">
@@ -78,13 +78,16 @@ include("content/components/b2blogic.php");
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-2">
                                 <div class="text-lg-right mt-3 mt-lg-0">
                                     <button type="button" class="btn btn-success waves-effect waves-light mr-1" onclick="javascript:clickEdit();"><i class="mdi mdi-settings"></i> Edit</button>
-                                    <button type="button" class="btn btn-primary waves-effect waves-light mr-1" onclick="javascript:document.location.href='?page=artistdetails&artistid=<?php echo $rowresults['ARTISTID']; ?>';"><i class="mdi mdi-information"></i> Artist Info</button>
-                                    <a href="#custom-modal" class="btn btn-danger waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Remove Artist from Event','ajax/ajaxmodalconfirmdeletion.php?deleteartistfromevent=true&artistid=<?php echo $rowresults['ARTISTID']; ?>&eventid=<?php echo $rowresults['EVENTID']; ?>');"><i class="mdi mdi-recycle mr-1"></i> Remove</a>
-
-
+                                    <div class="btn-group dropdown">
+                                        <a href="javascript: void(0);" class="dropdown-toggle arrow-none btn btn-light" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" onclick="javascript:document.location.href='?page=artistdetails&artistid=<?php echo $rowresults['ARTISTID']; ?>';"><i class="ri-headphone-line mr-2 text-muted font-18 vertical-middle"></i>Artist Profile</a>
+                                            <a class="dropdown-item" href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Remove Artist from Event','ajax/ajaxmodalconfirmdeletion.php?deleteartistfromevent=true&artistid=<?php echo $rowresults['ARTISTID']; ?>&eventid=<?php echo $rowresults['EVENTID']; ?>');"><i class="ri-delete-bin-2-line mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div><!-- end col-->
                         </div> <!-- end row -->

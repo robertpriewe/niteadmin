@@ -90,7 +90,7 @@ $(document).ready(function() {
     filterTable();
 
     <?php
-        if ($_GET['page'] == "setdetails") {
+        if ($_GET['page'] == "setdetails" || $_GET['page'] == "eventdetails") {
             echo "
         if (window.location.hash) {
             var hash = window.location.hash.substring(1);
@@ -179,8 +179,6 @@ function refreshSearch() {
         $('#searchBody').html('');
     }
 }
-
-
 
 </script>
 

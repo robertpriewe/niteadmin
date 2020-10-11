@@ -1,6 +1,5 @@
 <?php
 session_start();
-error_reporting(E_ALL);
 include ('../modules/sql.php');
 include ('addtolog.php');
 

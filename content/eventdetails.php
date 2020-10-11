@@ -69,12 +69,12 @@ include("content/components/b2blogic.php");
                             <div class="col-lg-7">
                                 <ul class="nav nav-pills navtab-bg">
                                     <li class="nav-item">
-                                        <a href="#setdetails" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0">
+                                        <a href="#navsetdetails" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0">
                                             <i class="mdi mdi-face-profile mr-1"></i>Show/Artist Info
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#eventdetails" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#naveventdetails" data-toggle="tab" aria-expanded="false" class="nav-link">
                                             <i class="mdi mdi-paperclip mr-1"></i>Event Details
                                         </a>
                                     </li>
@@ -111,7 +111,7 @@ include("content/components/b2blogic.php");
                         <div class="card-body">
                         <div class="tab-content">
 
-                            <div class="tab-pane show active" id="setdetails">
+                            <div class="tab-pane show active" id="navsetdetails">
                                 <div class="text-center mb-2">
                                     <div class="row">
                                         <div class="col-md-6 col-xl-3">
@@ -230,7 +230,7 @@ include("content/components/b2blogic.php");
 
 
 
-                            <div class="tab-pane" id="eventdetails">
+                            <div class="tab-pane" id="naveventdetails">
                                 <div class="row">
                                     <div class="col-lg-8">
                                     </div>

@@ -25,7 +25,9 @@ include ('../modules/sql.php');
 <?php
 if (isset($_GET['deleteartistfromevent'])) {
     $url = "'ajax/deleteartistfromevent.php?eventid=" . $_GET['eventid'] . "&artistid=" . $_GET['artistid'] . "'";
+    $doneurl = "document.location.href='?page=eventdetails&eventid=" . $_GET['eventid'] . "';";
 } else {
+    $doneurl = 'location.reload();';
     if (isset($_GET['artistid'])) {
         $query = '&artistid=' . $_GET['artistid'];
         $url = "'ajax/unassigncontact.php?contactid=" . $_GET['contactid'] . $query . "'";
@@ -61,7 +63,7 @@ if (isset($_GET['deleteartistfromevent'])) {
         }).done(function(response) {
             alert(response);
             disableKey();
-            location.reload();
+            <?php echo $doneurl; ?>
         }).fail(function() {
             alert( "Error" );
         });

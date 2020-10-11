@@ -3,13 +3,7 @@
     <div class="col-12">
         <div class="page-title-box">
             <h4 class="page-title"><?php
-                echo $title;
-                if (isset($eventname)) {
-                    echo ' for Event: ' . $eventname;
-                }
-                if (isset($venuename)) {
-                    echo ' (' . $venuename . ')';
-                }
+                include('content/components/getTitle.php');
                 ?></h4>
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">

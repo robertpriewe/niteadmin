@@ -1,8 +1,26 @@
+<?php
+if (isset($_GET['eventid']) || isset($_GET['setid'])) {
+    if (isset($_GET['eventid'])) {
+        $query = mysqli_query($mysqli, "SELECT EVENTNAME, events.EVENTID AS EVENTIDSQL, VENUENAME, venues.VENUEID AS VENUEIDSQL FROM events LEFT JOIN shows ON shows.EVENTID = events.EVENTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON venues.VENUEID = stages.VENUEID WHERE events.EVENTID = " . $_GET['eventid'] . " GROUP BY venues.VENUENAME");
+    } else {
+        $query = mysqli_query($mysqli, "SELECT EVENTNAME, events.EVENTID AS EVENTIDSQL, VENUENAME, venues.VENUEID AS VENUEIDSQL, ARTISTNAME FROM shows LEFT JOIN events ON shows.EVENTID = events.EVENTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON venues.VENUEID = stages.VENUEID LEFT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID WHERE shows.SHOWID = " . $_GET['setid'] . " GROUP BY venues.VENUENAME");
+    }
+    while ($row = $query->fetch_assoc()) {
+        $eventname = $row['EVENTNAME'];
+        $eventid = $row['EVENTIDSQL'];
+        $venuename = $row['VENUENAME'];
+        $venueid = $row['VENUEIDSQL'];
+        if (isset($_GET['setid'])) {
+            $artistname = $row['ARTISTNAME'];
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Nite Admin - <?php echo $title; ?></title>
+    <title>Nite Admin - <?php include('content/components/getTitle.php'); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Nite Admin Venue Management & Nightlife System." name="description" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />

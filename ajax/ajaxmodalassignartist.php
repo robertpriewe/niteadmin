@@ -7,7 +7,7 @@ include ('../modules/sql.php');
     <div class="card-box">
         <div class="row" id="divSelectArtist">
             <h6>Select Artist</h6>
-            <select class="form-control select2">
+            <select class="form-control select2" id="selectArtists">
                 <option>Select</option>
                 <?php
                 $query = mysqli_query($mysqli, 'SELECT ARTISTNAME, ARTISTID FROM artists ORDER BY ARTISTNAME ASC');
@@ -17,20 +17,72 @@ include ('../modules/sql.php');
                 ?>
             </select>
         </div>
-        <div class="row">Artist not found? <a href="javascript:toggleArtists();"> Click to create</a></div>
         <div class="row" style="display:none;" id="divNewArtist">
             <h6>Add new artist</h6><input type="text" class="form-control" id="newArtistName">
         </div>
+        <div class="row"><a href="javascript:toggleArtists();" id="artistText">Artist not found? Click to create</a></div>
         <br>
         <div class="row">
-            <button class="btn btn-success" onclick="javascript:assignToEvent();">Add to event</button>
+            <button class="btn btn-success" onclick="javascript:checkArtist();">Add to event</button>
         </div>
     </div>
 </div> <!-- end card-box -->
 
 <script type="text/javascript">
-    function assignToEvent() {
-        var artistid = $('.select2').val();
+    function checkArtist() {
+        if (displayList == "newArtist") {
+            var newArtistName = $('#newArtistName').val();
+            if (newArtistName == "") {
+                alert ("Please type in a new artist name");
+            } else {
+                $.ajax({
+                    type: "POST",
+                    data: {newArtistName: newArtistName},
+                    url: 'ajax/checkartistexists.php',
+                    context: document.body
+                }).done(function (response) {
+                    artistStatus = response;
+                    if (artistStatus == "new") {
+                        addNewArtist(newArtistName)
+                    } else {
+                        alert('Artist ' + newArtistName + ' already exists, please select from dropdown!');
+                        toggleArtists();
+                        $('#selectArtists').val(artistStatus); // Select the option with a value of '1'
+                        $('#selectArtists').trigger('change'); // Notify any JS components that the value changed
+                    }
+                }).fail(function () {
+                    alert("Error");
+                });
+            }
+        } else {
+            assignToEvent("");
+        }
+    }
+
+    function addNewArtist(newArtistName) {
+        $.ajax({
+            type: "POST",
+            data: {artistname: newArtistName},
+            url: 'ajax/addartist.php',
+            context: document.body
+        }).done(function (response) {
+            artistid = response;
+            if (artistid != "") {
+                assignToEvent(artistid);
+            } else {
+                alert('Error generating artistid');
+            }
+        }).fail(function () {
+            alert("Error");
+        });
+    }
+
+    function assignToEvent(artistidFunct) {
+        if (artistidFunct != "") {
+            var artistid = artistidFunct;
+        } else {
+            var artistid = $('.select2').val();
+        }
         $.ajax({
             type: "GET",
             url: 'ajax/assignartist.php?eventid=<?php echo $_GET['eventid']; ?>&artistid=' + artistid,
@@ -43,10 +95,18 @@ include ('../modules/sql.php');
         });
     }
 
+    var displayList = "artistList"
     function toggleArtists() {
-        alert($('#divSelectArtist').is(":visible"));
         $('#divSelectArtist').slideToggle();
-        $('#divNewArtist').slideToggle();
+        $('#divNewArtist').slideToggle(function(){
+            if ($('#divNewArtist').is(":visible") == true) {
+                $('#artistText').html("Pick existing artist from list");
+                displayList = "newArtist";
+            } else {
+                $('#artistText').html("Artist not found? Click to create");
+                displayList = "artistList";
+            }
+        });
     }
 </script>
 

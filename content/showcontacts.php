@@ -31,7 +31,6 @@
                         <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="tickets-table">
                             <thead class="bg-light">
                             <tr>
-                                <th class="font-weight-medium">ID</th>
                                 <th class="font-weight-medium">Name</th>
                                 <th class="font-weight-medium">Company</th>
                                 <th class="font-weight-medium">Role</th>
@@ -47,9 +46,8 @@
                             <?php
                             if (count($showsquery) > 0) {
                                 foreach ($showsquery as $showsrow) {
-
+                                    //<td>' . $showsrow['MAINCONTACTID'] . '</td>
                                     echo '<tr>
-                                <td>' . $showsrow['MAINCONTACTID'] . '</td>
                                 <td><a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'View Contact\',\'ajax/ajaxmodalviewcontact.php?contactid=' . $showsrow['MAINCONTACTID'] . '\');"><b>' . $showsrow['FIRSTNAME'] . ' ' . $showsrow['LASTNAME'] . '</b></a></td>
                                 <td>' . $showsrow['COMPANY'] . '</td>
                                 <td>' . $showsrow['ROLE'] . '</td>

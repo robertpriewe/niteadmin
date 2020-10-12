@@ -34,7 +34,6 @@ if ($query->num_rows > 0) {
                         <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="tickets-table">
                             <thead class="bg-light">
                             <tr>
-                                <th class="font-weight-medium">ID</th>
                                 <th class="font-weight-medium">Sponsor Name</th>
                                 <th class="font-weight-medium">Type</th>
                                 <th class="font-weight-medium">Phone</th>
@@ -50,7 +49,6 @@ if ($query->num_rows > 0) {
                                 foreach ($showsquery as $showsrow) {
 
                                     echo '<tr>
-                                <td>' . $showsrow['SPONSORID'] . '</td>
                                 <td><b><a href="?page=sponsordetails&sponsorid=' . $showsrow['SPONSORID'] . '">' . $showsrow['SPONSORNAME'] . '</a></b></td>
                                 <td>' . $showsrow['SPONSORTYPE'] . '</td>
                                 <td>' . $showsrow['SPONSORPHONE'] . '</td>

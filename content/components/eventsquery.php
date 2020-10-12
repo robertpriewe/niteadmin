@@ -60,8 +60,6 @@ if (count($showsquery) == 0) {
                 <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="tickets-table">
                     <thead class="bg-light">
                     <tr>
-
-                        <th class="font-weight-medium">ID</th>
                         <th class="font-weight-medium">Event Name</th>
                         <th class="font-weight-medium">Venue</th>
                         <th class="font-weight-medium"># of Sets</th>
@@ -102,8 +100,7 @@ if (count($showsquery) == 0) {
                         }
 
                         echo '<tr>
-                                   
-                                    <td><b>' . $showsrow['EVENTID'] . '</b></td>
+                                  
     
                                     <td><a href="?page=eventdetails&eventid=' . $showsrow['EVENTID'] . '">' . $showsrow['EVENTNAME'] . '</a></td>
     

@@ -33,7 +33,6 @@
                         <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="tickets-table">
                             <thead class="bg-light">
                             <tr>
-                                <th class="font-weight-medium">ID</th>
                                 <th class="font-weight-medium">Vendor Name</th>
                                 <th class="font-weight-medium">Type</th>
                                 <th class="font-weight-medium">Phone</th>
@@ -49,7 +48,6 @@
                                 foreach ($showsquery as $showsrow) {
 
                                     echo '<tr>
-                                <td>' . $showsrow['VENDORID'] . '</td>
                                 <td><b><a href="?page=vendordetails&vendorid=' . $showsrow['VENDORID'] . '">' . $showsrow['VENDORNAME'] . '</a></b></td>
                                 <td>' . $showsrow['VENDORTYPE'] . '</td>
                                 <td>' . $showsrow['VENDORPHONE'] . '</td>

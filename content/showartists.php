@@ -39,7 +39,6 @@
                         <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="tickets-table">
                             <thead class="bg-light">
                             <tr>
-                                <th class="font-weight-medium">ID</th>
                                 <th class="font-weight-medium">Artist Name</th>
                                 <th class="font-weight-medium">Name</th>
                                 <th class="font-weight-medium">Genre</th>
@@ -62,7 +61,6 @@
                                     }
 
                                     echo '<tr>
-                                <td>' . $showsrow['ARTISTID'] . '</td>
                                 <td>
                                     <a href="javascript: void(0);" class="text-dark">
                                         <img src="' . $photo . '" alt="contact-img" title="contact-img" class="avatar-sm rounded-circle img-thumbnail" />

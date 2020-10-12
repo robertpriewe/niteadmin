@@ -96,7 +96,6 @@
                         <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" cellspacing="0" id="tickets-table">
                             <thead class="bg-light">
                             <tr>
-                                <th class="font-weight-medium">ID</th>
                                 <th class="font-weight-medium">Name</th>
                                 <th class="font-weight-medium">E-Mail</th>
                                 <th class="font-weight-medium">Access</th>
@@ -113,7 +112,6 @@
                                 foreach ($showsquery as $showsrow) {
 
                                     echo '<tr>
-                                <td><b>' . $showsrow['ID'] . '</b></td>
                                 <td>' . $showsrow['FIRSTNAME'] . ' ' . $showsrow['LASTNAME'] . '</td>
                                 <td>' . $showsrow['EMAIL'] . '</td>
                                 <td>' . $showsrow['ACCESSLEVEL'] . '</td>

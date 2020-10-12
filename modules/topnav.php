@@ -11,7 +11,7 @@
                         <form class="app-search">
                             <div class="app-search-box dropdown">
                                 <div class="input-group">
-                                    <input type="search" class="form-control" placeholder="Search..." id="top-search" onkeyup="javascript:doSearch();">
+                                    <input type="search" class="form-control" placeholder="Search..." id="top-search" oninput="javascript:doSearch();" onkeyup="javascript:doSearch();">
                                     <div class="input-group-append">
                                         <button class="btn" type="submit">
                                             <i class="fe-search"></i>

@@ -21,6 +21,47 @@ else {
     die;
 }
 
+function getPaymentInfo($DEPOSITDUEDATE, $DEPOSITPAYMENTDATE, $PERFORMANCEFEEDUEDATE, $PERFORMANCEFEEPAYMENTDATE) {
+    if (isset($DEPOSITPAYMENTDATE)) {
+        $deposit = '<span class="badge badge-success">Deposit Paid</span>';
+    } else {
+        if(!isset($DEPOSITDUEDATE)) {
+            $deposit = '<span class="badge badge-dark">No Deposit Date</span>';
+        } else {
+            if (date("Y-m-d", strtotime($DEPOSITDUEDATE)) < date("Y-m-d")) {
+                $days = Round((time() - strtotime(date("Y-m-d", strtotime($DEPOSITDUEDATE))))/(60 * 60 * 24));
+                $deposit = '<span class="badge badge-danger">Days Overdue: ' . $days . '</span>';
+            } else {
+                $days = Round((strtotime(date("Y-m-d", strtotime($DEPOSITDUEDATE)))-time())/(60 * 60 * 24));
+                if ($days <=7) {
+                    $deposit = '<span class="badge badge-warning">Deposit due: ' . $days . ' days</span>';
+                } else {
+                    $deposit = '<span class="badge badge-primary">Deposit not paid</span>';
+                }
+            }
+        }
+    }
+    if (isset($PERFORMANCEFEEPAYMENTDATE)) {
+        $performancefee = '<span class="badge badge-success">Fee Paid</span>';
+    } else {
+        if(!isset($PERFORMANCEFEEDUEDATE)) {
+            $performancefee = '<span class="badge badge-dark">No Fee Date</span>';
+        } else {
+            if (date("Y-m-d", strtotime($PERFORMANCEFEEDUEDATE)) < date("Y-m-d")) {
+                $days = Round((time() - strtotime(date("Y-m-d", strtotime($PERFORMANCEFEEDUEDATE))))/(60 * 60 * 24));
+                $performancefee = '<span class="badge badge-danger">Days Overdue: ' . $days . '</span>';
+            } else {
+                $days = Round((strtotime(date("Y-m-d", strtotime($PERFORMANCEFEEDUEDATE)))-time())/(60 * 60 * 24));
+                if ($days <=7) {
+                    $performancefee = '<span class="badge badge-warning">Fee due: ' . $days . ' days</span>';
+                } else {
+                    $performancefee = '<span class="badge badge-primary">Fee not paid</span>';
+                }
+            }
+        }
+    }
+    return $deposit . ' / ' . $performancefee;
+}
 
 //OLDWORKING $query = mysqli_query($mysqli, "SELECT TIMESTART, TIMEEND, ARTISTNAME, STAGENAME, VENUENAME, shows.SHOWID, EVENTNAME, ARTISTID, stages.STAGEID, venues.VENUEID FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID LEFT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON stages.VENUEID = venues.VENUEID LEFT JOIN events ON venues.VENUEID = events.VENUEID " . $wherequery);
 
@@ -183,6 +224,7 @@ include("content/components/b2blogic.php");
                                             }
 
 
+
                                             echo '<tr>
                                                     <td><a href="?page=setdetails&setid=' . $showsrow['SHOWIDFULL'] . '"><b>' . $showsrow['SHOWIDFULL'] . '</b></a></td>
                                                     <td>
@@ -199,7 +241,7 @@ include("content/components/b2blogic.php");
                                                     </td>
                     
                                                     <td>
-                                                        <span class="badge badge-success">Complete</span>
+                                                        ' . getPaymentInfo($showsrow['DEPOSITDUEDATE'], $showsrow['DEPOSITPAYMENTDATE'], $showsrow['PERFORMANCEFEEDUEDATE'], $showsrow['PERFORMANCEFEEPAYMENTDATE']) . '
                                                     </td>
                                                     
                                                     <td>' . b2blogic($showsrow['B2BID'], $showsrow['SHOWIDFULL'], $showsrow['ARTISTNAME'], "NA") . '</td>

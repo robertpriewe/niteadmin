@@ -4,7 +4,9 @@ include ('../sql.php');
 $query = mysqli_query($mysqli, "SELECT * FROM shows_fields_list ORDER BY ID ASC");
 while($row = $query->fetch_array()) {
     $shows_fields_list[] = $row['FIELDNAME'];
+    $fieldtype[$row['FIELDNAME']] = $row['TYPE'];
 }
+
 
 $query = mysqli_query($mysqli, "DESCRIBE shows_fields");
 while($row = $query->fetch_array()) {
@@ -34,7 +36,15 @@ foreach ($shows_fields AS $key2) {
 foreach($addfield AS $key => $val) {
     if($val == "1") {
         $addfields[]=$key;
-        mysqli_query($mysqli, "ALTER TABLE shows_fields ADD `" . $key . "` TEXT NOT NULL DEFAULT ''");
+        if ($fieldtype[$key] == "TEXT") {
+            $type = "TEXT NULL DEFAULT ''";
+        } elseif ($fieldtype[$key] == "DATETIME") {
+            $type = "DATE NULL DEFAULT NULL";
+        } elseif ($fieldtype[$key] == "FILE") {
+            $type = "TEXT NULL DEFAULT ''";
+        }
+        mysqli_query($mysqli, "ALTER TABLE shows_fields ADD `" . $key . "` " . $type);
+        echo "ALTER TABLE shows_fields ADD `" . $key . "` " . $type . "<br>";
     }
 }
 

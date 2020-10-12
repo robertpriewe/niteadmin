@@ -21,47 +21,11 @@ else {
     die;
 }
 
-function getPaymentInfo($DEPOSITDUEDATE, $DEPOSITPAYMENTDATE, $PERFORMANCEFEEDUEDATE, $PERFORMANCEFEEPAYMENTDATE) {
-    if (isset($DEPOSITPAYMENTDATE)) {
-        $deposit = '<span class="badge badge-success">Deposit Paid</span>';
-    } else {
-        if(!isset($DEPOSITDUEDATE)) {
-            $deposit = '<span class="badge badge-dark">No Deposit Date</span>';
-        } else {
-            if (date("Y-m-d", strtotime($DEPOSITDUEDATE)) < date("Y-m-d")) {
-                $days = Round((time() - strtotime(date("Y-m-d", strtotime($DEPOSITDUEDATE))))/(60 * 60 * 24));
-                $deposit = '<span class="badge badge-danger">Days Overdue: ' . $days . '</span>';
-            } else {
-                $days = Round((strtotime(date("Y-m-d", strtotime($DEPOSITDUEDATE)))-time())/(60 * 60 * 24));
-                if ($days <=7) {
-                    $deposit = '<span class="badge badge-warning">Deposit due: ' . $days . ' days</span>';
-                } else {
-                    $deposit = '<span class="badge badge-primary">Deposit not paid</span>';
-                }
-            }
-        }
-    }
-    if (isset($PERFORMANCEFEEPAYMENTDATE)) {
-        $performancefee = '<span class="badge badge-success">Fee Paid</span>';
-    } else {
-        if(!isset($PERFORMANCEFEEDUEDATE)) {
-            $performancefee = '<span class="badge badge-dark">No Fee Date</span>';
-        } else {
-            if (date("Y-m-d", strtotime($PERFORMANCEFEEDUEDATE)) < date("Y-m-d")) {
-                $days = Round((time() - strtotime(date("Y-m-d", strtotime($PERFORMANCEFEEDUEDATE))))/(60 * 60 * 24));
-                $performancefee = '<span class="badge badge-danger">Days Overdue: ' . $days . '</span>';
-            } else {
-                $days = Round((strtotime(date("Y-m-d", strtotime($PERFORMANCEFEEDUEDATE)))-time())/(60 * 60 * 24));
-                if ($days <=7) {
-                    $performancefee = '<span class="badge badge-warning">Fee due: ' . $days . ' days</span>';
-                } else {
-                    $performancefee = '<span class="badge badge-primary">Fee not paid</span>';
-                }
-            }
-        }
-    }
-    return $deposit . ' / ' . $performancefee;
-}
+$totalfeeoverdue = 0;
+$totaldepositoverdue = 0;
+$totalfeepaid = 0;
+$totaldepositpaid = 0;
+include('content/components/getPaymentInfo.php');
 
 //OLDWORKING $query = mysqli_query($mysqli, "SELECT TIMESTART, TIMEEND, ARTISTNAME, STAGENAME, VENUENAME, shows.SHOWID, EVENTNAME, ARTISTID, stages.STAGEID, venues.VENUEID FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID LEFT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON stages.VENUEID = venues.VENUEID LEFT JOIN events ON venues.VENUEID = events.VENUEID " . $wherequery);
 
@@ -172,17 +136,18 @@ include("content/components/b2blogic.php");
                                         <div class="col-md-6 col-xl-3">
                                             <div class="card-box">
                                                 <i class="fe-shield font-24"></i>
-                                                <h3 class="text-success">8 </h3>
+                                                <h3 class="text-success" id="textPaid">0</h3>
                                                 <p class="text-uppercase mb-1 font-13 font-weight-medium">Paid</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-xl-3">
                                             <div class="card-box">
                                                 <i class="fe-delete font-24"></i>
-                                                <h3 class="text-danger">0</h3>
-                                                <p class="text-uppercase mb-1 font-13 font-weight-medium">Payment Overdue</p>
+                                                <h3 class="text-danger" id="textOverdue">0</h3>
+                                                <p class="text-uppercase mb-1 font-13 font-weight-medium">Total Overdue</p>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
 
@@ -193,8 +158,8 @@ include("content/components/b2blogic.php");
                                         <th class="font-weight-medium">ID</th>
                                         <th class="font-weight-medium">Artist</th>
                                         <th class="font-weight-medium">Stage</th>
-                                        <th class="font-weight-medium">Contract</th>
-                                        <th class="font-weight-medium">Payment</th>
+                                        <th class="font-weight-medium">Infosheet</th>
+                                        <th class="font-weight-medium">Deposit / Fee</th>
                                         <th class="font-weight-medium">B2B</th>
                                         <th class="font-weight-medium">Set Start</th>
                                     </tr>
@@ -223,7 +188,11 @@ include("content/components/b2blogic.php");
                                                 $photo = 'assets/images/users/avatar-3.jpg';
                                             }
 
-
+                                            if (isset($showsrow['INFOSHEET'])) {
+                                                $infosheet = '<span class="badge badge-success">Received</span>';
+                                            } else {
+                                                $infosheet = '<span class="badge badge-dark">Pending</span>';
+                                            }
 
                                             echo '<tr>
                                                     <td><a href="?page=setdetails&setid=' . $showsrow['SHOWIDFULL'] . '"><b>' . $showsrow['SHOWIDFULL'] . '</b></a></td>
@@ -237,7 +206,7 @@ include("content/components/b2blogic.php");
                                                     <td>' . $showsrow['STAGENAME'] . '</td>
                                                     
                                                     <td>
-                                                        <span class="badge badge-success">Signed</span>
+                                                        ' . $infosheet . '
                                                     </td>
                     
                                                     <td>
@@ -269,8 +238,6 @@ include("content/components/b2blogic.php");
                                 </table>
 
                             </div>
-
-
 
                             <div class="tab-pane" id="naveventdetails">
                                 <div class="row">
@@ -345,3 +312,12 @@ include("content/components/b2blogic.php");
                 </div> <!-- end col -->
             </div>  <!-- end row-->
 
+<?php
+$totaloverdue = $totalfeeoverdue + $totaldepositoverdue;
+$totalpaid = $totalfeepaid + $totaldepositpaid;
+echo '<script type="text/javascript">
+document.getElementById("textOverdue").innerHTML = "' . $totaloverdue . '";
+document.getElementById("textPaid").innerHTML = "' . $totalpaid . '";
+</script>
+';
+?>

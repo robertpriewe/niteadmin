@@ -33,17 +33,17 @@ $countChecked = $query->num_rows;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
     <!-- third party css -->
-    <link href="assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
-    <link href="assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
     <!-- third party css end -->
 
     <!-- App css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -110,7 +110,6 @@ $countChecked = $query->num_rows;
                                     <th class="font-weight-medium">Guest Name</th>
                                     <th class="font-weight-medium">Guest E-Mail</th>
                                     <th class="font-weight-medium">Checked In</th>
-                                    <th class="font-weight-medium">Action</th>
                                 </tr>
                                 </thead>
 
@@ -132,18 +131,7 @@ $countChecked = $query->num_rows;
                                         echo '<td>' . $showsrow['FIRSTNAMEGUEST'] . ' ' . $showsrow['LASTNAMEGUEST'] . '</td>';
                                         echo '<td>' . $showsrow['EMAILGUEST'] . '</td>';
                                         echo '<td id="checkin-' . $showsrow['ID'] . '">' . $checkin . '</td>';
-                                        echo '<td>
-                                        <div class="btn-group dropdown">
-                                            <a href="javascript: void(0);" class="dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Edit Ticket</a>
-                                                <a class="dropdown-item" href="#"><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Undo Check-In</a>
-                                                <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
-                                                <a class="dropdown-item" href="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=' . $showsrow['TICKETHASH'] . '" target="_BLANK"><i class="mdi mdi-star mr-2 font-18 text-muted vertical-middle"></i>Show QR</a>
-                                            </div> 
-                                        </div>
-                                    </td>
-                                </tr>';
+                                        echo '</tr>';
                                         }
                                     }
                                     ?>
@@ -181,20 +169,20 @@ $countChecked = $query->num_rows;
 </script>
 
 <!-- Vendor js -->
-<script src="assets/js/vendor.min.js"></script>
+<script src="../assets/js/vendor.min.js"></script>
 
 <!-- third party js -->
-<script src="assets/libs/datatables/jquery.dataTables.min.js"></script>
-<script src="assets/libs/datatables/dataTables.bootstrap4.js"></script>
-<script src="assets/libs/datatables/dataTables.responsive.min.js"></script>
-<script src="assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+<script src="../assets/libs/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/libs/datatables/dataTables.bootstrap4.js"></script>
+<script src="../assets/libs/datatables/dataTables.responsive.min.js"></script>
+<script src="../assets/libs/datatables/responsive.bootstrap4.min.js"></script>
 <!-- third party js ends -->
 
 <!-- init js -->
-<script src="assets/js/pages/tickets.js"></script>
+<script src="../assets/js/pages/tickets.js"></script>
 
 <!-- App js -->
-<script src="assets/js/app.min.js"></script>
+<script src="../assets/js/app.min.js"></script>
 
 </body>
 </html>

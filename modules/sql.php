@@ -17,4 +17,10 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
+
+$urlinstall = 'http://localhost:8888';
+$urlexternal = 'http://localhost:8888/guestlist_minisite/';
+$urlticketallocation = 'http://localhost:8888/ticketalloc/';
+$clientname = 'SomePromoter';
+$clientemail = 'admin@niteadmin.com';
 ?>

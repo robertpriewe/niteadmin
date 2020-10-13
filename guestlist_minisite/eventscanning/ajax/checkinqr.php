@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ('../../modules/sql.php');
+include ('../sql.php');
 
 
 

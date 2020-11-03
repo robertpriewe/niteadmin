@@ -11,6 +11,9 @@
 <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
+<script src="assets/libs/jquery-knob/jquery.knob.min.js"></script>
+
+
 <script src="assets/libs/moment/min/moment.min.js"></script>
 <script src="assets/libs/x-editable/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <!-- third party js ends -->

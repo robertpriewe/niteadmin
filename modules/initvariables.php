@@ -101,10 +101,18 @@ if (isset($_GET['page'])) {
         $title = 'Advancing Table';
         $content = 'advancing';
         $section = 'EVENTS';
+    } elseif ($_GET['page'] == "booking") {
+        $title = 'Booking Table';
+        $content = 'booking';
+        $section = 'EVENTS';
     } elseif ($_GET['page'] == "displaylogs") {
         $title = 'Display Logs';
         $content = 'displaylogs';
         $section = 'ADMIN';
+    } elseif ($_GET['page'] == "timeline") {
+        $title = 'Timeline';
+        $content = 'timeline';
+        $section = 'EVENTS';
     } else {
         $title = 'Page not found';
         $content = 'pagenotfound';

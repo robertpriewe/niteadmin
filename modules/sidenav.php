@@ -101,10 +101,16 @@
                                     <a href="?page=eventdetails&eventid=' . $eventid . '"> Event Overview</a>
                                 </li>
                                 <li>
-                                    <a href="?page=venuedetails&venueid=' . $eventid . '"> Venue Details</a>
+                                    <a href="?page=timeline&eventid=' . $eventid . '"> Timeline</a>
                                 </li>
                                 <li>
-                                    <a href="?page=advancing&eventid=' . $eventid . '"> Advancing</a>
+                                    <a href="?page=booking&eventid=' . $eventid . '"> Booking Table</a>
+                                </li>
+                                <li>
+                                    <a href="?page=advancing&eventid=' . $eventid . '"> Advancing Table</a>
+                                </li>
+                                <li>
+                                    <a href="?page=venuedetails&venueid=' . $eventid . '"> Venue Details</a>
                                 </li>
                                 <li>
                                     <a href="?page=showguestlist&eventid=' . $eventid . '"> Guestlist</a>

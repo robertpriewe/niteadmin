@@ -15,57 +15,56 @@ while($row = $query->fetch_assoc()) {
 ?>
 <br>
 <div class="col-lg-12">
-    <div class="card-box">
-        <div class="row">
-            <form>
-                <div class="row">
-                    <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
-                </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
-                </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="text" class="form-control" id="email" placeholder="Enter E-Mail">
                     </div>
+                    <div class="form-group">
+                        <label for="notes">Notes (cannot be read by guests)</label>
+                        <textarea id="notes" placeholder="Enter notes" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <?php
 
-                </div>
-                <div class="form-group">
-                    <label for="email">E-Mail</label>
-                    <input type="text" class="form-control" id="email" placeholder="Enter E-Mail">
-                </div>
-                <div class="form-group">
-                    <label for="notes">Notes (cannot be read by guests)</label>
-                    <textarea id="notes" placeholder="Enter notes" class="form-control"></textarea>
-                </div>
-                <div class="row">
-
-                    <?php
-
-                    foreach ($accessquery as $accessarr) {
-                        echo '<div class="form-group col-md-2">';
-                        echo '<label for="inputState">' . $accessarr['ACCESSLEVEL'] . '</label>';
-                        echo '<select id="inputState' . $accessarr['ACCESSLEVEL'] . '" class="form-control" name="access_id_' . $accessarr['ACCESSID'] . '">';
-                        for ($i=0; $i<=20; $i++) {
-                            echo '<option value="' . $i . '">' . $i . '</option>';
+                        foreach ($accessquery as $accessarr) {
+                            echo '<div class="form-group col-md-2">';
+                            echo '<label for="inputState">' . $accessarr['ACCESSLEVEL'] . '</label>';
+                            echo '<select id="inputState' . $accessarr['ACCESSLEVEL'] . '" class="form-control select2" name="access_id_' . $accessarr['ACCESSID'] . '">';
+                            for ($i=0; $i<=20; $i++) {
+                                echo '<option value="' . $i . '">' . $i . '</option>';
+                            }
+                            echo '</select></div>';
                         }
-                        echo '</select></div>';
-                    }
 
-                    ?>
-                </div>
-                <div class="text-right">
-                    <button type="button" class="btn btn-success waves-effect waves-light" onclick="javscript:addGuestlist();">Add</button>
-                    <button type="button" class="btn btn-danger waves-effect waves-light m-l-10"
-                            onclick="javascript:$('#custom-modal').modal('hide');">Cancel</button>
-                </div>
-            </form>
+                        ?>
+                    </div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-success waves-effect waves-light" onclick="javscript:addGuestlist();">Add</button>
+                        <button type="button" class="btn btn-danger waves-effect waves-light m-l-10" onclick="javascript:$('#custom-modal').modal('hide');">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div> <!-- end card-box -->
+</div>
 <?php
 $calc = "";
 $vars = "";
@@ -110,7 +109,7 @@ foreach ($accessquery as $accessarr) {
                 alert(response);
                 location.reload();
             }).fail(function() {
-                alert( "Error" );
+                alert("Error");
             });
         }
     }

@@ -17,4 +17,9 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
+
+$urlinstall = 'https://www.niteadmin.com';
+$urlexternal = 'https://www.niteadmin.com/guestlist_minisite/';
+$clientname = 'SomeVenue';
+$clientemail = 'admin@niteadmin.com';
 ?>

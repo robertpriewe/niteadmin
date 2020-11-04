@@ -31,6 +31,8 @@ while($row = $query->fetch_assoc()) {
     $firstname = $row['FIRSTNAME'];
 }
 
+$urlticketallocation = $urlexternal . "register/";
+
 $msg = "Hello " . $firstname . ",
 
 You have been assigned the following guestlist allocation for the event " . $eventname . " on " . $eventsdate . ":

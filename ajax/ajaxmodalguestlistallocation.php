@@ -106,7 +106,7 @@ foreach ($accessquery as $accessarr) {
                 url: 'ajax/addguestlistallocation.php?eventid=<?php echo $_GET['eventid']; ?>',
                 context: document.body
             }).done(function(response) {
-                alert(response);
+                alert("Done!");
                 location.reload();
             }).fail(function() {
                 alert("Error");

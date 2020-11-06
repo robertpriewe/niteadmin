@@ -79,6 +79,21 @@ while($row = $query->fetch_array()) {
                         <p class="mb-3">Artist notes</p>
 
                     </div> <!-- end card-box-->
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6"><h4 class="font-13 text-uppercase">Spotify Info</h4></div>
+                            <div class="col-sm-6 text-right"><a href="#custom-modal" class="btn btn-primary btn-xs waves-effect mb-2 waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Refreshing spotify information','ajax/ajaxrefreshspotifyinfo.php?artistid=<?php echo $_GET['artistid']; ?>');"><i class="mdi mdi-refresh mr-1"></i> Refresh Spotify Info</a></div>
+                        </div>
+                        <p class="mb-3">
+                            <table>
+                                <tr><td><p class="text-muted mb-2 font-13"><strong>Genres</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><?php echo $rowartists['SPOTIFYGENRES']; ?></span></p></td></tr>
+                                <tr><td><p class="text-muted mb-2 font-13"><strong>Followers</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><?php echo $rowartists['SPOTIFYFOLLOWERS']; ?></span></p></td></tr>
+                                <tr><td><p class="text-muted mb-2 font-13"><strong>Popularity</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><?php echo $rowartists['SPOTIFYPOPULARITY']; ?></span></p></td></tr>
+                        </table>
+                        </p>
+
+                    </div> <!-- end card-box-->
                 </div>
 
                 <div class="card">

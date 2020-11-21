@@ -1,5 +1,14 @@
 <?php
-function getField($type, $fieldid, $fieldname, $fieldvalue, $setid) {
+function getField($type, $fieldid, $fieldname, $fieldvalue, $setid, $permission) {
+    if ($permission != "") {
+        if (!isset($_SESSION['ACCESS'][$permission])) {
+            if ($fieldvalue == "") {
+                return '<i class="ri-checkbox-blank-circle-line" title="Field has not been populated yet" data-plugin="tippy" data-tippy-arrow="true" data-tippy-animation="fade"></i>';
+            } else {
+                return '<i class="ri-checkbox-circle-fill primary" title="No permission to see the value" data-plugin="tippy" data-tippy-arrow="true" data-tippy-animation="fade"></i>';
+            }
+        }
+    }
 
     if ($type == "TEXT") {
         return '<a class="changefield" href="#" data-type="text" data-pk="{id:' . $setid . ',page:\'shows_fields\'}" data-name="' . $fieldname . '">' . $fieldvalue . '</a>';

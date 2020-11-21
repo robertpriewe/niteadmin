@@ -16,6 +16,7 @@ while($row = $query->fetch_array()) {
     $fieldscategory[] = $row['CATEGORY'];
     $fieldstype[] = $row['TYPE'];
     $fieldsid[] = $row['ID'];
+    $fieldspermission[] = $row['PERMISSION'];
 }
 $query = mysqli_query($mysqli, "SELECT * FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID RIGHT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID RIGHT JOIN stages ON shows.STAGEID = stages.STAGEID RIGHT JOIN venues ON stages.VENUEID = venues.VENUEID RIGHT JOIN events ON events.EVENTID = shows.EVENTID LEFT JOIN shows_b2b ON shows.SHOWID = shows_b2b.B2BSETID WHERE shows.SHOWID = '" . $_GET['setid'] . "' LIMIT 0, 1");
 
@@ -118,7 +119,7 @@ include("content/components/b2blogic.php");
 
                                                             echo '<tr>
                                                             <td style="width: 35%;">' . $fieldname . '</td>
-                                                            <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                            <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i]) . '</td>
                                                             </tr>';
                                                         }
                                                         $i++;
@@ -169,7 +170,7 @@ include("content/components/b2blogic.php");
 
                                                         echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i]) . '</td>
                                                         </tr>';
                                                     }
                                                     $i++;
@@ -198,7 +199,7 @@ include("content/components/b2blogic.php");
 
                                                         echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i]) . '</td>
                                                         </tr>';
                                                     }
                                                     $i++;
@@ -225,7 +226,7 @@ include("content/components/b2blogic.php");
 
                                                         echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i]) . '</td>
                                                         </tr>';
                                                     }
                                                     $i++;
@@ -253,7 +254,7 @@ include("content/components/b2blogic.php");
 
                                                         echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i]) . '</td>
                                                         </tr>';
                                                     }
                                                     $i++;
@@ -282,7 +283,7 @@ include("content/components/b2blogic.php");
 
                                                         echo '<tr>
                                                         <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid']) . '</td>
+                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i]) . '</td>
                                                         </tr>';
                                                     }
                                                     $i++;

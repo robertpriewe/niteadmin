@@ -229,7 +229,7 @@
                     <div class="collapse" id="sidebarUserManagement">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">Add New User</a>
+                                <a href="?page=addnewuser">Add New User</a>
                             </li>
                             <li>
                                 <a href="#">Search Users</a>

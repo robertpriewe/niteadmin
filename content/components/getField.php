@@ -20,8 +20,7 @@ function getField($type, $fieldid, $fieldname, $fieldvalue, $setid, $permission)
         } else {
             $datetime = date("Y/m/d h:i A", strtotime($fieldvalue));
         }
-
-        return '<a class="changefield" href="#" data-type="combodate" data-template="MMM D YYYY  hh:mm a" data-format="YYYY-MM-DD HH:mm:ss" data-viewformat="YYYY-MM-DD hh:mm a" data-pk="{id:' . $setid . ',page:\'shows_fields\'}" data-name="' . $fieldname . '">' .  $datetime . '</a>';
+        return '<a class="changefield" href="#" data-type="combodate" data-template="MMM D YYYY hh:mm a" data-format="YYYY-MM-DD HH:mm:ss" data-viewformat="YYYY-MM-DD hh:mm a" data-pk="{id:' . $setid . ',page:\'shows_fields\'}" data-clear="NA" data-name="' . $fieldname . '">' . $datetime . '</a>';
     } else if ($type == "FILE") {
         if ($fieldvalue == "") {
             return '<form method="POST" enctype="multipart/form-data" name="formdata-' . $fieldid . '" id="divUpload-' . $fieldid . '">

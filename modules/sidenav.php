@@ -234,21 +234,8 @@
                             <li>
                                 <a href="?page=userlist">User List</a>
                             </li>
-                        </ul>
-                    </div>
-                </li>
-
-
-                <li>
-                    <a href="#sidebarPermissions" data-toggle="collapse">
-                        <i class="ri-stack-line"></i>
-                        <span class="menu-arrow"></span>
-                        <span> Permissions </span>
-                    </a>
-                    <div class="collapse" id="sidebarPermissions">
-                        <ul class="nav-second-level">
                             <li>
-                                <a href="?page=listroles">Edit Permissions</a>
+                                <a href="?page=listroles">Permissions</a>
                             </li>
                         </ul>
                     </div>

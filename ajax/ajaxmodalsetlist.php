@@ -44,7 +44,7 @@ if (isset($_GET['b2bid'])) {
         var showid = $('#selectb2b').val();
         $.ajax({
             type: "GET",
-            url: 'ajax/assignb2b.php?eventid=<?php echo $eventid . $addmainb2b; ?>&showid=' + showid,
+            url: 'ajax/assignb2b.php?showidmain=<?php echo $_GET['setid']; ?>&eventid=<?php echo $eventid . $addmainb2b; ?>&showid=' + showid,
             context: document.body
         }).done(function(response) {
             alert(response);

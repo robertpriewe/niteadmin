@@ -13,6 +13,8 @@ if (isset($_GET['eventid']) && isset($_GET['showid'])) {
         while ($row = $result->fetch_array()) {
             $B2BID = $row['B2BID'] + 1;
         }
+        //b2bid, showid, eventid
+
         $result = mysqli_query($mysqli, 'INSERT INTO shows_b2b (B2BID, B2BEVENTID, B2BSETID, B2BMAIN) VALUES ("' . $B2BID . '", "' . $_GET['eventid'] . '", "' . $_GET['showidmain'] . '", "1")');
         $result = mysqli_query($mysqli, 'INSERT INTO shows_b2b (B2BID, B2BEVENTID, B2BSETID) VALUES ("' . $B2BID . '", "' . $_GET['eventid'] . '", "' . $_GET['showid'] . '")');
 

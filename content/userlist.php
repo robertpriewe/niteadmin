@@ -19,11 +19,11 @@
                 <div class="row">
                     <div class="col-lg-12 row">
                         <div class="col-lg-10">
-                            <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle mr-1"></i> Artists</h5>
+                            <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle mr-1"></i> Users</h5>
                         </div>
                         <div class="col-lg-2">
                             <div class="text-lg-right mt-3 mt-lg-0">
-                                <a href="#custom-modal" data-toggle="modal" class="btn btn-danger waves-effect waves-light" data-animation="fadein" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Artist','ajax/ajaxmodaladdnewartist.php');"><i class="mdi mdi-plus-circle mr-1"></i> New Artist</a>
+                                <a href="?page=usermanagement" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-plus-circle mr-1"></i> New User</a>
                             </div>
                         </div>
                     </div>

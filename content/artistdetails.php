@@ -3,6 +3,7 @@ if (!isset($_GET['artistid'])) {
     echo '<div class="content-page">No artist ID found</div>';
 } else {
 
+include ('content/components/getFieldArtist.php');
 $query = mysqli_query($mysqli, 'SELECT * FROM artists JOIN contacts ON artists.MANAGERID = contacts.CONTACTID WHERE artists.ARTISTID = ' . $_GET['artistid'] . ' LIMIT 0, 1');
 while($row = $query->fetch_array()) {
     $rowartists = $row;
@@ -37,8 +38,8 @@ while($row = $query->fetch_array()) {
                             </p>
                             <table>
                                 <tr><td><p class="text-muted mb-2 font-13"><strong>Full Name</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><a class="changefield" href="#" data-type="text" data-pk="{id:'<?php echo $rowartists['ARTISTID']; ?>',page:'artists'}" data-name="ARTISTFIRSTNAME"><?php echo $rowartists['ARTISTFIRSTNAME']; ?></a> <a class="changefield" href="#" data-type="text" data-pk="{id:'<?php echo $rowartists['ARTISTID']; ?>',page:'artists'}" data-name="ARTISTLASTNAME"><?php echo $rowartists['ARTISTLASTNAME']; ?></a></span></p></td></tr>
-                                <tr><td><p class="text-muted mb-2 font-13"><strong>Phone</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><a class="changefield" href="#" data-type="text" data-pk="{id:'<?php echo $rowartists['ARTISTID']; ?>',page:'artists'}" data-name="ARTISTPHONE"><?php echo $rowartists['ARTISTPHONE']; ?></a></span></p></td></tr>
-                                <tr><td><p class="text-muted mb-2 font-13"><strong>E-Mail</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><a class="changefield" href="#" data-type="text" data-pk="{id:'<?php echo $rowartists['ARTISTID']; ?>',page:'artists'}" data-name="ARTISTEMAIL"><?php echo $rowartists['ARTISTEMAIL']; ?></a></span></p></td></tr>
+                                <tr><td><p class="text-muted mb-2 font-13"><strong>Personal Phone</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><?php echo getFieldArtist('ARTISTPHONE', $rowartists['ARTISTPHONE'], $rowartists['ARTISTID']); ?></span></p></td></tr>
+                                <tr><td><p class="text-muted mb-2 font-13"><strong>Personal E-Mail</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><?php echo getFieldArtist('ARTISTEMAIL', $rowartists['ARTISTEMAIL'], $rowartists['ARTISTID']); ?></span></p></td></tr>
                             </table>
 
                         </div>

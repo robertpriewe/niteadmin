@@ -97,10 +97,13 @@ if (isset($_GET['page'])) {
         $title = 'Roles Overview';
         $content = 'listroles';
         $section = 'ADMIN';
-    }
-    elseif ($_GET['page'] == "addnewuser") {
-        $title = 'Add New User';
-        $content = 'addnewuser';
+    } elseif ($_GET['page'] == "usermanagement") {
+        $title = 'User Management';
+        $content = 'usermanagement';
+        $section = 'ADMIN';
+    } elseif ($_GET['page'] == "userlist") {
+        $title = 'User List';
+        $content = 'userlist';
         $section = 'ADMIN';
     } elseif ($_GET['page'] == "advancing") {
         $title = 'Advancing Table';

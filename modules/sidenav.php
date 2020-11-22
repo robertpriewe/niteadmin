@@ -229,13 +229,10 @@
                     <div class="collapse" id="sidebarUserManagement">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="?page=addnewuser">Add New User</a>
+                                <a href="?page=usermanagement">Add New User</a>
                             </li>
                             <li>
-                                <a href="#">Search Users</a>
-                            </li>
-                            <li>
-                                <a href="#">Edit Users</a>
+                                <a href="?page=userlist">User List</a>
                             </li>
                         </ul>
                     </div>

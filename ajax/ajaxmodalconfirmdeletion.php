@@ -26,6 +26,9 @@ include ('../modules/sql.php');
 if (isset($_GET['deleteartistfromevent'])) {
     $url = "'ajax/deleteartistfromevent.php?eventid=" . $_GET['eventid'] . "&artistid=" . $_GET['artistid'] . "'";
     $doneurl = "document.location.href='?page=eventdetails&eventid=" . $_GET['eventid'] . "';";
+} else if(isset($_GET['deleteuser'])) {
+    $url = "'ajax/deleteuser.php?userid=" . $_GET['userid'] . "'";
+    $doneurl = "document.location.href='?page=userlist';";
 } else {
     $doneurl = 'location.reload();';
     if (isset($_GET['artistid'])) {

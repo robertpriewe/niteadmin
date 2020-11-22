@@ -2,6 +2,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body col-xl-6">
+                <?php
+                if (isset($_GET['userid']) && !isset($_GET['action'])) {
+                   ?>
+                   <div class="text-right">
+                    <a href="#custom-modal" class="btn btn-danger waves-effect mb-2 waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Are you sure you want to delete this user?','ajax/ajaxmodalconfirmdeletion.php?deleteuser=true&userid=<?php echo $_GET['userid']; ?>');"><i class="mdi mdi-delete mr-1"></i> Delete User</a>
+                </div>
+                <?php
+                }
+                ?>
+
                 <div class="mt-3">
                     <?php
                     if (isset($_GET['action'])) {

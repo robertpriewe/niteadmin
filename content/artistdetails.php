@@ -90,6 +90,7 @@ while($row = $query->fetch_array()) {
                                 <tr><td><p class="text-muted mb-2 font-13"><strong>Genres</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><?php echo $rowartists['SPOTIFYGENRES']; ?></span></p></td></tr>
                                 <tr><td><p class="text-muted mb-2 font-13"><strong>Followers</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><?php echo $rowartists['SPOTIFYFOLLOWERS']; ?></span></p></td></tr>
                                 <tr><td><p class="text-muted mb-2 font-13"><strong>Popularity</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><?php echo $rowartists['SPOTIFYPOPULARITY']; ?></span></p></td></tr>
+                                <tr><td><p class="text-muted mb-2 font-13"><strong>Related Artists</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2"><?php echo $rowartists['SPOTIFYRELATEDARTISTS']; ?></span></p></td></tr>
                         </table>
                         </p>
 

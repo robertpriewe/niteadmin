@@ -68,6 +68,24 @@ while($row = $query->fetch_assoc()) {
     } else {
         echo "NO RESULTS FOUND";
     }
+
+    $contents = file_get_contents('https://api.spotify.com/v1/artists/' . $spotifyartistid . '/related-artists', false, $context);
+
+    $contents = utf8_encode($contents);
+    $results = json_decode($contents, true);
+
+    $relatedartists = "";
+
+    if (count($results['artists']) > 0) {
+        for ($i=0; $i<count($results['artists']); $i++) {
+            $relatedartists .= $results['artists'][$i]['name'];
+            if ($i<(count($results['artists'])-1)) {
+                $relatedartists .= ', ';
+            }
+        }
+        mysqli_query($mysqli, "UPDATE artists SET SPOTIFYRELATEDARTISTS = '" . $relatedartists . "' WHERE ARTISTID = '" . $_GET['artistid'] . "'");
+        echo ", RELATED ARTISTS UPDATED";
+    }
 }
 ?>
 <?php

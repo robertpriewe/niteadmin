@@ -15,17 +15,22 @@
                 <div class="mt-3">
                     <?php
                     if (isset($_GET['action'])) {
+                        include ('ajax/addtolog.php');
                         if ($_GET['action'] == "new") {
                             mysqli_query($mysqli, "INSERT INTO users (EMAIL, PASSWORD, USERNAME, ROLE, FIRSTNAME, LASTNAME) VALUES ('" . $_POST['email'] . "', '" . password_hash($_POST['password'], PASSWORD_DEFAULT) . "', '" . $_POST['username'] . "', '" . $_POST['role'] . "', '" . $_POST['firstname'] . "', '" . $_POST['lastname'] . "')");
+                            addToLog($_SESSION['USERID'], 'new', 'users', '', '', 'User:', $_POST['email'], 'Added new user: ' . $_POST['email']);
+
                             echo 'User ' . $_POST['username'] . ' added!';
                             echo '<br><br><a href="?page=userlist" class="btn btn-primary">Return to list</a>';
                         } elseif ($_GET['action'] == "edit") {
                             if ($_POST['password'] != "") {
                                 mysqli_query($mysqli, "UPDATE users SET EMAIL = '" . $_POST['email'] . "', PASSWORD = '" . password_hash($_POST['password'], PASSWORD_DEFAULT) . "', USERNAME = '" . $_POST['username'] . "', ROLE = '" . $_POST['role'] . "', FIRSTNAME = '" . $_POST['firstname'] . "', LASTNAME = '" . $_POST['lastname'] . "' WHERE USERID = " . $_GET['userid']);
+                                addToLog($_SESSION['USERID'], 'updated', 'users', '', '', 'User:', $_POST['email'], 'Updated password for user: ' . $_POST['email']);
                                 echo 'Updated with password';
                                 echo '<br><br><a href="?page=userlist" class="btn btn-primary">Return to list</a>';
                             } else {
                                 mysqli_query($mysqli, "UPDATE users SET EMAIL = '" . $_POST['email'] . "', USERNAME = '" . $_POST['username'] . "', ROLE = '" . $_POST['role'] . "', FIRSTNAME = '" . $_POST['firstname'] . "', LASTNAME = '" . $_POST['lastname'] . "' WHERE USERID = " . $_GET['userid']);
+                                addToLog($_SESSION['USERID'], 'updated', 'users', '', '', 'User:', $_POST['email'], 'Updated settings for user: ' . $_POST['email']);
                                 echo 'Updated without password';
                                 echo '<br><br><a href="?page=userlist" class="btn btn-primary">Return to list</a>';
                             }

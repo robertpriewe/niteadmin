@@ -59,7 +59,13 @@ include ('../modules/sql.php');
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-lg-6">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">Make contact info confidential?</label>
+                </div>
+            </div>
+            <div class="col-lg-6">
                 <div class="text-right">
                     <div class="form-group">
                         <button type="button" class="btn btn-success waves-effect waves-light" type="submit" onclick="javascript:addContact();">Add</button>
@@ -100,6 +106,7 @@ include ('../modules/sql.php');
         var lastName = $("#lastName").val();
         var role = $("#role").val();
         var company = $("#company").val();
+        var confidential = $("#customSwitch1").val();
         if (firstName == "") {
             alert("Please enter a first name");
         } else if (lastName == "") {
@@ -112,7 +119,7 @@ include ('../modules/sql.php');
         else {
             $.ajax({
                 type: "POST",
-                data: {'firstname':firstName, 'lastname':lastName, 'role':role, 'company':company, 'email':$("#email").val(), 'phone':$("#phone").val()},
+                data: {'firstname':firstName, 'lastname':lastName, 'role':role, 'company':company, 'email':$("#email").val(), 'phone':$("#phone").val(), 'confidential': confidential},
                 url: 'ajax/addcontact.php',
                 context: document.body
             }).done(function(response) {

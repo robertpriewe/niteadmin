@@ -4,6 +4,7 @@ if (!isset($_GET['artistid'])) {
 } else {
 
 include ('content/components/getFieldArtist.php');
+    include ('content/components/getFieldConfidential.php');
 $query = mysqli_query($mysqli, 'SELECT * FROM artists JOIN contacts ON artists.MANAGERID = contacts.CONTACTID WHERE artists.ARTISTID = ' . $_GET['artistid'] . ' LIMIT 0, 1');
 while($row = $query->fetch_array()) {
     $rowartists = $row;
@@ -170,8 +171,8 @@ while($row = $query->fetch_array()) {
                                             <table>
                                                 <tr><td><p class="text-muted mb-2 font-13"><strong>Name</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . $rowartists['FIRSTNAME'] . ' ' . $rowartists['LASTNAME'] . '</span></p></td></tr>
                                                 <tr><td><p class="text-muted mb-2 font-13"><strong>Company</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . $rowartists['COMPANY'] . '</span></p></td></tr>
-                                                <tr><td><p class="text-muted mb-2 font-13"><strong>Phone</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . $rowartists['PHONE'] . '</span></p></td></tr>
-                                                <tr><td><p class="text-muted mb-2 font-13"><strong>Email</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . $rowartists['EMAIL'] . '</span></p></td></tr>
+                                                <tr><td><p class="text-muted mb-2 font-13"><strong>Phone</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . getFieldConfidential('', $rowartists['PHONE'], '', $rowartists['CONFIDENTIAL']) . '</span></p></td></tr>
+                                                <tr><td><p class="text-muted mb-2 font-13"><strong>Email</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . getFieldConfidential('', $rowartists['EMAIL'], '', $rowartists['CONFIDENTIAL']) . '</span></p></td></tr>
                                                 </table>
                                         </blockquote>
                                     </div>
@@ -190,8 +191,8 @@ while($row = $query->fetch_array()) {
                                             <table>
                                                 <tr><td><p class="text-muted mb-2 font-13"><strong>Name</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . $contactrow['FIRSTNAME'] . ' ' . $contactrow['LASTNAME'] . '</span></p></td></tr>
                                                 <tr><td><p class="text-muted mb-2 font-13"><strong>Company</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . $contactrow['COMPANY'] . '</span></p></td></tr>
-                                                <tr><td><p class="text-muted mb-2 font-13"><strong>Phone</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . $contactrow['PHONE'] . '</span></p></td></tr>
-                                                <tr><td><p class="text-muted mb-2 font-13"><strong>Email</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . $contactrow['EMAIL'] . '</span></p></td></tr>
+                                                <tr><td><p class="text-muted mb-2 font-13"><strong>Phone</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . getFieldConfidential('', $contactrow['PHONE'], '', $contactrow['CONFIDENTIAL']) . '</span></p></td></tr>
+                                                <tr><td><p class="text-muted mb-2 font-13"><strong>Email</strong></p></td><td><p class="text-muted mb-2 font-13"><span class="ml-2">' . getFieldConfidential('', $contactrow['EMAIL'], '', $contactrow['CONFIDENTIAL']) . '</span></p></td></tr>
                                                 </table>
                                         </blockquote>
                                     </div>

@@ -106,7 +106,11 @@ include ('../modules/sql.php');
         var lastName = $("#lastName").val();
         var role = $("#role").val();
         var company = $("#company").val();
-        var confidential = $("#customSwitch1").val();
+        if ($('#customSwitch1').prop('checked') == false) {
+            var confidential = 0;
+        } else {
+            var confidential = 1;
+        }
         if (firstName == "") {
             alert("Please enter a first name");
         } else if (lastName == "") {

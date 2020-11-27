@@ -62,38 +62,34 @@
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->
                             <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Welcome !</h6>
+                                <h6 class="text-overflow m-0">Welcome!</h6>
                             </div>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="remixicon-account-circle-line"></i>
-                                <span>My Account</span>
+                            <a href="?page=changepassword" class="dropdown-item notify-item">
+                                <i class="ri ri-account-circle-line"></i>
+                                <span>Change Password</span>
                             </a>
 
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="remixicon-settings-3-line"></i>
-                                <span>Settings</span>
-                            </a>
+
 
                             <!-- item-->
+                            <?php
+                            /*
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="remixicon-wallet-line"></i>
+                                <i class="ri ri-wallet-line"></i>
                                 <span>Messages <span class="badge badge-success float-right">3</span> </span>
                             </a>
+                             */
+                            ?>
 
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="remixicon-lock-line"></i>
-                                <span>Lock Screen</span>
-                            </a>
+
 
                             <div class="dropdown-divider"></div>
 
                             <!-- item-->
                             <a href="?logout=true" class="dropdown-item notify-item">
-                                <i class="remixicon-logout-box-line"></i>
+                                <i class="ri ri-logout-box-line"></i>
                                 <span>Logout</span>
                             </a>
 
@@ -164,7 +160,9 @@
                                 <span>New Venue</span>
                             </a>
 
-                            <div class="dropdown-divider"></div>
+                            <?php
+                            /*
+                             <div class="dropdown-divider"></div>
 
                             <!-- item-->
 
@@ -173,6 +171,9 @@
                                 <i class="fe-bar-chart-line- mr-1"></i>
                                 <span>New Expense</span>
                             </a>
+                             */
+                            ?>
+
 
                         </div>
                     </li>

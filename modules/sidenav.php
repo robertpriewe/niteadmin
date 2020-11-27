@@ -150,50 +150,6 @@
                     </a>
                 </li>
 
-                <?php
-                /*
-                <li>
-                    <a href="javascript: void(0);" class="waves-effect">
-                        <i class="ri-mail-open-line"></i>
-                        <span> Email </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="#">Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#">Read Email</a>
-                        </li>
-                        <li>
-                            <a href="#">Compose Email</a>
-                        </li>
-                    </ul>
-                </li>
-                */
-                ?>
-
-                <li>
-                    <a href="#sidebarFinances" data-toggle="collapse">
-                        <i class="ri-money-dollar-box-line"></i>
-                        <span class="menu-arrow"></span>
-                        <span> Finances </span>
-                    </a>
-                    <div class="collapse" id="sidebarFinances">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="#">View Expenses</a>
-                            </li>
-                            <li>
-                                <a href="#">View Revenue</a>
-                            </li>
-                            <li>
-                                <a href="#">Add Artist Fee</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
 
                 <li>
                     <a href="#sidebarGuestlist" data-toggle="collapse">

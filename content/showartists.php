@@ -59,7 +59,20 @@
                                     } else {
                                         $photo = 'assets/images/users/avatar-generic.png';
                                     }
-
+                                    if ($showsrow['SPOTIFYGENRES'] != "") {
+                                        $genre = '';
+                                        $genrearr = explode(',', $showsrow['SPOTIFYGENRES']);
+                                        for ($i=0;$i<3;$i++) {
+                                            if (isset($genrearr[$i])) {
+                                                if ($i>0) {
+                                                    $genre .= ', ';
+                                                }
+                                                $genre .= $genrearr[$i];
+                                            }
+                                        }
+                                    } else {
+                                        $genre = "";
+                                    }
                                     echo '<tr>
                                 <td>
                                     <a href="javascript: void(0);" class="text-dark">
@@ -68,7 +81,7 @@
                                     </a>
                                 </td>
                                 <td>' . $showsrow['ARTISTFIRSTNAME'] . ' ' . $showsrow['ARTISTLASTNAME'] . '</td>
-                                <td>' . $showsrow['GENRE'] . '</td>
+                                <td>' . $genre . '</td>
                                 <td>' . $showsrow['COMPANY'] . '</td>
                                 <td>
                                     <div class="btn-group dropdown">

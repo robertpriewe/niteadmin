@@ -1,5 +1,7 @@
 <?php
+session_start();
 include('../../modules/sql.php');
+include('getFieldArtist.php');
     $query = mysqli_query($mysqli, 'SELECT * FROM artists JOIN contacts ON artists.MANAGERID = contacts.CONTACTID WHERE artists.ARTISTID = ' . $_GET['artistid'] . ' LIMIT 0, 1');
 while($row = $query->fetch_array()) {
     $rowartists = $row;
@@ -28,11 +30,11 @@ while($row = $query->fetch_array()) {
             </tr>';
     echo '<tr>
             <td style="width: 35%;">Phone</td>
-            <td><a class="changefield" href="#" data-type="text" data-pk="{id:' .  $rowartists['ARTISTID'] . ',page:\'artists\'}" data-name="ARTISTPHONE">' . $rowartists['ARTISTPHONE'] . '</td>
+            <td>' . getFieldArtist('PHONE', $rowartists['PHONE'], $rowartists['ARTISTID']) . '</td>
             </tr>';
     echo '<tr>
             <td style="width: 35%;">E-Mail</td>
-            <td><a class="changefield" href="#" data-type="text" data-pk="{id:' .  $rowartists['ARTISTID'] . ',page:\'artists\'}" data-name="ARTISTEMAIL">' . $rowartists['ARTISTEMAIL'] . '</td>
+            <td>' . getFieldArtist('EMAIL', $rowartists['EMAIL'], $rowartists['ARTISTID']) . '</td>
             </tr>';
     echo '<tr>
             <td style="width: 35%;">Genre</td>
@@ -112,3 +114,5 @@ echo ' <div class="table-responsive"><table class="table table-centered table-bo
         });
     });
 </script>
+
+<script src="../../assets/js/app.min.js"></script>

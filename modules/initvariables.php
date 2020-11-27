@@ -101,6 +101,10 @@ if (isset($_GET['page'])) {
         $title = 'User Management';
         $content = 'usermanagement';
         $section = 'ADMIN';
+    } elseif ($_GET['page'] == "changepassword") {
+        $title = 'Change Password';
+        $content = 'changepassword';
+        $section = 'GENERAL';
     } elseif ($_GET['page'] == "userlist") {
         $title = 'User List';
         $content = 'userlist';

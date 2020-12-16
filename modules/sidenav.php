@@ -110,6 +110,9 @@
                                     <a href="?page=advancing&eventid=' . $eventid . '"> Advancing Table</a>
                                 </li>
                                 <li>
+                                    <a href="?page=ridersoverview&eventid=' . $eventid . '"> Event Riders</a>
+                                </li>
+                                <li>
                                     <a href="?page=venuedetails&venueid=' . $eventid . '"> Venue Details</a>
                                 </li>
                                 <li>

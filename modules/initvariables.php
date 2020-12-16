@@ -121,6 +121,10 @@ if (isset($_GET['page'])) {
         $title = 'Display Logs';
         $content = 'displaylogs';
         $section = 'ADMIN';
+    } elseif ($_GET['page'] == "ridersoverview") {
+        $title = 'Riders Overview';
+        $content = 'ridersoverview';
+        $section = 'EVENTS';
     } elseif ($_GET['page'] == "timeline") {
         $title = 'Timeline';
         $content = 'timeline';

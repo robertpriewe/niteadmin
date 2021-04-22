@@ -259,6 +259,10 @@ include("content/components/b2blogic.php");
                                                 <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTNAME">' .  $showsquery[0]['EVENTNAME'] . '</a></td>
                                                 </tr>';
                                                 echo '<tr>
+                                                <td style="width: 35%;">Event Status</td>
+                                                <td><a class="changefield" href="#" data-type="select" data-source="[{value: \'Confirmed\', text: \'Confirmed\'}, {value: \'Pending\', text: \'Pending\'},  {value: \'Hold\', text: \'Hold\'}, {value: \'Cancelled\', text: \'Cancelled\'}]" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTSTATUS">' .  $showsquery[0]['EVENTSTATUS'] . '</a></td>
+                                                </tr>';
+                                                echo '<tr>
                                                 <td style="width: 35%;">Event Start</td>
                                                 <td><a class="changefield" href="#" data-type="combodate" data-type="combodate" data-value="' .  $showsquery[0]['EVENTSTARTDATE'] . '" data-format="MM/DD/YYYY" data-viewformat="MM/DD/YYYY" data-template="D / MMM / YYYY" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTSTARTDATE">' .  $showsquery[0]['EVENTSTARTDATE'] . '</a></td>
                                                 </tr>';

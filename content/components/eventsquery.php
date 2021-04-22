@@ -15,7 +15,7 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-$query = mysqli_query($mysqli, "SELECT events.EVENTSTARTDATE, events.EVENTENDDATE, shows.ARTISTPLAYINGID, venues.VENUEID, VENUENAME, events.EVENTID, EVENTNAME, COUNT(shows.SHOWID) AS 'SHOWCOUNT', MIN(shows_fields.TIMESTART) AS 'EVENTSTART', MAX(shows_fields.TIMEEND) AS 'EVENTEND', COUNT(DISTINCT stages.STAGEID) AS 'STAGECOUNT' FROM events LEFT JOIN shows ON shows.EVENTID = events.EVENTID LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID LEFT JOIN stages ON stages.STAGEID = shows.STAGEID LEFT JOIN venues ON venues.VENUEID = stages.VENUEID $wherequery GROUP BY EVENTNAME ORDER BY TIMESTART ASC");
+$query = mysqli_query($mysqli, "SELECT events.EVENTSTARTDATE, events.EVENTENDDATE, events.EVENTSTATUS, shows.ARTISTPLAYINGID, venues.VENUEID, VENUENAME, events.EVENTID, EVENTNAME, COUNT(shows.SHOWID) AS 'SHOWCOUNT', MIN(shows_fields.TIMESTART) AS 'EVENTSTART', MAX(shows_fields.TIMEEND) AS 'EVENTEND', COUNT(DISTINCT stages.STAGEID) AS 'STAGECOUNT' FROM events LEFT JOIN shows ON shows.EVENTID = events.EVENTID LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID LEFT JOIN stages ON stages.STAGEID = shows.STAGEID LEFT JOIN venues ON venues.VENUEID = stages.VENUEID $wherequery GROUP BY EVENTNAME ORDER BY TIMESTART ASC");
 
 //NOT LINKED BY SHOW/EVEN $query = mysqli_query($mysqli, "SELECT venues.VENUEID, VENUENAME, events.EVENTID, EVENTNAME, COUNT(shows.SHOWID) AS 'SHOWCOUNT', MIN(shows_fields.TIMESTART) AS 'EVENTSTART', MAX(shows_fields.TIMEEND) AS 'EVENTEND', COUNT(DISTINCT stages.STAGEID) AS 'STAGECOUNT' FROM events LEFT JOIN venues ON events.VENUEID = venues.VENUEID LEFT JOIN stages ON venues.VENUEID = stages.VENUEID LEFT JOIN shows ON shows.STAGEID = stages.STAGEID LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID $wherequery GROUP BY EVENTNAME ORDER BY EVENTSTART ASC");
 
@@ -63,7 +63,7 @@ if (count($showsquery) == 0) {
                         <th class="font-weight-medium">Event Name</th>
                         <th class="font-weight-medium">Venue</th>
                         <th class="font-weight-medium"># of Sets</th>
-                        <th class="font-weight-medium"># of Stages</th>
+                        <th class="font-weight-medium">Status</th>
                         <th class="font-weight-medium">Event Start</th>
                         <th class="font-weight-medium">Event End</th>
                         <th class="font-weight-medium hide-col">PAST/UPCOMING</th>
@@ -99,6 +99,19 @@ if (count($showsquery) == 0) {
                             }
                         }
 
+                        if ($showsrow['EVENTSTATUS'] == 'Confirmed') {
+                            $statuscolor = 'primary';
+                        } elseif ($showsrow['EVENTSTATUS'] == 'Pending') {
+                            $statuscolor = 'warning';
+                        } elseif ($showsrow['EVENTSTATUS'] == 'Hold') {
+                            $statuscolor = 'dark';
+                        } elseif ($showsrow['EVENTSTATUS'] == 'Cancelled') {
+                            $statuscolor = 'danger';
+                        } else {
+                            $statuscolor = 'dark';
+                        }
+                        $eventstatus = '<span class="badge badge-' . $statuscolor . '">' . $showsrow['EVENTSTATUS'] . '</span>';
+
                         echo '<tr>
                                   
     
@@ -108,7 +121,7 @@ if (count($showsquery) == 0) {
                                     
                                     <td>' . ($showsrow['SHOWCOUNT'] - 1) . '</td>
     
-                                    <td>' . ($showsrow['STAGECOUNT'] - 1) . '</td>
+                                    <td>' . $eventstatus . '</td>
     
                                     <td>' . $eventstart . '</td>
     

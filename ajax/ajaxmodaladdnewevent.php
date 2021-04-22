@@ -42,6 +42,16 @@ include ('../modules/sql.php');
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="venue">Event Status</label>
+                            <select class="form-control select2" id="eventStatus">
+                                <option value="Confirmed">Confirmed</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Hold">Hold</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+
                         <br>
                         <div class="text-right">
                             <button type="button" class="btn btn-success waves-effect waves-light" onclick="javscript:addEvent();">Add</button>
@@ -59,6 +69,7 @@ include ('../modules/sql.php');
         var venueId = $("#venueName").val();
         var eventStartDate = $("#eventStartDate").val();
         var eventEndDate = $("#eventEndDate").val();
+        var eventStatus = $("#eventStatus").val();
         if (eventName == "") {
             alert("Please enter a name");
         } else if (venueId == "") {
@@ -70,7 +81,7 @@ include ('../modules/sql.php');
         } else {
             $.ajax({
                 type: "POST",
-                data: {'eventname':eventName, 'venueid':venueId, 'startdate': eventStartDate, 'enddate': eventEndDate},
+                data: {'eventname':eventName, 'venueid':venueId, 'startdate': eventStartDate, 'enddate': eventEndDate, 'eventstatus': eventStatus},
                 url: 'ajax/addevent.php',
                 context: document.body
             }).done(function(response) {

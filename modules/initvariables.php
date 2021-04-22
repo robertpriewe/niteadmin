@@ -129,6 +129,10 @@ if (isset($_GET['page'])) {
         $title = 'Timeline';
         $content = 'timeline';
         $section = 'EVENTS';
+    } elseif ($_GET['page'] == "uploadpdf") {
+        $title = 'UploadPDF';
+        $content = 'uploadpdf';
+        $section = 'EVENTS';
     } else {
         $title = 'Page not found';
         $content = 'pagenotfound';

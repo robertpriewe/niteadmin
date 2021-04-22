@@ -38,8 +38,14 @@ if (isset($_GET['eventid']) || isset($_GET['setid'])) {
     <!-- Custom box css -->
     <link href="assets/libs/custombox/custombox.min.css" rel="stylesheet">
 
-    <!-- App css -->
+    <!-- Plugin css -->
+    <link href="assets/libs/@fullcalendar/core/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/@fullcalendar/daygrid/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/@fullcalendar/bootstrap/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/@fullcalendar/timegrid/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/@fullcalendar/list/main.min.css" rel="stylesheet" type="text/css" />
 
+    <!-- App css -->
     <link href="assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
     <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 

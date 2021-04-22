@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                2020 Nite Admin
+                2021 Nite Admin
             </div>
             <div class="col-md-6">
                 <div class="text-md-right footer-links d-none d-sm-block">

@@ -4,6 +4,8 @@
 <!-- Vendor js -->
 <script src="assets/js/vendor.min.js"></script>
 
+
+
 <!-- third party js -->
 <script src="assets/libs/clockpicker/bootstrap-clockpicker.min.js"></script>
 <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>

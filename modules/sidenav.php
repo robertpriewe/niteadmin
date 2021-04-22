@@ -86,7 +86,7 @@
 
                 <li>
                     <a href="?page=showevents">
-                        <i class="ri-calendar-event-line"></i>
+                        <i class="ri-star-line"></i>
                         <span> Events </span>
                     </a>
                     <?php
@@ -131,6 +131,12 @@
                         </div>';
                 }
                 ?>
+                </li>
+                <li>
+                    <a href="?page=showcalendar" class="waves-effect">
+                        <i class="ri-calendar-event-line"></i>
+                        <span> Calendar </span>
+                    </a>
                 </li>
                 <li>
                     <a href="?page=showvenues" class="waves-effect">

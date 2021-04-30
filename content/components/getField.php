@@ -24,11 +24,11 @@ function getField($type, $fieldid, $fieldname, $fieldvalue, $setid, $permission)
     } else if ($type == "FILE") {
         if ($fieldvalue == "") {
             return '<form method="POST" enctype="multipart/form-data" name="formdata-' . $fieldid . '" id="divUpload-' . $fieldid . '">
-                                                            <div class="fileupload btn btn-xs btn-secondary waves-effect mt-1">
-                                                                <span><i class="mdi mdi-cloud-upload mr-1"></i>Upload</span>
-                                                                <input type="file" class="upload" id="uploadField-' . $fieldid . '" name="uploadField-' . $fieldid . '" onChange="javascript:fileUpload(' . $fieldid . ', \'' . $fieldname . '\');">
-                                                            </div>
-                                                        </form>';
+                    <div class="fileupload btn btn-xs btn-secondary waves-effect mt-1">
+                        <span><i class="mdi mdi-cloud-upload mr-1"></i>Upload</span>
+                        <input type="file" class="upload" id="uploadField-' . $fieldid . '" name="uploadField-' . $fieldid . '" onChange="javascript:fileUpload(' . $fieldid . ', \'' . $fieldname . '\');">
+                    </div>
+                </form>';
         } else {
             return '<a href="files/' . $fieldvalue . '" target="_BLANK">' . basename($fieldvalue) . '</a> <button type="button" class="btn btn-danger btn-xs waves-effect waves-light mr-1" onclick="javascript:fileDelete(' . $fieldid . ', \'' . $fieldname . '\');"><i class="mdi mdi-trash-can"></i></button>';
         }

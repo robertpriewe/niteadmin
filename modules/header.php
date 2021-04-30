@@ -34,6 +34,8 @@ if (isset($_GET['eventid']) || isset($_GET['setid'])) {
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
+
     <link href="assets/libs/x-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css" />
     <!-- Custom box css -->
     <link href="assets/libs/custombox/custombox.min.css" rel="stylesheet">
@@ -56,6 +58,12 @@ if (isset($_GET['eventid']) || isset($_GET['setid'])) {
     <!-- icons -->
 
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .assignedto_edit {
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="" data-layout='{"sidebar": { "color": "dark", "size": "default", "showuser": false}, "topbar": {"color": "brand"} }'>

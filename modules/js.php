@@ -14,6 +14,7 @@
 <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
 <script src="assets/libs/jquery-knob/jquery.knob.min.js"></script>
+<script src="assets/libs/selectize/js/standalone/selectize.min.js"></script>
 
 
 <script src="assets/libs/moment/min/moment.min.js"></script>
@@ -32,6 +33,60 @@ $(document).ready(function() {
     $.fn.combodate.defaults.minYear = 2019;
     $.fn.editableform.buttons = '<button type="submit" class="btn btn-primary editable-submit btn-sm waves-effect waves-light"><i class="mdi mdi-check"></i></button><button type="button" class="btn btn-danger editable-cancel btn-sm waves-effect"><i class="mdi mdi-close"></i></button>';
 
+    $(".selectize-close-btn").selectize({
+        plugins: ["remove_button"],
+        persist: !1,
+        create: !0,
+        render: {
+            item: function (e, t) {
+                return '<div>"' + t(e.text) + '"</div>'
+            }
+        },
+        onDelete: function (e) {
+            return confirm(1 < e.length ? "Are you sure you want to remove these " + e.length + " items?" : 'Are you sure you want to remove "' + e[0] + '"?')
+        }
+    });
+    $(".selectize-optgroup").selectize({
+        sortField: "text",
+        plugins: ["remove_button"],
+        persist: !1,
+        create: !0,
+        render: {
+            item: function (e, t) {
+                return '<div>' + t(e.text) + '</div>'
+            }
+        },
+        onDelete: function (e) {
+
+        },
+        onItemAdd: function(e) {
+            userid = e.split('-')[0];
+            fieldid = e.split('-')[1];
+            $.ajax({
+                type: "GET",
+                url: 'ajax/assignfieldadd.php?setid=<?php echo $_GET['setid']; ?>&userid=' + userid + '&fieldid=' + fieldid,
+                context: document.body
+            }).done(function(response) {
+
+            }).fail(function() {
+                alert("Error");
+            });
+        },
+        onItemRemove: function(e, t) {
+            userid = e.split('-')[0];
+            fieldid = e.split('-')[1];
+            $.ajax({
+                type: "GET",
+                url: 'ajax/assignfielddelete.php?setid=<?php echo $_GET['setid']; ?>&userid=' + userid + '&fieldid=' + fieldid,
+                context: document.body
+            }).done(function(response) {
+
+            }).fail(function() {
+                alert("Error");
+            });
+        }
+
+    });
 
 
     $('.changefield').editable({
@@ -135,6 +190,11 @@ function openModal(title, ajaxfilename) {
 
 function clickEdit() {
     $('.changefield').editable('toggleDisabled');
+}
+
+function clickAsssignedTo(fieldid) {
+    $('#assignedto_view-' + fieldid).hide();
+    $('#assignedto_edit-' + fieldid).show();
 }
 
 function loadRider(setid) {

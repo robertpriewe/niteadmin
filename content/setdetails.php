@@ -4,31 +4,69 @@ if (!isset($_GET['setid'])) {
     die;
 }
 
+function generateIniitals(string $name) : string
+{
+    $words = explode(' ', $name);
+    if (count($words) >= 2) {
+        return strtoupper(substr($words[0], 0, 1) . substr(end($words), 0, 1));
+    }
+    return $this->makeInitialsFromSingleWord($name);
+}
+
+ function makeInitialsFromSingleWord(string $name) : string
+{
+    preg_match_all('#([A-Z]+)#', $name, $capitals);
+    if (count($capitals[1]) >= 2) {
+        return substr(implode('', $capitals[1]), 0, 2);
+    }
+    return strtoupper(substr($name, 0, 2));
+}
+
+
 include ('content/components/getField.php');
 include ('content/components/getFieldDescription.php');
+include ('content/components/assignFieldList.php');
 
-$query = mysqli_query($mysqli, "SELECT * FROM shows_fields_list LEFT JOIN shows_fields_categories ON shows_fields_list.FIELDNAME_CATEGORY = shows_fields_categories.ID WHERE HIDDEN = '0' ORDER BY shows_fields_list.POSITION, shows_fields_list.ID ASC");
 
-
+$query = mysqli_query($mysqli, "SELECT *, shows_fields_list.ID AS FIELDID FROM shows_fields_list LEFT JOIN shows_fields_categories ON shows_fields_list.FIELDNAME_CATEGORY = shows_fields_categories.ID WHERE HIDDEN = '0' ORDER BY shows_fields_list.POSITION, shows_fields_list.ID ASC");
 while($row = $query->fetch_array()) {
     $fieldsquery[] = $row['FIELDNAME'];
     $fieldsdescription[] = $row['FIELDNAME_TEXT'];
     $fieldscategory[] = $row['CATEGORY'];
     $fieldstype[] = $row['TYPE'];
-    $fieldsid[] = $row['ID'];
+    $fieldsid[] = $row['FIELDID'];
     $fieldspermission[] = $row['PERMISSION'];
 }
-$query = mysqli_query($mysqli, "SELECT * FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID RIGHT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID RIGHT JOIN stages ON shows.STAGEID = stages.STAGEID RIGHT JOIN venues ON stages.VENUEID = venues.VENUEID RIGHT JOIN events ON events.EVENTID = shows.EVENTID LEFT JOIN shows_b2b ON shows.SHOWID = shows_b2b.B2BSETID WHERE shows.SHOWID = '" . $_GET['setid'] . "' LIMIT 0, 1");
 
+
+$query = mysqli_query($mysqli, "SELECT * FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID RIGHT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID RIGHT JOIN stages ON shows.STAGEID = stages.STAGEID RIGHT JOIN venues ON stages.VENUEID = venues.VENUEID RIGHT JOIN events ON events.EVENTID = shows.EVENTID LEFT JOIN shows_b2b ON shows.SHOWID = shows_b2b.B2BSETID WHERE shows.SHOWID = '" . $_GET['setid'] . "' LIMIT 0, 1");
 while ($row = $query->fetch_array()) {
     $rowresults = $row;
 }
+
+$query = mysqli_query($mysqli, "SELECT CONCAT(FIRSTNAME, ' ', LASTNAME) AS NAME, permissions_roles.ROLENAME, USERID FROM users LEFT JOIN permissions_roles ON users.ROLE = permissions_roles.ROLEID");
+while ($row = $query->fetch_array()) {
+    $listusername[] = $row['NAME'];
+    $listrole[] = $row['ROLENAME'];
+    $listuserid[] = $row['USERID'];
+}
+
 $venueid = $rowresults['VENUEID'];
+
+
+$query = mysqli_query($mysqli, "SELECT * FROM `shows_assigned_users` LEFT JOIN shows_fields_list ON shows_assigned_users.FIELDID = shows_fields_list.ID RIGHT JOIN users ON shows_assigned_users.USERID = users.USERID WHERE showid = '" . $_GET['setid'] . "'");
+while ($row = $query->fetch_array()) {
+    $assignedusers_fieldname[] = $row['FIELDNAME'];
+    $assignedusers_fieldid[] = $row['FIELDID'];
+    $assignedusers_name[] = $row['FIRSTNAME'] . ' ' . $row['LASTNAME'];
+    $assignedusers_userid[] = $row['USERID'];
+}
+
+
 
 include("content/components/b2blogic.php");
 
 ?>
-
 
             <div class="row">
                 <div class="col-12">
@@ -109,28 +147,72 @@ include("content/components/b2blogic.php");
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
-                                            <table class="table table-centered table-borderless table-striped mb-0">
+                                            <table class="table table-centered mb-0">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th><b>Field</b></th>
+                                                    <th><b>Assigned to</b></th>
+                                                    <th><b>Value</b></th>
+                                                </tr>
+                                                </thead>
                                                 <tbody>
+
                                                 <?php
                                                     $i = 0;
                                                     foreach ($fieldsquery as $key => $value) {
                                                         if ($fieldscategory[$i] == "GENERAL") {
+
                                                             $fieldname = getFieldDescription($fieldsdescription[$i], $value);
 
                                                             echo '<tr>
-                                                            <td style="width: 35%;">' . $fieldname . '</td>
-                                                            <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i]) . '</td>
-                                                            </tr>';
+                                                            <td>' . $fieldname . '</td>
+                                                            <td class="assignedto_edit" id="assignedto_edit-' . $fieldsid[$i] . '">';
+                                                            $tempres = array_search($fieldsid[$i], $assignedusers_fieldid);
+                                                            unset($checked_names);
+                                                            unset($checked_ids);
+                                                            $checked_names[] = "";
+                                                            $checked_ids[] = "";
+                                                            if (is_numeric($tempres)) {
+                                                                $k=0;
+                                                                foreach ($assignedusers_name as $key2 => $value2) {
+                                                                    if ($assignedusers_fieldid[$k] == $fieldsid[$i]) {
+                                                                        //echo $value2 . ' --' . $assignedusers_userid[$k] . '<br>';
+                                                                        $checked_names[$k] = $value2;
+                                                                        $checked_ids[$k] = $assignedusers_userid[$k];
+                                                                    }
+                                                                    $k++;
+                                                                }
+                                                            }
+
+                                                            echo assignFieldList($listusername, $listrole, $listuserid, $checked_names, $checked_ids, $fieldsid[$i]);
+                                                            echo '</td>';
+                                                            echo '<td class="assignedto_view" id="assignedto_view-' . $fieldsid[$i] . '" onclick="javascript:clickAsssignedTo(' . $fieldsid[$i] . ');">
+                                                                 <div class="row">';
+                                                            foreach ($checked_names as $key3 => $value3) {
+                                                                if ($value3 != "") {
+                                                                    echo '<div class="avatar-xs">
+                                                                    <span class="avatar-title bg-soft-primary text-dark font-10 rounded-circle" data-toggle="tooltip" data-placement="top" title="' . $value3 . '">
+                                                                        ' . generateIniitals($value3) . '
+                                                                    </span>
+                                                                </div>&nbsp;';
+                                                                }
+                                                            }
+
+                                                            echo '</div></td>';
+                                                            echo '<td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i]);
+                                                            echo '</td></tr>';
                                                         }
                                                         $i++;
                                                     }
                                                 ?>
                                                 <tr>
                                                     <td>B2B Set</td>
+                                                    <td></td>
                                                     <td><?php echo b2blogic($rowresults['B2BID'], $_GET['setid'], $rowresults['ARTISTNAME'], "BUTTONS"); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Stage</td>
+                                                    <td></td>
                                                     <td><?php echo $rowresults['STAGENAME']; ?> <a href="#custom-modal" class="btn btn-primary btn-xs waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Assign Stage','ajax/ajaxmodalassignstage.php?setid=<?php echo $_GET['setid']; ?>');"><i class="mdi mdi-database mr-1"></i> Change Stage</a></td>
                                                 </tr>
                                                 </tbody>

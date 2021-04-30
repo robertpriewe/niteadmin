@@ -3,13 +3,13 @@ function assignFieldList($listusername, $listrole, $listuserid, $checked_names, 
     $namestext = "";
     foreach ($checked_names as $key => $value) {
         if ($value != "") {
-            $namestext .= '<option value="' . $checked_ids[$key] . '-' . $fieldid . '" SELECTED>' . $value . ' - ' . $checked_ids[$key] . '</option>';
+            $namestext .= '<option value="' . $checked_ids[$key] . '-' . $fieldid . '" SELECTED>' . $value . '</option>';
         }
     }
 
     foreach ($listusername as $key => $value) {
         if ($value != "") {
-            $namestext .= '<option value="' . $listuserid[$key] . '-' . $fieldid . '">' . $value . ' - ' . $listuserid[$key] . '</option>';
+            $namestext .= '<option value="' . $listuserid[$key] . '-' . $fieldid . '">' . $value . '</option>';
         }
     }
 

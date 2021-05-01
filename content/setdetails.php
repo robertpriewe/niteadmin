@@ -165,7 +165,11 @@ include("content/components/b2blogic.php");
                                                             echo '<tr>
                                                             <td>' . $fieldname . '</td>
                                                             <td class="assignedto_edit" id="assignedto_edit-' . $fieldsid[$i] . '">';
-                                                            $tempres = array_search($fieldsid[$i], $assignedusers_fieldid);
+                                                            if (isset($assignedusers_fieldid)) {
+                                                                $tempres = array_search($fieldsid[$i], $assignedusers_fieldid);
+                                                            } else {
+                                                                $tempres = "";
+                                                            }
                                                             unset($checked_names);
                                                             unset($checked_ids);
                                                             $checked_names[] = "";

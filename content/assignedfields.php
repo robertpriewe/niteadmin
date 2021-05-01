@@ -1,7 +1,5 @@
-<div class="text-lg-right mt-3 mt-lg-0">
-    <button type="button" class="btn btn-success waves-effect waves-light mr-1" onclick="javascript:clickEdit();"><i class="mdi mdi-settings"></i> Edit</button>
-</div>
-    <?php
+
+<?php
 include ('content/components/getField.php');
 include ('content/components/getFieldDescription.php');
 $query = mysqli_query($mysqli, "SELECT FIELDNAME FROM shows_fields_list WHERE FIELDNAME != 'SHOWID'");
@@ -22,16 +20,30 @@ LEFT JOIN events ON shows.EVENTID = events.EVENTID
 LEFT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID
 WHERE USERID = '" . $_SESSION['USERID'] . "' ORDER BY SHOWID, POSITION ASC");
 
-
-
-
-$prioreventname = "";
-$i=0;
-while ($row = $query->fetch_array()) {
-    //echo 'Userid:' . $row['USERID'] . ' - Eventid:' . $row['EVENTNAME'] . ' Artistname:' . $row['ARTISTNAME'] . ' - Fieldname:' . $row['FIELDNAME'] . ' - Fieldval:' . $row['FIELDVALUE'] . '<br>';
-    if ($row['EVENTNAME'] != $prioreventname) {
-        if ($i!=0) {
-            echo '
+if ($query->num_rows <= 0) {
+echo '<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">No fields have been assigned to you yet
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>';
+} else {
+    echo '<div class="text-lg-right mt-3 mt-lg-0">
+    <button type="button" class="btn btn-success waves-effect waves-light mr-1" onclick="javascript:clickEdit();"><i class="mdi mdi-settings"></i> Edit</button>
+</div>';
+    $prioreventname = "";
+    $i = 0;
+    while ($row = $query->fetch_array()) {
+        //echo 'Userid:' . $row['USERID'] . ' - Eventid:' . $row['EVENTNAME'] . ' Artistname:' . $row['ARTISTNAME'] . ' - Fieldname:' . $row['FIELDNAME'] . ' - Fieldval:' . $row['FIELDVALUE'] . '<br>';
+        if ($row['EVENTNAME'] != $prioreventname) {
+            if ($i != 0) {
+                echo '
                                             </tbody>
                                         </table>
                                     </div>
@@ -44,8 +56,8 @@ while ($row = $query->fetch_array()) {
         </div>
     </div>
 </div>';
-        }
-        echo '
+            }
+            echo '
 <div class="row">
     <div class="col-lg-12">
         <div class="row">
@@ -70,16 +82,16 @@ while ($row = $query->fetch_array()) {
                                             </tr>
                                             </thead>
                                             <tbody>';
-    }
-                                            echo '<tr>
-                                                <td>' . $row['ARTISTNAME']  . '</td>
+        }
+        echo '<tr>
+                                                <td>' . $row['ARTISTNAME'] . '</td>
                                                 <td>' . $row['FIELDNAME'] . '</td>
                                                 <td>' . getField($row['TYPE'], $row['FIELDID'], $row['FIELDNAME'], $row['FIELDVALUE'], $row['SHOWID'], $row['PERMISSION']) . '</td>
                                             </tr>';
         $i++;
-    $prioreventname = $row['EVENTNAME'];
-}
-echo '
+        $prioreventname = $row['EVENTNAME'];
+    }
+    echo '
                                             </tbody>
                                         </table>
                                     </div>
@@ -92,4 +104,5 @@ echo '
         </div>
     </div>
 </div>';
+}
 ?>

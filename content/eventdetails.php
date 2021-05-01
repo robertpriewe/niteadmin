@@ -268,7 +268,7 @@ include("content/components/b2blogic.php");
                                                 </tr>';
                                                 echo '<tr>
                                                 <td style="width: 35%;">Event End</td>
-                                                <td><a class="changefield" href="#" data-type="combodate" data-type="combodate" data-value="' .  $showsquery[0]['EVENTENDDATE'] . '" data-format="MM/DD/YYYY" data-viewformat="MM/DD/YYYY" data-template="D / MMM / YYYY" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTSTARTDATE">' .  $showsquery[0]['EVENTENDDATE'] . '</a></td>
+                                                <td><a class="changefield" href="#" data-type="combodate" data-type="combodate" data-value="' .  $showsquery[0]['EVENTENDDATE'] . '" data-format="MM/DD/YYYY" data-viewformat="MM/DD/YYYY" data-template="D / MMM / YYYY" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTENDDATE">' .  $showsquery[0]['EVENTENDDATE'] . '</a></td>
                                                 </tr>';
                                                 echo '<tr>
                                                 <td style="width: 35%;">Event Capacity</td>

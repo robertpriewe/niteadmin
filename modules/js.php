@@ -62,9 +62,10 @@ $(document).ready(function() {
         onItemAdd: function(e) {
             userid = e.split('-')[0];
             fieldid = e.split('-')[1];
+            setid = e.split('-')[2];
             $.ajax({
                 type: "GET",
-                url: 'ajax/assignfieldadd.php?setid=<?php echo $_GET['setid']; ?>&userid=' + userid + '&fieldid=' + fieldid,
+                url: 'ajax/assignfieldadd.php?setid=' + setid + '&userid=' + userid + '&fieldid=' + fieldid,
                 context: document.body
             }).done(function(response) {
 
@@ -75,9 +76,10 @@ $(document).ready(function() {
         onItemRemove: function(e, t) {
             userid = e.split('-')[0];
             fieldid = e.split('-')[1];
+            setid = e.split('-')[2];
             $.ajax({
                 type: "GET",
-                url: 'ajax/assignfielddelete.php?setid=<?php echo $_GET['setid']; ?>&userid=' + userid + '&fieldid=' + fieldid,
+                url: 'ajax/assignfielddelete.php?setid=' + setid + '&userid=' + userid + '&fieldid=' + fieldid,
                 context: document.body
             }).done(function(response) {
 
@@ -263,6 +265,3 @@ function refreshSearch() {
 <script src="assets/js/app.min.js"></script>
 
 
-
-</body>
-</html>

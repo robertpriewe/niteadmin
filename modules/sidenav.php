@@ -181,10 +181,16 @@
                     </div>
                 </li>
 
+                <li class="menu-title mt-2">Production Schedule</li>
+                <li>
+                    <a href="?page=assignedfields">
+                        <i class="ri-task-line"></i>
+                        <span> My Assigned Tasks </span>
+                    </a>
+                </li>
+
 
                 <li class="menu-title mt-2">Administration</li>
-
-
                 <li>
                     <a href="#sidebarUserManagement" data-toggle="collapse">
                         <i class="ri-file-user-line"></i>
@@ -205,8 +211,6 @@
                         </ul>
                     </div>
                 </li>
-
-
                 <li>
                     <a href="?page=displaylogs">
                         <i class="ri-newspaper-line"></i>

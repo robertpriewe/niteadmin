@@ -4,8 +4,7 @@ if (!isset($_GET['setid'])) {
     die;
 }
 
-function generateIniitals(string $name) : string
-{
+function generateIniitals(string $name) : string {
     $words = explode(' ', $name);
     if (count($words) >= 2) {
         return strtoupper(substr($words[0], 0, 1) . substr(end($words), 0, 1));
@@ -13,8 +12,7 @@ function generateIniitals(string $name) : string
     return $this->makeInitialsFromSingleWord($name);
 }
 
- function makeInitialsFromSingleWord(string $name) : string
-{
+function makeInitialsFromSingleWord(string $name) : string {
     preg_match_all('#([A-Z]+)#', $name, $capitals);
     if (count($capitals[1]) >= 2) {
         return substr(implode('', $capitals[1]), 0, 2);

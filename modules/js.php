@@ -62,10 +62,10 @@ $(document).ready(function() {
         onItemAdd: function(e) {
             userid = e.split('-')[0];
             fieldid = e.split('-')[1];
-            setid = e.split('-')[2];
+            idtype = e.split('-')[2];
             $.ajax({
                 type: "GET",
-                url: 'ajax/assignfieldadd.php?setid=' + setid + '&userid=' + userid + '&fieldid=' + fieldid,
+                url: 'ajax/assignfieldadd.php?idtype=' + idtype + '&userid=' + userid + '&fieldid=' + fieldid + '&table=<?php if(isset($_GET['setid'])) { echo "shows"; } else { echo "events"; } ?>',
                 context: document.body
             }).done(function(response) {
 
@@ -76,10 +76,10 @@ $(document).ready(function() {
         onItemRemove: function(e, t) {
             userid = e.split('-')[0];
             fieldid = e.split('-')[1];
-            setid = e.split('-')[2];
+            idtype = e.split('-')[2];
             $.ajax({
                 type: "GET",
-                url: 'ajax/assignfielddelete.php?setid=' + setid + '&userid=' + userid + '&fieldid=' + fieldid,
+                url: 'ajax/assignfielddelete.php?idtype=' + idtype + '&userid=' + userid + '&fieldid=' + fieldid + '&table=<?php if(isset($_GET['setid'])) { echo "shows"; } else { echo "events"; } ?>',
                 context: document.body
             }).done(function(response) {
 

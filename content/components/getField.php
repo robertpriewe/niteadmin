@@ -1,5 +1,10 @@
 <?php
-function getField($type, $fieldid, $fieldname, $fieldvalue, $setid, $permission) {
+function getField($type, $fieldid, $fieldname, $fieldvalue, $id, $permission, $fieldtype="shows") {
+    if ($fieldtype == "shows") {
+        $table = "shows_fields";
+    } else {
+        $table = "events";
+    }
     if ($permission != "") {
         if (!isset($_SESSION['ACCESS'][$permission])) {
             if ($fieldvalue == "") {
@@ -11,16 +16,16 @@ function getField($type, $fieldid, $fieldname, $fieldvalue, $setid, $permission)
     }
 
     if ($type == "TEXT") {
-        return '<a class="changefield" href="#" data-type="text" data-pk="{id:' . $setid . ',page:\'shows_fields\'}" data-name="' . $fieldname . '">' . $fieldvalue . '</a>';
+        return '<a class="changefield" href="#" data-type="text" data-pk="{id:' . $id . ',page:\'' . $table . '\'}" data-name="' . $fieldname . '">' . $fieldvalue . '</a>';
     } else if ($type == "CHECKBOX") {
-        return '<a class="changefield" href="#" data-type="checklist" data-pk="{id:' . $setid . ',page:\'shows_fields_checkbox\'}" data-value="' . $fieldvalue . '" data-source="{\'1\':\'Yes\'}" data-emptytext="0" data-name="' . $fieldname . '">' . $fieldvalue . '</a>';
+        return '<a class="changefield" href="#" data-type="checklist" data-pk="{id:' . $id . ',page:\'' . $table . '_checkbox\'}" data-value="' . $fieldvalue . '" data-source="{\'1\':\'Yes\'}" data-emptytext="0" data-name="' . $fieldname . '">' . $fieldvalue . '</a>';
     } else if ($type == "DATETIME") {
         if (is_null($fieldvalue) == TRUE) {
             $datetime = "";
         } else {
             $datetime = date("Y/m/d h:i A", strtotime($fieldvalue));
         }
-        return '<a class="changefield" href="#" data-type="combodate" data-template="MMM D YYYY hh:mm a" data-format="YYYY-MM-DD HH:mm:ss" data-viewformat="YYYY-MM-DD hh:mm a" data-pk="{id:' . $setid . ',page:\'shows_fields\'}" data-clear="NA" data-name="' . $fieldname . '">' . $datetime . '</a>';
+        return '<a class="changefield" href="#" data-type="combodate" data-template="MMM D YYYY hh:mm a" data-format="YYYY-MM-DD HH:mm:ss" data-viewformat="YYYY-MM-DD hh:mm a" data-pk="{id:' . $id . ',page:\'' . $table . '\'}" data-clear="NA" data-name="' . $fieldname . '">' . $datetime . '</a>';
     } else if ($type == "FILE") {
         if ($fieldvalue == "") {
             return '<form method="POST" enctype="multipart/form-data" name="formdata-' . $fieldid . '" id="divUpload-' . $fieldid . '">

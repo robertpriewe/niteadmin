@@ -21,6 +21,26 @@ else {
     die;
 }
 
+function generateIniitals(string $name) : string {
+    $words = explode(' ', $name);
+    if (count($words) >= 2) {
+        return strtoupper(substr($words[0], 0, 1) . substr(end($words), 0, 1));
+    }
+    return $this->makeInitialsFromSingleWord($name);
+}
+
+function makeInitialsFromSingleWord(string $name) : string {
+    preg_match_all('#([A-Z]+)#', $name, $capitals);
+    if (count($capitals[1]) >= 2) {
+        return substr(implode('', $capitals[1]), 0, 2);
+    }
+    return strtoupper(substr($name, 0, 2));
+}
+
+include ('content/components/getField.php');
+include ('content/components/getFieldDescription.php');
+include ('content/components/assignFieldList.php');
+
 $totalfeeoverdue = 0;
 $totaldepositoverdue = 0;
 $totalfeepaid = 0;
@@ -57,6 +77,44 @@ if ($query->num_rows > 0) {
 //$query = mysqli_query($mysqli, "SELECT TIMESTART, TIMEEND, ARTISTNAME, STAGENAME, VENUENAME, shows.SHOWID, EVENTNAME, ARTISTID, stages.STAGEID, venues.VENUEID, COUNT(shows.SHOWID) AS 'SETCOUNT', COUNT(stages.STAGEID) AS 'STAGECOUNT' FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID LEFT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON stages.VENUEID = venues.VENUEID LEFT JOIN events ON shows.EVENTID = events.EVENTID " . $wherequery . " shows.ARTISTPLAYINGID != 0");
 include("content/components/b2blogic.php");
 
+
+
+
+
+
+
+$query = mysqli_query($mysqli, "SELECT *, events_fields_list.ID AS FIELDID FROM events_fields_list LEFT JOIN events_fields_categories ON events_fields_list.FIELDNAME_CATEGORY = events_fields_categories.ID WHERE HIDDEN = '0' ORDER BY events_fields_list.POSITION, events_fields_list.ID ASC");
+while($row = $query->fetch_array()) {
+    $fieldsquery[] = $row['FIELDNAME'];
+    $fieldsdescription[] = $row['FIELDNAME_TEXT'];
+    $fieldscategory[] = $row['CATEGORY'];
+    $fieldstype[] = $row['TYPE'];
+    $fieldsid[] = $row['FIELDID'];
+    $fieldspermission[] = $row['PERMISSION'];
+}
+
+$query = mysqli_query($mysqli, "SELECT * FROM events WHERE EVENTID = '" . $_GET['eventid'] . "' LIMIT 0, 1");
+while ($row = $query->fetch_array()) {
+    $rowresults = $row;
+}
+
+
+$query = mysqli_query($mysqli, "SELECT CONCAT(FIRSTNAME, ' ', LASTNAME) AS NAME, permissions_roles.ROLENAME, USERID FROM users LEFT JOIN permissions_roles ON users.ROLE = permissions_roles.ROLEID");
+while ($row = $query->fetch_array()) {
+    $listusername[] = $row['NAME'];
+    $listrole[] = $row['ROLENAME'];
+    $listuserid[] = $row['USERID'];
+}
+
+
+
+$query = mysqli_query($mysqli, "SELECT * FROM `events_assigned_users` LEFT JOIN events_fields_list ON events_assigned_users.FIELDID = events_fields_list.ID RIGHT JOIN users ON events_assigned_users.USERID = users.USERID WHERE EVENTID = '" . $_GET['eventid'] . "'");
+while ($row = $query->fetch_array()) {
+    $assignedusers_fieldname[] = $row['FIELDNAME'];
+    $assignedusers_fieldid[] = $row['FIELDID'];
+    $assignedusers_name[] = $row['FIRSTNAME'] . ' ' . $row['LASTNAME'];
+    $assignedusers_userid[] = $row['USERID'];
+}
 ?>
 
 
@@ -251,36 +309,76 @@ include("content/components/b2blogic.php");
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
-                                            <table class="table table-centered table-borderless table-striped mb-0">
+
+
+                                            <table class="table table-centered mb-0">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th><b>Field</b></th>
+                                                    <th><b>Assigned to</b></th>
+                                                    <th><b>Value</b></th>
+                                                </tr>
+                                                </thead>
                                                 <tbody>
+
                                                 <?php
-                                                echo '<tr>
-                                                <td style="width: 35%;">Event Name</td>
-                                                <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTNAME">' .  $showsquery[0]['EVENTNAME'] . '</a></td>
-                                                </tr>';
-                                                echo '<tr>
-                                                <td style="width: 35%;">Event Status</td>
-                                                <td><a class="changefield" href="#" data-type="select" data-source="[{value: \'Confirmed\', text: \'Confirmed\'}, {value: \'Pending\', text: \'Pending\'},  {value: \'Hold\', text: \'Hold\'}, {value: \'Cancelled\', text: \'Cancelled\'}]" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTSTATUS">' .  $showsquery[0]['EVENTSTATUS'] . '</a></td>
-                                                </tr>';
-                                                echo '<tr>
-                                                <td style="width: 35%;">Event Start</td>
-                                                <td><a class="changefield" href="#" data-type="combodate" data-type="combodate" data-value="' .  $showsquery[0]['EVENTSTARTDATE'] . '" data-format="MM/DD/YYYY" data-viewformat="MM/DD/YYYY" data-template="D / MMM / YYYY" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTSTARTDATE">' .  $showsquery[0]['EVENTSTARTDATE'] . '</a></td>
-                                                </tr>';
-                                                echo '<tr>
-                                                <td style="width: 35%;">Event End</td>
-                                                <td><a class="changefield" href="#" data-type="combodate" data-type="combodate" data-value="' .  $showsquery[0]['EVENTENDDATE'] . '" data-format="MM/DD/YYYY" data-viewformat="MM/DD/YYYY" data-template="D / MMM / YYYY" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTENDDATE">' .  $showsquery[0]['EVENTENDDATE'] . '</a></td>
-                                                </tr>';
-                                                echo '<tr>
-                                                <td style="width: 35%;">Event Capacity</td>
-                                                <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTCAPACITY">' .  $showsquery[0]['EVENTCAPACITY'] . '</a></td>
-                                                </tr>';
-                                                echo '<tr>
-                                                <td style="width: 35%;">Event Notes</td>
-                                                <td><a class="changefield" href="#" data-type="textarea" data-pk="{id:' . $_GET['eventid'] . ',page:\'events\'}" data-name="EVENTNOTES">' .  $showsquery[0]['EVENTNOTES'] . '</a></td>
-                                                </tr>';
+                                                $i = 0;
+                                                foreach ($fieldsquery as $key => $value) {
+                                                    if ($fieldscategory[$i] == "EVENTDETAILS") {
+
+                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
+
+                                                        echo '<tr>
+                                                            <td>' . $fieldname . '</td>
+                                                            <td class="assignedto_edit" id="assignedto_edit-' . $fieldsid[$i] . '">';
+                                                        if (isset($assignedusers_fieldid)) {
+                                                            $tempres = array_search($fieldsid[$i], $assignedusers_fieldid);
+                                                        } else {
+                                                            $tempres = "";
+                                                        }
+                                                        unset($checked_names);
+                                                        unset($checked_ids);
+                                                        $checked_names[] = "";
+                                                        $checked_ids[] = "";
+                                                        if (is_numeric($tempres)) {
+                                                            $k=0;
+                                                            foreach ($assignedusers_name as $key2 => $value2) {
+                                                                if ($assignedusers_fieldid[$k] == $fieldsid[$i]) {
+                                                                    //echo $value2 . ' --' . $assignedusers_userid[$k] . '<br>';
+                                                                    $checked_names[$k] = $value2;
+                                                                    $checked_ids[$k] = $assignedusers_userid[$k];
+                                                                }
+                                                                $k++;
+                                                            }
+                                                        }
+
+                                                        echo assignFieldList($listusername, $listrole, $listuserid, $checked_names, $checked_ids, $fieldsid[$i], 'events');
+                                                        echo '</td>';
+                                                        echo '<td class="assignedto_view" id="assignedto_view-' . $fieldsid[$i] . '" onclick="javascript:clickAsssignedTo(' . $fieldsid[$i] . ');">
+                                                                 <div class="row">';
+                                                        foreach ($checked_names as $key3 => $value3) {
+                                                            if ($value3 != "") {
+                                                                echo '<div class="avatar-xs">
+                                                                    <span class="avatar-title bg-soft-primary text-dark font-10 rounded-circle" data-toggle="tooltip" data-placement="top" title="' . $value3 . '">
+                                                                        ' . generateIniitals($value3) . '
+                                                                    </span>
+                                                                </div>&nbsp;';
+                                                            }
+                                                        }
+
+                                                        echo '</div></td>';
+                                                        echo '<td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['eventid'], $fieldspermission[$i], 'events');
+                                                        echo '</td></tr>';
+                                                    }
+                                                    $i++;
+                                                }
                                                 ?>
+
                                                 </tbody>
                                             </table>
+
+
+
                                         </div>
                                     </div>
                                 </div>

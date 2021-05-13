@@ -119,7 +119,7 @@
                                     <a href="?page=showguestlist&eventid=' . $eventid . '"> Guestlist</a>
                                 </li>
                                 <li>
-                                    <a href="?page=showeventshifts&eventid=' . $eventid . '"> Shifts</a>
+                                    <a href="?page=showeventshifts&eventid=' . $eventid . '"> Master Schedule</a>
                                 </li>
                                 <li>
                                     <a href="?page=showeventvendors&eventid=' . $eventid . '"> Event Vendors</a>

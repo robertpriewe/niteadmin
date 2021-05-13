@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12 text-right">
-        <a href="#custom-modal" class="btn btn-dark waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add new shift','ajax/ajaxmodaladdnewshift.php?eventid=<?php echo $_GET['eventid']; ?>');">Create shift <i class="fe-plus"></i></a>
+        <a href="#custom-modal" class="btn btn-dark waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add new shift','ajax/ajaxmodaladdnewshift.php?eventid=<?php echo $_GET['eventid']; ?>');">Create event schedule <i class="fe-plus"></i></a>
             <br><br>
     </div>
 </div>
@@ -26,7 +26,7 @@ if ($query->num_rows > 0) {
                                         <div class="row">
                                             <div class="col-lg-12 text-right">';
         ?>
-                                            <a href="#custom-modal" class="btn btn-success waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add employee to shift','ajax/ajaxmodalassignemployee.php?shiftid=<?php echo $rowshift['SHIFTID']; ?>');">Add employees to shift <i class="fe-plus"></i></a>
+                                            <a href="#custom-modal" class="btn btn-success waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add employee to shift','ajax/ajaxmodalassignemployee.php?shiftid=<?php echo $rowshift['SHIFTID']; ?>');">Add employees to schedule <i class="fe-plus"></i></a>
                                             <?php echo '</div>
                                         </div>
                                             

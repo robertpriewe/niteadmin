@@ -69,7 +69,7 @@ if (isset($_GET['page'])) {
         $content = 'showeventemployees';
         $section = 'STAFF';
     } elseif ($_GET['page'] == "showeventshifts") {
-        $title = 'Shifts for Event';
+        $title = 'Master Schedule';
         $content = 'showeventshifts';
         $section = 'STAFF';
     } elseif ($_GET['page'] == "showsponsors") {

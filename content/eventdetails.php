@@ -91,6 +91,7 @@ while($row = $query->fetch_array()) {
     $fieldstype[] = $row['TYPE'];
     $fieldsid[] = $row['FIELDID'];
     $fieldspermission[] = $row['PERMISSION'];
+    $dropdownvalues[] = $row['FIELDVALUES'];
 }
 
 $query = mysqli_query($mysqli, "SELECT * FROM events WHERE EVENTID = '" . $_GET['eventid'] . "' LIMIT 0, 1");
@@ -367,7 +368,7 @@ while ($row = $query->fetch_array()) {
                                                         }
 
                                                         echo '</div></td>';
-                                                        echo '<td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['eventid'], $fieldspermission[$i], 'events');
+                                                        echo '<td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['eventid'], $fieldspermission[$i], 'events', $dropdownvalues[$i]);
                                                         echo '</td></tr>';
                                                     }
                                                     $i++;

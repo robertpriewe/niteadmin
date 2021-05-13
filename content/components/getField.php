@@ -1,5 +1,5 @@
 <?php
-function getField($type, $fieldid, $fieldname, $fieldvalue, $id, $permission, $fieldtype="shows") {
+function getField($type, $fieldid, $fieldname, $fieldvalue, $id, $permission, $fieldtype="shows", $dropdownvalues="") {
     if ($fieldtype == "shows") {
         $table = "shows_fields";
     } else {
@@ -37,6 +37,8 @@ function getField($type, $fieldid, $fieldname, $fieldvalue, $id, $permission, $f
         } else {
             return '<a href="files/' . $fieldvalue . '" target="_BLANK">' . basename($fieldvalue) . '</a> <button type="button" class="btn btn-danger btn-xs waves-effect waves-light mr-1" onclick="javascript:fileDelete(' . $fieldid . ', \'' . $fieldname . '\');"><i class="mdi mdi-trash-can"></i></button>';
         }
+    } else if ($type == "DROPDOWN") {
+        return '<a class="changefield" href="#" data-type="select" data-pk="{id:' . $id . ',page:\'' . $table . '\'}" data-prepend="' . $fieldvalue . '" data-source="' . $dropdownvalues . '" data-emptytext="" data-name="' . $fieldname . '">' . $fieldvalue . '</a>';
     }
 }
 

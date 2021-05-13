@@ -4,8 +4,6 @@
 <!-- Vendor js -->
 <script src="assets/js/vendor.min.js"></script>
 
-
-
 <!-- third party js -->
 <script src="assets/libs/clockpicker/bootstrap-clockpicker.min.js"></script>
 <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -20,7 +18,7 @@
 <script src="assets/libs/moment/min/moment.min.js"></script>
 <script src="assets/libs/x-editable/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <!-- third party js ends -->
-
+editable
 <!-- Modal-Effect -->
 <script src="assets/libs/custombox/custombox.min.js"></script>
 
@@ -92,7 +90,7 @@ $(document).ready(function() {
 
 
     $('.changefield').editable({
-        url: 'ajax/updateshowfield.php?page=showevents',
+        url: 'ajax/updateshowfield.php',
         disabled: true
     });
 

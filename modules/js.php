@@ -18,7 +18,7 @@
 <script src="assets/libs/moment/min/moment.min.js"></script>
 <script src="assets/libs/x-editable/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <!-- third party js ends -->
-editable
+
 <!-- Modal-Effect -->
 <script src="assets/libs/custombox/custombox.min.js"></script>
 

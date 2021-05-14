@@ -134,27 +134,27 @@ while ($row = $query->fetch_array()) {
                                 <ul class="nav nav-pills navtab-bg">
                                     <li class="nav-item">
                                         <a href="#navsetdetails" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0">
-                                            <i class="mdi mdi-face-profile mr-1"></i>Show/Artist Info
+                                            <i class="mdi mdi-face-profile mr-1"></i>Artist Overview
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#naveventdetails" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            <i class="mdi mdi-paperclip mr-1"></i>Event Details
+                                            <i class="mdi mdi-star-outline mr-1"></i>Event Details
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#navproduction" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            <i class="mdi mdi-paperclip mr-1"></i>Production
+                                            <i class="mdi mdi-track-light mr-1"></i>Production
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#navoperations" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            <i class="mdi mdi-paperclip mr-1"></i>Operations
+                                            <i class="mdi mdi-domain mr-1"></i>Operations
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#navmarketing" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            <i class="mdi mdi-paperclip mr-1"></i>Marketing
+                                            <i class="mdi mdi-bullhorn mr-1"></i>Marketing
                                         </a>
                                     </li>
                                 </ul>

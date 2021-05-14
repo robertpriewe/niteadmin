@@ -34,6 +34,7 @@ while($row = $query->fetch_array()) {
     $fieldstype[] = $row['TYPE'];
     $fieldsid[] = $row['FIELDID'];
     $fieldspermission[] = $row['PERMISSION'];
+    $dropdownvalues[] = $row['FIELDVALUES'];
 }
 
 $query = mysqli_query($mysqli, "SELECT * FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID RIGHT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID RIGHT JOIN stages ON shows.STAGEID = stages.STAGEID RIGHT JOIN venues ON stages.VENUEID = venues.VENUEID RIGHT JOIN events ON events.EVENTID = shows.EVENTID LEFT JOIN shows_b2b ON shows.SHOWID = shows_b2b.B2BSETID WHERE shows.SHOWID = '" . $_GET['setid'] . "' LIMIT 0, 1");
@@ -141,87 +142,10 @@ include("content/components/b2blogic.php");
                     <div class="card-body">
                         <div class="tab-content">
 
-                        <div class="tab-pane show active" id="general">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-centered mb-0">
-                                                <thead class="thead-dark">
-                                                <tr>
-                                                    <th><b>Field</b></th>
-                                                    <th><b>Assigned to</b></th>
-                                                    <th><b>Value</b></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                <?php
-                                                    $i = 0;
-                                                    foreach ($fieldsquery as $key => $value) {
-                                                        if ($fieldscategory[$i] == "GENERAL") {
-
-                                                            $fieldname = getFieldDescription($fieldsdescription[$i], $value);
-
-                                                            echo '<tr>
-                                                            <td>' . $fieldname . '</td>
-                                                            <td class="assignedto_edit" id="assignedto_edit-' . $fieldsid[$i] . '">';
-                                                            if (isset($assignedusers_fieldid)) {
-                                                                $tempres = array_search($fieldsid[$i], $assignedusers_fieldid);
-                                                            } else {
-                                                                $tempres = "";
-                                                            }
-                                                            unset($checked_names);
-                                                            unset($checked_ids);
-                                                            $checked_names[] = "";
-                                                            $checked_ids[] = "";
-                                                            if (is_numeric($tempres)) {
-                                                                $k=0;
-                                                                foreach ($assignedusers_name as $key2 => $value2) {
-                                                                    if ($assignedusers_fieldid[$k] == $fieldsid[$i]) {
-                                                                        //echo $value2 . ' --' . $assignedusers_userid[$k] . '<br>';
-                                                                        $checked_names[$k] = $value2;
-                                                                        $checked_ids[$k] = $assignedusers_userid[$k];
-                                                                    }
-                                                                    $k++;
-                                                                }
-                                                            }
-
-                                                            echo assignFieldList($listusername, $listrole, $listuserid, $checked_names, $checked_ids, $fieldsid[$i], 'shows');
-                                                            echo '</td>';
-                                                            echo '<td class="assignedto_view" id="assignedto_view-' . $fieldsid[$i] . '" onclick="javascript:clickAsssignedTo(' . $fieldsid[$i] . ');">
-                                                                 <div class="row">';
-                                                            foreach ($checked_names as $key3 => $value3) {
-                                                                if ($value3 != "") {
-                                                                    echo '<div class="avatar-xs">
-                                                                    <span class="avatar-title bg-soft-primary text-dark font-10 rounded-circle" data-toggle="tooltip" data-placement="top" title="' . $value3 . '">
-                                                                        ' . generateIniitals($value3) . '
-                                                                    </span>
-                                                                </div>&nbsp;';
-                                                                }
-                                                            }
-
-                                                            echo '</div></td>';
-                                                            echo '<td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i], 'shows');
-                                                            echo '</td></tr>';
-                                                        }
-                                                        $i++;
-                                                    }
-                                                ?>
-                                                <tr>
-                                                    <td>B2B Set</td>
-                                                    <td></td>
-                                                    <td><?php echo b2blogic($rowresults['B2BID'], $_GET['setid'], $rowresults['ARTISTNAME'], "BUTTONS"); ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Stage</td>
-                                                    <td></td>
-                                                    <td><?php echo $rowresults['STAGENAME']; ?> <a href="#custom-modal" class="btn btn-primary btn-xs waves-effect waves-light" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Assign Stage','ajax/ajaxmodalassignstage.php?setid=<?php echo $_GET['setid']; ?>');"><i class="mdi mdi-database mr-1"></i> Change Stage</a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="tab-pane show active" id="general">
+                                <?php
+                                $currentcategory = 'GENERAL';
+                                include('content/components/fieldstable.php'); ?>
                             </div>
 
 

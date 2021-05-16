@@ -163,145 +163,39 @@ include("content/components/b2blogic.php");
 
 
                             <div class="tab-pane" id="stageinfo">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-centered table-borderless table-striped mb-0">
-                                                <tbody>
-                                                <?php
-
-                                                $i = 0;
-                                                foreach ($fieldsquery as $key => $value) {
-                                                    if ($fieldscategory[$i] == "STAGEINFO") {
-                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
-
-
-                                                        echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i], 'shows') . '</td>
-                                                        </tr>';
-                                                    }
-                                                    $i++;
-                                                }
-                                                ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                $currentcategory = 'STAGEINFO';
+                                include('content/components/fieldstable.php'); ?>
                             </div>
 
 
 
                             <div class="tab-pane" id="financials">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-centered table-borderless table-striped mb-0">
-                                                <tbody>
-                                                <?php
-                                                $i = 0;
-                                                foreach ($fieldsquery as $key => $value) {
-                                                    if ($fieldscategory[$i] == "FINANCIALS") {
-                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
-
-                                                        echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i], 'shows') . '</td>
-                                                        </tr>';
-                                                    }
-                                                    $i++;
-                                                }
-                                                ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                $currentcategory = 'FINANCIALS';
+                                include('content/components/fieldstable.php'); ?>
                             </div>
 
-                            <div class="tab-pane" id="documents">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-centered table-borderless table-striped mb-0">
-                                                <tbody>
-                                                <?php
-                                                $i = 0;
-                                                foreach ($fieldsquery as $key => $value) {
-                                                    if ($fieldscategory[$i] == "DOCUMENTS") {
-                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
 
-                                                        echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i], 'shows') . '</td>
-                                                        </tr>';
-                                                    }
-                                                    $i++;
-                                                }
-                                                ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="tab-pane" id="documents">
+                                <?php
+                                $currentcategory = 'DOCUMENTS';
+                                include('content/components/fieldstable.php'); ?>
                             </div>
 
 
                             <div class="tab-pane" id="accommodations">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-centered table-borderless table-striped mb-0">
-                                                <tbody>
-                                                <?php
-                                                $i = 0;
-                                                foreach ($fieldsquery as $key => $value) {
-                                                    if ($fieldscategory[$i] == "ACCOMMODATIONS") {
-                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
-
-                                                        echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i], 'shows') . '</td>
-                                                        </tr>';
-                                                    }
-                                                    $i++;
-                                                }
-                                                ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                $currentcategory = 'ACCOMMODATIONS';
+                                include('content/components/fieldstable.php'); ?>
                             </div>
 
 
 
                             <div class="tab-pane" id="other">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-centered table-borderless table-striped mb-0">
-                                                <tbody>
-                                                <?php
-                                                $i = 0;
-                                                foreach ($fieldsquery as $key => $value) {
-                                                    if ($fieldscategory[$i] == "OTHER") {
-                                                        $fieldname = getFieldDescription($fieldsdescription[$i], $value);
-
-                                                        echo '<tr>
-                                                        <td style="width: 35%;">' . $fieldname . '</td>
-                                                        <td>' . getField($fieldstype[$i], $fieldsid[$i], $value, $rowresults[$value], $_GET['setid'], $fieldspermission[$i], 'shows') . '</td>
-                                                        </tr>';
-                                                    }
-                                                    $i++;
-                                                }
-                                                ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                $currentcategory = 'OTHER';
+                                include('content/components/fieldstable.php'); ?>
                             </div>
 
 

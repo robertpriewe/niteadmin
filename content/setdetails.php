@@ -122,6 +122,8 @@ include("content/components/b2blogic.php");
                                     <div class="btn-group dropdown">
                                         <a href="javascript: void(0);" class="dropdown-toggle arrow-none btn btn-light" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                         <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" target="_BLANK" href="export/onesheet_advancing.php?setid=<?php echo $_GET['setid']; ?>"><i class="ri-list-ordered mr-2 text-muted font-18 vertical-middle"></i>Advancing One-Sheet</a>
+
                                             <a class="dropdown-item" onclick="javascript:document.location.href='?page=artistdetails&artistid=<?php echo $rowresults['ARTISTID']; ?>';"><i class="ri-headphone-line mr-2 text-muted font-18 vertical-middle"></i>Artist Profile</a>
                                             <a class="dropdown-item" href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Remove Artist from Event','ajax/ajaxmodalconfirmdeletion.php?deleteartistfromevent=true&artistid=<?php echo $rowresults['ARTISTID']; ?>&eventid=<?php echo $rowresults['EVENTID']; ?>');"><i class="ri-delete-bin-2-line mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
                                         </div>

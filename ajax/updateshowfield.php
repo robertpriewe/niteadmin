@@ -10,7 +10,6 @@ $page = $_POST['pk']['page'];
 $name = $_POST['name'];
 $value = $_POST['value'];
 $dump = var_export($_POST, true);
-error_log('......', 3, 'log.txt');
 
 //error_log($pk . ' - ' . $page . ' - ' . $name . ' - ' . $value . '......', 3, 'log.txt');
 error_log($dump, 3, 'log.txt');
@@ -44,7 +43,9 @@ if ($page=='shows_fields') {
 } elseif ($page=='events') {
     $result = mysqli_query($mysqli, 'UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE EVENTID = "'.mysqli_escape_string($mysqli, $pk).'"');
 } elseif ($page=='contacts') {
-        $result = mysqli_query($mysqli, 'UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE CONTACTID = "'.mysqli_escape_string($mysqli, $pk).'"');
+    $result = mysqli_query($mysqli, 'UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE CONTACTID = "'.mysqli_escape_string($mysqli, $pk).'"');
+} elseif ($page=='venues') {
+    $result = mysqli_query($mysqli, 'UPDATE ' . $page . ' SET '.mysqli_escape_string($mysqli, $name).'="'.mysqli_escape_string($mysqli, $value).'" WHERE VENUEID = "'.mysqli_escape_string($mysqli, $pk).'"');
 }
 addToLog($_SESSION['USERID'], 'changed', $page, '', '', mysqli_escape_string($mysqli, $name), mysqli_escape_string($mysqli, $value), 'Changed field ' . mysqli_escape_string($mysqli, $name) . ' to ' . mysqli_escape_string($mysqli, $value) . ' in section id ' . mysqli_escape_string($mysqli, $pk));
 

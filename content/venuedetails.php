@@ -71,16 +71,20 @@ while($row = $query->fetch_array()) {
                                             <?php
                                             echo '<tr>
                                                     <td style="width: 35%;">VENUENAME</td>
-                                                    <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['venueid'] . ',page:\'venues\'}" data-name="' . $rowvenue['VENUENAME'] . '">' . $rowvenue['VENUENAME'] . '</a></td>
+                                                    <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['venueid'] . ',page:\'venues\'}" data-name="VENUENAME">' . $rowvenue['VENUENAME'] . '</a></td>
                                                 </tr>';
                                             echo '<tr>
                                                     <td style="width: 35%;">VENUETYPE</td>
-                                                    <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['venueid'] . ',page:\'venues\'}" data-name="' . $rowvenue['VENUETYPE'] . '">' . $rowvenue['VENUETYPE'] . '</a></td>
+                                                    <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['venueid'] . ',page:\'venues\'}" data-name="VENUETYPE">' . $rowvenue['VENUETYPE'] . '</a></td>
                                                 </tr>';
                                             echo '<tr>
                                                     <td style="width: 35%;">VENUECAPACITY</td>
-                                                    <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['venueid'] . ',page:\'venues\'}" data-name="' . $rowvenue['VENUECAPACITY'] . '">' . $rowvenue['VENUECAPACITY'] . '</a></td>
+                                                    <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['venueid'] . ',page:\'venues\'}" data-name="VENUECAPACITY">' . $rowvenue['VENUECAPACITY'] . '</a></td>
                                                 </tr>';
+                                            echo '<tr>
+                                                <td style="width: 35%;">DROPOFF ADDRESS</td>
+                                                <td><a class="changefield" href="#" data-type="text" data-pk="{id:' . $_GET['venueid'] . ',page:\'venues\'}" data-name="DROPOFFADDRESS">' . $rowvenue['DROPOFFADDRESS'] . '</a></td>
+                                            </tr>';
                                             ?>
                                             </tbody>
                                         </table>
@@ -115,6 +119,7 @@ while($row = $query->fetch_array()) {
                                                     <td style="width: 35%;">CROWDCAPACITY</td>
                                                     <td><a class="changefield" href="#" data-type="text" data-pk="{id:\'' . $row['CROWDCAPACITY'] . '\',page:\'stages\'}" data-name="' . $row['CROWDCAPACITY'] . '">' . $row['SIZESQFT'] . '</a></td>
                                                 </tr>
+
                                             </tbody>
                                         </table>
                                     </div>

@@ -20,6 +20,6 @@ if (mysqli_connect_errno()) {
 
 $urlinstall = 'http://localhost:8888';
 $urlexternal = 'http://localhost:8888/guestlist_minisite/';
-$clientname = 'SomePromoter';
+$clientname = 'BLNK CNVS';
 $clientemail = 'admin@niteadmin.com';
 ?>

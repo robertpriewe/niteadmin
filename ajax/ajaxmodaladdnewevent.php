@@ -64,6 +64,21 @@ include ('../modules/sql.php');
     </div> <!-- end card-box -->
 
 <script type="text/javascript">
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+
     function addEvent() {
         var eventName = $("#eventName").val();
         var venueId = $("#venueName").val();
@@ -81,7 +96,7 @@ include ('../modules/sql.php');
         } else {
             $.ajax({
                 type: "POST",
-                data: {'eventname':eventName, 'venueid':venueId, 'startdate': eventStartDate, 'enddate': eventEndDate, 'eventstatus': eventStatus},
+                data: {'eventname':eventName, 'venueid':venueId, 'startdate': formatDate(eventStartDate), 'enddate': formatDate(eventEndDate), 'eventstatus': eventStatus},
                 url: 'ajax/addevent.php',
                 context: document.body
             }).done(function(response) {

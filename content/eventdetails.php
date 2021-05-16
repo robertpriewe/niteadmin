@@ -133,27 +133,27 @@ while ($row = $query->fetch_array()) {
                             <div class="col-lg-7">
                                 <ul class="nav nav-pills navtab-bg">
                                     <li class="nav-item">
-                                        <a href="#navsetdetails" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0">
+                                        <a href="#setdetails" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0" id="navsetdetails">
                                             <i class="mdi mdi-face-profile mr-1"></i>Artist Overview
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#naveventdetails" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#eventdetails" data-toggle="tab" aria-expanded="false" class="nav-link" id="naveventdetails">
                                             <i class="mdi mdi-star-outline mr-1"></i>Event Details
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#navproduction" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#production" data-toggle="tab" aria-expanded="false" class="nav-link" id="navproduction">
                                             <i class="mdi mdi-track-light mr-1"></i>Production
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#navoperations" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#operations" data-toggle="tab" aria-expanded="false" class="nav-link" id="navoperations">
                                             <i class="mdi mdi-domain mr-1"></i>Operations
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#navmarketing" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <a href="#marketing" data-toggle="tab" aria-expanded="false" class="nav-link" id="navmarketing">
                                             <i class="mdi mdi-bullhorn mr-1"></i>Marketing
                                         </a>
                                     </li>
@@ -190,7 +190,7 @@ while ($row = $query->fetch_array()) {
                         <div class="card-body">
                         <div class="tab-content">
 
-                            <div class="tab-pane show active" id="navsetdetails">
+                            <div class="tab-pane show active" id="setdetails">
                                 <div class="text-center mb-2">
                                     <div class="row">
                                         <div class="col-md-6 col-xl-3">
@@ -312,7 +312,7 @@ while ($row = $query->fetch_array()) {
                             </div>
 
 
-                            <div class="tab-pane" id="naveventdetails">
+                            <div class="tab-pane" id="eventdetails">
                                 <div class="row">
                                     <div class="col-lg-8">
                                     </div>
@@ -328,7 +328,7 @@ while ($row = $query->fetch_array()) {
                                 include('content/components/fieldstable.php'); ?>
                             </div>
 
-                            <div class="tab-pane" id="navproduction">
+                            <div class="tab-pane" id="production">
                                 <div class="row">
                                     <div class="col-lg-8">
                                     </div>
@@ -344,7 +344,7 @@ while ($row = $query->fetch_array()) {
                                 include('content/components/fieldstable.php'); ?>
                             </div>
 
-                            <div class="tab-pane" id="navoperations">
+                            <div class="tab-pane" id="operations">
                                 <div class="row">
                                     <div class="col-lg-8">
                                     </div>
@@ -361,7 +361,7 @@ while ($row = $query->fetch_array()) {
                             </div>
 
 
-                            <div class="tab-pane" id="navmarketing">
+                            <div class="tab-pane" id="marketing">
                                 <div class="row">
                                     <div class="col-lg-8">
                                     </div>

@@ -1,5 +1,6 @@
 <?php
 function getField($type, $fieldid, $fieldname, $fieldvalue, $id, $permission, $fieldtype="shows", $dropdownvalues="") {
+    global $rowresults;
     if ($fieldtype == "shows") {
         $table = "shows_fields";
     } else {
@@ -21,11 +22,14 @@ function getField($type, $fieldid, $fieldname, $fieldvalue, $id, $permission, $f
         return '<a class="changefield" href="#" data-type="checklist" data-pk="{id:' . $id . ',page:\'' . $table . '_checkbox\'}" data-value="' . $fieldvalue . '" data-source="{\'1\':\'Yes\'}" data-emptytext="0" data-name="' . $fieldname . '">' . $fieldvalue . '</a>';
     } else if ($type == "DATETIME") {
         if (is_null($fieldvalue) == TRUE) {
-            $datetime = "";
+            $datetime = $rowresults['EVENTSTARTDATE'];;
+            $text = "No time set";
         } else {
-            $datetime = date("Y/m/d h:i A", strtotime($fieldvalue));
+            $datetime = date("Y-m-d H:i:s", strtotime($fieldvalue));
+            $text = '';
         }
-        return '<a class="changefield" href="#" data-type="combodate" data-template="MMM D YYYY hh:mm a" data-format="YYYY-MM-DD HH:mm:ss" data-viewformat="YYYY-MM-DD hh:mm a" data-pk="{id:' . $id . ',page:\'' . $table . '\'}" data-clear="NA" data-name="' . $fieldname . '">' . $datetime . '</a>';
+        //return '<a class="changefield" href="#" data-type="combodate" data-value="' . $datetime . '" data-template="MMM D YYYY hh:mm a" data-format="YYYY-MM-DD HH:mm:ss" data-viewformat="YYYY-MM-DD hh:mm a" data-pk="{id:' . $id . ',page:\'' . $table . '\'}" data-clear="NA" data-name="' . $fieldname . '">' . '2021-05-30' . '</a>';
+        return '<a class="changefield" href="#" data-type="combodate" data-value="' . $datetime . '" data-template="MM/DD/YYYY     hh:mm a" data-format="YYYY-MM-DD HH:mm:ss" data-viewformat="YYYY-MM-DD hh:mm a" data-pk="{id:' . $id . ',page:\'' . $table . '\'}" data-name="' . $fieldname . '">' . $text . '</a>';
     } else if ($type == "FILE") {
         if ($fieldvalue == "") {
             return '<form method="POST" enctype="multipart/form-data" name="formdata-' . $fieldid . '" id="divUpload-' . $fieldid . '">

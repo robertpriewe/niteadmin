@@ -21,9 +21,6 @@ function makeInitialsFromSingleWord(string $name) : string {
 }
 
 
-include ('content/components/getField.php');
-include ('content/components/getFieldDescription.php');
-include ('content/components/assignFieldList.php');
 
 
 $query = mysqli_query($mysqli, "SELECT *, shows_fields_list.ID AS FIELDID FROM shows_fields_list LEFT JOIN shows_fields_categories ON shows_fields_list.FIELDNAME_CATEGORY = shows_fields_categories.ID WHERE HIDDEN = '0' ORDER BY shows_fields_list.POSITION, shows_fields_list.ID ASC");
@@ -61,6 +58,12 @@ while ($row = $query->fetch_array()) {
     $assignedusers_userid[] = $row['USERID'];
 }
 
+
+
+
+include ('content/components/getField.php');
+include ('content/components/getFieldDescription.php');
+include ('content/components/assignFieldList.php');
 
 
 include("content/components/b2blogic.php");

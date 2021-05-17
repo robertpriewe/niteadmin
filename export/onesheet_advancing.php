@@ -16,6 +16,9 @@ while ($row = $query->fetch_array()) {
     $rowresults = $row;
 }
 
+
+
+
 $query = mysqli_query($mysqli, "SELECT ARTISTNAME, TIMESTART, shows.SHOWID AS SHOWID FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID LEFT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID WHERE EVENTID = " . $rowresults['EVENTID'] . " ORDER BY TIMESTART ASC");
 $priorartisttemp = "";
 $priorartist = "";
@@ -41,6 +44,51 @@ if ($nextartist == "") {
 
 if ($priorartist == "") {
     $priorartist = "N/A";
+}
+
+
+$query = mysqli_query($mysqli, 'SELECT * FROM contacts');
+while($row = $query->fetch_array()) {
+    $listcontactids[] = $row['CONTACTID'];
+    $listcontactnames[] = $row['FIRSTNAME'] . ' ' . $row['LASTNAME'];
+    if ($row['PHONE'] == "") {
+        $listcontactphones[] = "NO PHONE NUMBER FOUND!";
+    } else {
+        $listcontactphones[] = $row['PHONE'];
+    }
+}
+
+
+function convertIdToName($fieldName) {
+    global $listcontactids;
+    global $listcontactnames;
+    global $listcontactphones;
+    $arrpos = array_search($fieldName, $listcontactids);
+    if ($arrpos != "") {
+        return $listcontactnames[$arrpos] . ' - ' . $listcontactphones[$arrpos];
+    } else {
+        return '';
+    }
+}
+
+$contacts = "";
+if ($rowresults['EVENTTOURMANAGER'] != "") {
+    $contacts .= "TM: " . convertIdToName($rowresults['EVENTTOURMANAGER']) . '<br>';
+}
+if ($rowresults['EVENTPHOTOGRAPHER'] != "") {
+    $contacts .= "Photographer: " . convertIdToName($rowresults['EVENTPHOTOGRAPHER']) . '<br>';
+}
+if ($rowresults['EVENTVJ'] != "") {
+    $contacts .= "VJ: " . convertIdToName($rowresults['EVENTVJ']) . '<br>';
+}
+if ($rowresults['EVENTMANAGER'] != "") {
+    $contacts .= "Manager: " . convertIdToName($rowresults['EVENTMANAGER']) . '<br>';
+}
+if ($rowresults['EVENTAGENT'] != "") {
+    $contacts .= "Agent: " . convertIdToName($rowresults['EVENTAGENT']) . '<br>';
+}
+if ($rowresults['ACCROTHERS'] != "") {
+    $contacts .= "Others: " . $rowresults['ACCROTHERS'] . '<br>';
 }
 
 ?>
@@ -85,9 +133,21 @@ if ($priorartist == "") {
                             </div>
                         </div>
                             <div class="form-group row">
-                                <label class="col-sm-3">ARTIST / TM CONTACT</label>
+                                <label class="col-sm-3">ARTIST CONTACT</label>
                                 <div class="col-sm-9">
-                                    NOT CODED YET
+                                    <?php
+                                    if ($rowresults['ARTISTPHONE'] == "") {
+                                        $artistphone = "NO ARTIST PHONE NUMBER FOUND";
+                                    } else {
+                                        $artistphone = $rowresults['ARTISTPHONE'];
+                                    }
+                                    echo $rowresults['ARTISTFIRSTNAME'] . ' ' . $rowresults['ARTISTLASTNAME'] . ' - '. $artistphone; ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3">ENTOURAGE CONTACT</label>
+                                <div class="col-sm-9">
+                                    <?php echo $contacts; ?>
                                 </div>
                             </div>
                             <div class="form-group row">

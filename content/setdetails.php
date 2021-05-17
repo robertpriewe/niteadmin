@@ -127,9 +127,11 @@ include("content/components/b2blogic.php");
                                     <div class="btn-group dropdown">
                                         <a href="javascript: void(0);" class="dropdown-toggle arrow-none btn btn-light" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                         <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Change Stage','ajax/ajaxmodalassignstage.php?setid=<?php echo $_GET['setid']; ?>');"><i class="ri-music-line mr-2 text-muted font-18 vertical-middle"></i>Change Stage</a>
+
                                             <a class="dropdown-item" target="_BLANK" href="export/onesheet_advancing.php?setid=<?php echo $_GET['setid']; ?>"><i class="ri-list-ordered mr-2 text-muted font-18 vertical-middle"></i>Advancing One-Sheet</a>
 
-                                            <a class="dropdown-item" onclick="javascript:document.location.href='?page=artistdetails&artistid=<?php echo $rowresults['ARTISTID']; ?>';"><i class="ri-headphone-line mr-2 text-muted font-18 vertical-middle"></i>Artist Profile</a>
+                                            <a class="dropdown-item" onclick="javascript:document.location.href='?page=artistdetails&artistid=<?php echo $rowresults['ARTISTPLAYINGID']; ?>';"><i class="ri-headphone-line mr-2 text-muted font-18 vertical-middle"></i>Artist Profile</a>
                                             <a class="dropdown-item" href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Remove Artist from Event','ajax/ajaxmodalconfirmdeletion.php?deleteartistfromevent=true&artistid=<?php echo $rowresults['ARTISTID']; ?>&eventid=<?php echo $rowresults['EVENTID']; ?>');"><i class="ri-delete-bin-2-line mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
                                         </div>
                                     </div>
@@ -238,7 +240,7 @@ include("content/components/b2blogic.php");
                                     <h5 class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i> Other shows</h5>
                                     <div class="table-responsive">
                                         <?php
-                                        $_GET['artistid'] = $rowresults['ARTISTID'];
+                                        $_GET['artistid'] = $rowresults['ARTISTPLAYINGID'];
                                         include('content/components/eventsplayingwidget.php');
                                         ?>
                                     </div>
@@ -256,7 +258,7 @@ include("content/components/b2blogic.php");
     function loadArtistDetails() {
         $.ajax({
             type: "GET",
-            url: 'content/components/divArtistDetails.php?artistid=<?php echo $rowresults['ARTISTID']; ?>',
+            url: 'content/components/divArtistDetails.php?artistid=<?php echo $rowresults['ARTISTPLAYINGID']; ?>',
             context: document.body
         }).done(function(response) {
             $('#divArtistDetails').html('<div class="spinner-border text-primary m-2" role="status"><span class="sr-only">Loading...</span></div>');

@@ -1,5 +1,5 @@
 <?php
-$query = mysqli_query($mysqli, "SELECT *, (COUNT(DISTINCT stages.STAGEID)-1) AS STAGECOUNT, COUNT(DISTINCT events.EVENTID) AS EVENTCOUNT FROM venues LEFT JOIN stages ON venues.VENUEID = stages.VENUEID LEFT JOIN shows ON stages.STAGEID = shows.STAGEID LEFT JOIN events ON shows.EVENTID = events.EVENTID GROUP BY VENUENAME ORDER BY VENUENAME ASC");
+$query = mysqli_query($mysqli, "SELECT *, (COUNT(DISTINCT stages.STAGEID)-1) AS STAGECOUNT, COUNT(DISTINCT events.EVENTID) AS EVENTCOUNT, venues.VENUEID AS VENUEID FROM venues LEFT JOIN stages ON venues.VENUEID = stages.VENUEID LEFT JOIN shows ON stages.STAGEID = shows.STAGEID LEFT JOIN events ON shows.EVENTID = events.EVENTID GROUP BY VENUENAME ORDER BY VENUENAME ASC");
 
 if ($query->num_rows > 0) {
     while($row = $query->fetch_assoc()) {

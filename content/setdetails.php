@@ -81,12 +81,17 @@ include("content/components/b2blogic.php");
                                     </li>
                                     <li class="nav-item">
                                         <a href="#artistdetails" data-toggle="tab" aria-expanded="false" class="nav-link" onclick="javascript:loadArtistDetails();" id="navartistdetails">
-                                            <i class="mdi mdi-account mr-1"></i>Artist Details
+                                            <i class="mdi mdi-headphones mr-1"></i>Artist Details
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#accreditation" data-toggle="tab" aria-expanded="false" class="nav-link" onclick="javascript:loadAccreditation();" id="navaccreditation">
+                                            <i class="mdi mdi-account mr-1"></i>Accreditation
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#stageinfo" data-toggle="tab" aria-expanded="false" class="nav-link" id="navstageinfo">
-                                            <i class="mdi mdi-headphones mr-1"></i>Stage Info
+                                            <i class="mdi mdi-track-light mr-1"></i>Stage/Production
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -157,6 +162,16 @@ include("content/components/b2blogic.php");
                             <div class="tab-pane" id="artistdetails">
                                 <div class="row">
                                     <div class="col-12" id="divArtistDetails">
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="tab-pane" id="accreditation">
+                                <div class="row">
+                                    <div class="col-12" id="divAccreditation">
 
                                     </div>
                                 </div>
@@ -246,6 +261,19 @@ include("content/components/b2blogic.php");
         }).done(function(response) {
             $('#divArtistDetails').html('<div class="spinner-border text-primary m-2" role="status"><span class="sr-only">Loading...</span></div>');
             $('#divArtistDetails').html(response);
+        }).fail(function() {
+            alert("Error");
+        });
+    }
+
+    function loadAccreditation() {
+        $.ajax({
+            type: "GET",
+            url: 'content/components/divAccreditation.php?setid=<?php echo $_GET['setid']; ?>',
+            context: document.body
+        }).done(function(response) {
+            $('#divAccreditation').html('<div class="spinner-border text-primary m-2" role="status"><span class="sr-only">Loading...</span></div>');
+            $('#divAccreditation').html(response);
         }).fail(function() {
             alert("Error");
         });

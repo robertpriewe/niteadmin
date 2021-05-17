@@ -157,6 +157,8 @@ $(document).ready(function() {
             $('#nav' + hash).tab('show');
             if (hash == 'artistdetails') {
                 loadArtistDetails();
+            } else if (hash == 'accreditation') {
+                loadAccreditation();
             }
         }";
         }

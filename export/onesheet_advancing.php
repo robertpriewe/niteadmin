@@ -153,7 +153,13 @@ if ($rowresults['ACCROTHERS'] != "") {
                             <div class="form-group row">
                                 <label class="col-sm-3">DATE</label>
                                 <div class="col-sm-9">
-                                    <?php echo date_format(date_create($rowresults['EVENTSTARTDATE']), 'l, F jS Y'); ?>
+                                    <?php
+                                    if ($rowresults['EVENTSTARTDATE'] == "") {
+                                        echo "N/A";
+                                    } else {
+                                        echo date_format(date_create($rowresults['EVENTSTARTDATE']), 'l, F jS Y');
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -237,13 +243,25 @@ if ($rowresults['ACCROTHERS'] != "") {
                                     <div class="form-group row">
                                         <label class="col-sm-3">SOUNDCHECK</label>
                                         <div class="col-sm-9">
-                                            <?php echo date_format(date_create($rowresults['SOUNDCHECKTIME']), 'g:i a'); ?>
+                                            <?php
+                                            if ($rowresults['SOUNDCHECKTIME'] == "") {
+                                                echo "N/A";
+                                            } else {
+                                                echo date_format(date_create($rowresults['SOUNDCHECKTIME']), 'g:i a');
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-3">DOORS OPEN</label>
                                         <div class="col-sm-9">
-                                            <?php echo date_format(date_create($rowresults['EVENTSTARTDATE']), 'g:i a'); ?>
+                                            <?php
+                                            if ($rowresults['EVENTSTARTDATE'] == "") {
+                                                echo "N/A";
+                                            } else {
+                                                echo date_format(date_create($rowresults['EVENTSTARTDATE']), 'g:i a');
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -261,7 +279,13 @@ if ($rowresults['ACCROTHERS'] != "") {
                                     <div class="form-group row">
                                         <label class="col-sm-3">SET TIME</label>
                                         <div class="col-sm-9">
-                                            <?php echo date_format(date_create($rowresults['TIMESTART']), 'g:i a'); ?>
+                                            <?php
+                                            if ($rowresults['TIMESTART'] == "") {
+                                                echo "N/A";
+                                            } else {
+                                                echo date_format(date_create($rowresults['TIMESTART']), 'g:i a');
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -284,7 +308,13 @@ if ($rowresults['ACCROTHERS'] != "") {
                                     <div class="form-group row">
                                         <label class="col-sm-3">CURFEW</label>
                                         <div class="col-sm-9">
-                                            <?php echo date_format(date_create($rowresults['EVENTENDDATE']), 'g:i a'); ?>
+                                            <?php
+                                            if ($rowresults['EVENTENDDATE'] == "") {
+                                                echo "N/A";
+                                            } else {
+                                                echo date_format(date_create($rowresults['EVENTENDDATE']), 'g:i a');
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="ribbon ribbon-dark float-left"><i class="mdi mdi-access-point mr-1"></i> TECHNICAL / HOSPITALITY</div>

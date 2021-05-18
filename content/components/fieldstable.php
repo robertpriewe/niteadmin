@@ -67,6 +67,22 @@
                     }
                     $i++;
                 }
+
+                if ($currentcategory == "GENERAL") {
+                    echo '<tr>
+                        <td>B2B</td>
+                        <td></td>
+                        <td>' . b2blogic($rowresults['B2BID'], $_GET['setid'], $rowresults['ARTISTNAME'], "BUTTONS") . '</td>
+                        </tr>
+                        <tr>
+                        <td>Stage</td>
+                        <td></td>
+                        <td>' . $rowresults['STAGENAME'] . ' <button class="btn btn-dark btn-xs" ref="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal(\'Change Stage\',\'ajax/ajaxmodalassignstage.php?setid=' . $_GET['setid'] . '\');">Change Stage</button></td>
+                        </tr>
+                        
+                        
+                    ';
+                }
                 ?>
 
                 </tbody>

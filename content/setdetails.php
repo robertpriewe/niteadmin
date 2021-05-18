@@ -157,7 +157,13 @@ include("content/components/b2blogic.php");
                             <div class="tab-pane show active" id="general">
                                 <?php
                                 $currentcategory = 'GENERAL';
-                                include('content/components/fieldstable.php'); ?>
+                                include('content/components/fieldstable.php');
+
+                                echo '
+
+                                ';
+
+                                ?>
                             </div>
 
 

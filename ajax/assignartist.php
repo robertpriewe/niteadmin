@@ -20,12 +20,15 @@ if (isset($_GET['artistid']) && isset($_GET['eventid'])) {
             $stageid = $row['STAGEID'];
         }
     }
-    $result = mysqli_query($mysqli, 'INSERT INTO shows (STAGEID, ARTISTPLAYINGID, EVENTID) VALUES ("' . $stageid . '", "' . $_GET['artistid'] . '", "' . $_GET['eventid'] . '")');
+    mysqli_query($mysqli, 'INSERT INTO shows (STAGEID, ARTISTPLAYINGID, EVENTID) VALUES ("' . $stageid . '", "' . $_GET['artistid'] . '", "' . $_GET['eventid'] . '")');
     addToLog($_SESSION['USERID'], 'new', 'shows', $_GET['eventid'], $_GET['artistid'], '', '', 'Assigned artist to event ' . $_GET['eventid']);
 
     //echo 'INSERT INTO shows (STAGEID, ARTISTPLAYINGID, EVENTID) VALUES ("' . $stageid . '", "' . $_GET['artistid'] . '", "' . $_GET['eventid'] . '")';
+    $result = mysqli_query($mysqli, 'SELECT * FROM shows ORDER BY SHOWID DESC LIMIT 0, 1');
+    while ($row = $result->fetch_array()) {
+        $showid = $row['SHOWID'];
+    }
 
-    $showid = mysqli_insert_id($mysqli);
     echo 'INSERT INTO shows_fields (SHOWID) VALUES ("' . $showid . '")';
     $result = mysqli_query($mysqli, 'INSERT INTO shows_fields (SHOWID) VALUES ("' . $showid . '")');
 }

@@ -3,6 +3,8 @@ session_start();
 error_reporting(E_ALL);
 include ('../modules/sql.php');
 ?>
+
+<link rel="stylesheet" href="../assets/libs/bootstrap-clockpicker/bootstrap4-clockpicker.min.css">
 <div class="col-sm-12">
     <div class="card-box">
         <div class="row">
@@ -50,8 +52,8 @@ include ('../modules/sql.php');
                 </div>
                 <div class="form-group">
                     <label for="contactTime"">Contacted Time</label>
-                    <div class="input-group clockpicker" data-autoclose="true">
-                        <input type="text" id="contactTime" value="<?php echo date("H:i"); ?>" class="form-control">
+                    <div class="input-group clockpicker1" data-autoclose="true">
+                        <input type="text" id="contactTime" value="<?php echo date("h:iA"); ?>" class="form-control">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
                         </div>
@@ -80,7 +82,7 @@ include ('../modules/sql.php');
         var contactType = $("#contactType").val();
         var contactId = $("#contactName").val();
         var contactDate = $("#contactDate").val();
-        var contactTime = $("#contactTime").val();
+        var contactTime = moment($("#contactTime").val(), ["h:mmA"]).format("HH:mm") + ':00';
         var selectUpcomingEvents = $("#selectUpcomingEvents").val();
         if (activityDetails == "") {
             alert("Please enter a activity description");
@@ -113,5 +115,37 @@ include ('../modules/sql.php');
         });
     });
 
+    $(document).ready(function() {
+        $('.clockpicker1').clockpicker({
+            'default': 'now',
+            vibrate: true,
+            placement: "top",
+            align: "left",
+            autoclose: true,
+            twelvehour: true
+        });
+    });
 
+    function timeConversion(s) {
+        let output = '';
+        const timeSeparator = ':'
+        const timeTokenType = s.substr(s.length - 2 , 2).toLowerCase();
+        const timeArr = s.split(timeSeparator).map((timeToken) => {
+            const isTimeTokenType =
+                timeToken.toLowerCase().indexOf('am') > 0 ||
+                timeToken.toLowerCase().indexOf('pm');
+            if(isTimeTokenType){
+                return timeToken.substr(0, 2);
+            } else {
+                return timeToken;
+            }
+        });
+        const hour = timeArr[0];
+        const minutes = timeArr[1];
+        const seconds = timeArr[2];
+        const hourIn24 = (timeTokenType === 'am') ? parseInt(hour) - 12 :
+            parseInt(hour) + 12;
+        return hourIn24.toString()+ timeSeparator + minutes + timeSeparator + seconds;
+    }
 </script>
+<script src="../assets/libs/bootstrap-clockpicker/bootstrap4-clockpicker.min.js">

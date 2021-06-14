@@ -171,20 +171,35 @@ $(document).ready(function() {
 
 });
 
-function openModal(title, ajaxfilename) {
+function openModal(title, ajaxfilename, size) {
     $('#modalContent').html('<div class="spinner-border avatar-lg text-primary m-2" role="status"></div>');
     var title;
     var ajaxfilename;
-    $('#modalTitle').html(title);
+    var size;
+
+    if (size == 'large') {
+        $('#modalTitle-large').html(title);
+    } else {
+        $('#modalTitle').html(title);
+    }
+
     $.ajax({
         type: "GET",
         url: ajaxfilename,
         context: document.body
     }).done(function(response) {
-        $('#modalContent').html(response);
-        $(".select2").select2();
-        document.styleSheets[0].insertRule('.select2-container--open { z-index: 999999; }', 0);
-        $('#custom-modal').modal('show');
+        if (size == 'large') {
+            $('#modalContent-large').html(response);
+            document.styleSheets[0].insertRule('.select2-container--open { z-index: 999999; }', 0);
+            $('#bs-example-modal-lg').modal('show');
+        } else {
+            $('#modalContent').html(response);
+            $(".select2").select2();
+            document.styleSheets[0].insertRule('.select2-container--open { z-index: 999999; }', 0);
+            $('#custom-modal').modal('show');
+        }
+
+
     }).fail(function() {
         alert( "Error" );
     });

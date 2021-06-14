@@ -1,5 +1,5 @@
 <?php
-include ('../sql.php');
+//include ('../sql.php');
 
 $url = 'https://accounts.spotify.com/api/token';
 $data = array('grant_type' => 'client_credentials');
@@ -41,11 +41,11 @@ while($row = $query->fetch_assoc()) {
     if (count($results['artists']['items']) > 0) {
         $photourl = $results['artists']['items'][0]['images'][0]['url'];
         mysqli_query($mysqli, "UPDATE artists SET ARTISTPHOTO = '" . $photourl . "' WHERE ARTISTID = '" . $row['ARTISTID'] . "'");
-        echo $row['ARTISTNAME'] . ' - ' . $photourl . '<br>';
+        //echo $row['ARTISTNAME'] . ' - ' . $photourl . '<br>';
     } else {
         $photourl = "assets/images/users/avatar-generic.png";
         mysqli_query($mysqli, "UPDATE artists SET ARTISTPHOTO = '" . $photourl . "' WHERE ARTISTID = '" . $row['ARTISTID'] . "'");
-        echo $row['ARTISTNAME'] . ' - ' . $photourl . '<br>';
+        //echo $row['ARTISTNAME'] . ' - ' . $photourl . '<br>';
     }
 }
 ?>

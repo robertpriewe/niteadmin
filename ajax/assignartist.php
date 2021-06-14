@@ -3,8 +3,6 @@ session_start();
 error_reporting(E_ALL);
 include ('../modules/sql.php');
 include ('addtolog.php');
-error_log('assigningartist..
-    ', 3, 'log.txt');
 
 
 if (isset($_GET['artistid']) && isset($_GET['eventid'])) {
@@ -29,7 +27,8 @@ if (isset($_GET['artistid']) && isset($_GET['eventid'])) {
         $showid = $row['SHOWID'];
     }
 
-    echo 'INSERT INTO shows_fields (SHOWID) VALUES ("' . $showid . '")';
+    //echo 'INSERT INTO shows_fields (SHOWID) VALUES ("' . $showid . '")';
     $result = mysqli_query($mysqli, 'INSERT INTO shows_fields (SHOWID) VALUES ("' . $showid . '")');
+    echo $showid;
 }
 ?>

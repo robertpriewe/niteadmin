@@ -282,7 +282,7 @@ while ($row = $query->fetch_array()) {
                                                     </td>
                     
                                                     <td>
-                                                        ' . getPaymentInfo($showsrow['DEPOSITDUEDATE'], $showsrow['DEPOSITPAYMENTDATE'], $showsrow['PERFORMANCEFEEDUEDATE'], $showsrow['PERFORMANCEFEEPAYMENTDATE']) . '
+                                                        ' . getPaymentInfo($showsrow['DEPOSITDUEDATE'], $showsrow['DEPOSITPAYMENTDATE'], $showsrow['GUARANTEEFEEDUEDATE'], $showsrow['GUARANTEEFEEPAYMENTDATE']) . '
                                                     </td>
                                                     
                                                     <td>' . b2blogic($showsrow['B2BID'], $showsrow['SHOWIDFULL'], $showsrow['ARTISTNAME'], "NA") . '</td>

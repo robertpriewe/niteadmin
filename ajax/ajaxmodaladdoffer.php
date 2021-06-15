@@ -301,7 +301,6 @@ include ('../modules/sql.php');
     function validateOfferForm() {
         var selectEventAjax = $('#selectEventAjax').val();
         var selectArtistsAjax = $('#selectArtistsAjax').val();
-        var offer = $('#offer').val();
         var guarantee = $('#guarantee').val();
         var hotel = $('#hotel').val();
         var buyouthotelcheck = $('#buyouthotelcheck').is(":checked");
@@ -314,7 +313,22 @@ include ('../modules/sql.php');
         var hospitalitynotes = $('#hospitalitynotes').val();
         var setduration = $('#setduration').val();
 
-        var showid;
+        var file_data = $('#offer').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('guarantee', guarantee);
+        form_data.append('hotel', hotel);
+        form_data.append('buyouthotelcheck', buyouthotelcheck);
+        form_data.append('hotelnotes', hotelnotes);
+        form_data.append('groundtransportation', groundtransportation);
+        form_data.append('buyoutgroundcheck', buyoutgroundcheck);
+        form_data.append('groundnotes', groundnotes);
+        form_data.append('hospitality', hospitality);
+        form_data.append('buyouthospitalitycheck', buyouthospitalitycheck);
+        form_data.append('hospitalitynotes', hospitalitynotes);
+        form_data.append('setduration', setduration);
+        form_data.append('offer', file_data);
+
+        var showid = '';
         if (selectEventAjax == "Select") {
             alert("You have to select a valid event!");
         } else if (selectArtistsAjax == "Select") {
@@ -325,43 +339,30 @@ include ('../modules/sql.php');
                 url: 'ajax/assignartist.php?eventid=' + selectEventAjax + '&artistid=' + selectArtistsAjax,
                 context: document.body
             }).done(function (response) {
-                alert(response);
                 showid = response;
+                $.ajax({
+                    type: "POST",
+                    dataType: 'text',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    url: 'ajax/importoffer/addnewoffer.php?showid=' + showid,
+                    context: document.body
+                }).done(function (response) {
+                    alert('Added');
+                    document.location.href = '?page=setdetails&setid=' + showid;
+                }).fail(function () {
+                    alert("Error saving offer details");
+                });
             }).fail(function () {
-                alert("Error");
-            });
-
-            $.ajax({
-                type: "POST",
-                data: {
-                    offer: offer,
-                    guarantee: guarantee,
-                    hotel: hotel,
-                    buyouthotelcheck: buyouthotelcheck,
-                    hotelnotes: hotelnotes,
-                    groundtransportation: groundtransportation,
-                    buyoutgroundcheck: buyoutgroundcheck,
-                    groundnotes: groundnotes,
-                    hospitality: hospitality,
-                    buyouthospitalitycheck: buyouthospitalitycheck,
-                    hospitalitynotes: hospitalitynotes,
-                    setduration: setduration
-                },
-                url: 'ajax/importoffer/addnewoffer.php?showid=' + showid,
-                context: document.body
-            }).done(function (response) {
-                alert(response);
-            }).fail(function () {
-                alert("Error");
+                alert("Error creating new set from offer");
             });
         }
     }
 
-    function validateOfferForm2() {
-        var offer = $('#offer').val();
-        var buyouthotelcheck = $('#buyouthotelcheck');
-        alert(buyouthotelcheck);
-    }
+
+
 </script>
 
 <script src="../assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>

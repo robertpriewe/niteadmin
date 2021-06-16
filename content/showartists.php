@@ -43,7 +43,6 @@
                                 <th class="font-weight-medium">Name</th>
                                 <th class="font-weight-medium">Genre</th>
                                 <th class="font-weight-medium">Management</th>
-                                <th class="font-weight-medium">Action</th>
                             </tr>
                             </thead>
 
@@ -83,16 +82,7 @@
                                 <td>' . $showsrow['ARTISTFIRSTNAME'] . ' ' . $showsrow['ARTISTLASTNAME'] . '</td>
                                 <td>' . $genre . '</td>
                                 <td>' . $showsrow['COMPANY'] . '</td>
-                                <td>
-                                    <div class="btn-group dropdown">
-                                        <a href="javascript: void(0);" class="dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Resend Ticket</a>
-                                            <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
-                                        </div>
-                                    </div>
-                                </td>
+
                             </tr>';
                                 }
                             }

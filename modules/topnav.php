@@ -127,39 +127,39 @@
                         </a>
                         <div class="dropdown-menu">
                             <!-- item-->
-                            <a href="#bs-example-modal-lg" data-animation="fadein" data-overlayColor="#38414a" onclick="javascript:openModal('Upload New Offer','ajax/ajaxmodaladdoffer.php', 'large');" class="dropdown-item">
+                            <a href="#" data-animation="fadein" data-overlayColor="#38414a" onclick="javascript:openModal('Upload New Offer','ajax/ajaxmodaladdoffer.php', 'large');" class="dropdown-item">
                                 <i class="fe-file-text mr-1"></i>
                                 <span>Upload New Offer</span>
                             </a>
 
-                            <a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Event','ajax/ajaxmodaladdnewevent.php');" class="dropdown-item">
+                            <a href="#" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Event','ajax/ajaxmodaladdnewevent.php');" class="dropdown-item">
                                 <i class="fe-star mr-1"></i>
                                 <span>New Event</span>
                             </a>
 
                             <!-- item-->
-                            <a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Artist','ajax/ajaxmodaladdnewartist.php');" class="dropdown-item">
+                            <a href="#" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Artist','ajax/ajaxmodaladdnewartist.php');" class="dropdown-item">
                                 <i class="fe-music mr-1"></i>
                                 <span>New Artist</span>
                             </a>
 
-                            <a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Contact','ajax/ajaxmodaladdnewcontact.php');" class="dropdown-item">
+                            <a href="#" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Contact','ajax/ajaxmodaladdnewcontact.php');" class="dropdown-item">
                                 <i class="fe-user mr-1"></i>
                                 <span>New Contact</span>
                             </a>
 
-                            <a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Vendor','ajax/ajaxmodaladdnewvendor.php');" class="dropdown-item">
+                            <a href="#" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Vendor','ajax/ajaxmodaladdnewvendor.php');" class="dropdown-item">
                                 <i class="fe-truck mr-1"></i>
                                 <span>New Vendor</span>
                             </a>
 
-                            <a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Sponsor','ajax/ajaxmodaladdnewsponsor.php');" class="dropdown-item">
+                            <a href="#" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Sponsor','ajax/ajaxmodaladdnewsponsor.php');" class="dropdown-item">
                                 <i class="fe-briefcase mr-1"></i>
                                 <span>New Sponsor</span>
                             </a>
 
                             <!-- item-->
-                            <a href="#custom-modal" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Venue','ajax/ajaxmodaladdnewvenue.php');" class="dropdown-item">
+                            <a href="#" data-animation="fadein" data-toggle="modal" data-overlayColor="#38414a" onclick="javascript:openModal('Add New Venue','ajax/ajaxmodaladdnewvenue.php');" class="dropdown-item">
                                 <i class="fe-home mr-1"></i>
                                 <span>New Venue</span>
                             </a>

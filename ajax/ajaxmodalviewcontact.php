@@ -135,6 +135,11 @@ $(document).ready(function () {
     $(".select2").select2({
         maximumSelectionLength: 2
     });
+
+    $('.changefield').editable({
+        url: 'ajax/updateshowfield.php',
+        disabled: true
+    });
 });
 
 function checkConfidential() {

@@ -55,7 +55,6 @@ $(document).ready(function() {
             }
         },
         onDelete: function (e) {
-
         },
         onItemAdd: function(e) {
             userid = e.split('-')[0];

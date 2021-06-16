@@ -7,9 +7,9 @@ include ('../../modules/sql.php');
 <select class="form-control select2" id="selectEventAjax">
     <option>Select</option>
     <?php
-    $query = mysqli_query($mysqli, 'SELECT EVENTNAME, EVENTID, EVENTSTARTDATE FROM events WHERE EVENTSTARTDATE > NOW() ORDER BY EVENTSTARTDATE ASC');
+        $query = mysqli_query($mysqli, 'SELECT EVENTNAME, events.EVENTID AS EVENTID, EVENTSTARTDATE, VENUENAME FROM shows JOIN events ON shows.EVENTID = events.EVENTID JOIN stages ON shows.STAGEID = stages.STAGEID JOIN venues ON stages.VENUEID = venues.VENUEID WHERE EVENTSTARTDATE > NOW() GROUP BY events.EVENTID ORDER BY EVENTSTARTDATE ASC');
     while($row = $query->fetch_array()) {
-        echo '<option value="' . $row['EVENTID'] . '">' . $row['EVENTNAME'] . ' (' . $row['EVENTSTARTDATE'] . ')</option>';
+        echo '<option value="' . $row['EVENTID'] . '">' . $row['EVENTNAME'] . ' @ ' . $row['VENUENAME'] . ' (' . date("D, m/d/Y, ga", strtotime($row['EVENTSTARTDATE'])) . ')</option>';
     }
     ?>
 </select>

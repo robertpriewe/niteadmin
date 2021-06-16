@@ -312,8 +312,6 @@ while ($row = $query->fetch_array()) {
                                 </table>
 
                             </div>
-
-
                             <div class="tab-pane" id="eventdetails">
                                 <div class="row">
                                     <div class="col-lg-8">

@@ -6,6 +6,7 @@ function getField($type, $fieldid, $fieldname, $fieldvalue, $id, $permission, $f
     } else {
         $table = "events";
     }
+
     if ($permission != "") {
         if (!isset($_SESSION['ACCESS'][$permission])) {
             if ($fieldvalue == "") {

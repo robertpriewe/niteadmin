@@ -56,6 +56,7 @@ while($row = $query->fetch_array()) {
     } else {
         $listcontactphones[] = $row['PHONE'];
     }
+    $listcontactemails[] = $row['EMAIL'];
 }
 
 
@@ -63,9 +64,10 @@ function convertIdToName($fieldName) {
     global $listcontactids;
     global $listcontactnames;
     global $listcontactphones;
+    global $listcontactemails;
     $arrpos = array_search($fieldName, $listcontactids);
-    if ($arrpos != "") {
-        return $listcontactnames[$arrpos] . ' - ' . $listcontactphones[$arrpos];
+    if (is_numeric($arrpos)) {
+        return $listcontactnames[$arrpos] . ' / Phone: ' . $listcontactphones[$arrpos] . ' / Email: ' . $listcontactemails[$arrpos];
     } else {
         return '';
     }
@@ -179,31 +181,31 @@ if ($rowresults['ACCROTHERS'] != "") {
                             <div class="form-group row">
                                 <label class="col-sm-3">ARTIST RELATIONS</label>
                                 <div class="col-sm-9">
-                                    <?php echo $rowresults['ARTISTRELATIONS']; ?>
+                                    <?php echo convertIdToName($rowresults['ARTISTRELATIONS']); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">ARTIST HOSPITALITY</label>
                                 <div class="col-sm-9">
-                                    <?php echo $rowresults['ARTISTHOSPITALITY']; ?>
+                                    <?php echo convertIdToName($rowresults['ARTISTHOSPITALITY']); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">PROUCTION / TECH</label>
                                 <div class="col-sm-9">
-                                    <?php echo $rowresults['PRODUCTIONTECH']; ?>
+                                    <?php echo convertIdToName($rowresults['PRODUCTIONTECH']); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">STAGE MANAGER</label>
                                 <div class="col-sm-9">
-                                    <?php echo $rowresults['STAGEMANAGER']; ?>
+                                    <?php echo convertIdToName($rowresults['STAGEMANAGER']); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3">TRANSPORTATION</label>
                                 <div class="col-sm-9">
-                                    <?php echo $rowresults['TRANSPORTATIONREP']; ?>
+                                    <?php echo convertIdToName($rowresults['TRANSPORTATIONREP']); ?>
                                 </div>
                             </div>
                             <div class="ribbon ribbon-dark float-left"><i class="mdi mdi-access-point mr-1"></i> GROUND DETAILS</div>

@@ -47,6 +47,8 @@ $totalfeepaid = 0;
 $totaldepositpaid = 0;
 include('content/components/getPaymentInfo.php');
 
+include ('content/components/convertContactIdToName.php');
+
 //OLDWORKING $query = mysqli_query($mysqli, "SELECT TIMESTART, TIMEEND, ARTISTNAME, STAGENAME, VENUENAME, shows.SHOWID, EVENTNAME, ARTISTID, stages.STAGEID, venues.VENUEID FROM shows LEFT JOIN shows_fields ON shows.SHOWID = shows_fields.SHOWID LEFT JOIN artists ON shows.ARTISTPLAYINGID = artists.ARTISTID LEFT JOIN stages ON shows.STAGEID = stages.STAGEID LEFT JOIN venues ON stages.VENUEID = venues.VENUEID LEFT JOIN events ON venues.VENUEID = events.VENUEID " . $wherequery);
 
 $countshowq = mysqli_query($mysqli, "SELECT SHOWID FROM shows " . $wherequery2);
@@ -231,8 +233,8 @@ while ($row = $query->fetch_array()) {
                                     <tr>
                                         <th class="font-weight-medium">Artist</th>
                                         <th class="font-weight-medium">Stage</th>
-                                        <th class="font-weight-medium">Infosheet</th>
-                                        <th class="font-weight-medium">Deposit / Fee</th>
+                                        <th class="font-weight-medium">Offer</th>
+                                        <th class="font-weight-medium">Deposit / Guarantee</th>
                                         <th class="font-weight-medium">B2B</th>
                                         <th class="font-weight-medium">Set Start</th>
                                     </tr>
@@ -261,8 +263,8 @@ while ($row = $query->fetch_array()) {
                                                 $photo = 'assets/images/users/avatar-3.jpg';
                                             }
 
-                                            if (isset($showsrow['INFOSHEET'])) {
-                                                $infosheet = '<span class="badge badge-success">Received</span>';
+                                            if (isset($showsrow['OFFER'])) {
+                                                $infosheet = '<span class="badge badge-success">Uploaded</span>';
                                             } else {
                                                 $infosheet = '<span class="badge badge-dark">Pending</span>';
                                             }

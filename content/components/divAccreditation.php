@@ -18,8 +18,8 @@ function convertIdToName($fieldName) {
     global $listcontactids;
     global $listcontactnames;
     $arrpos = array_search($fieldName, $listcontactids);
-    if ($arrpos != "") {
-    return '<a href="?page=showcontacts&contactid=' . $listcontactids[$arrpos] . '">' . $listcontactnames[$arrpos] . '</a>';
+    if (is_numeric($arrpos)) {
+        return '<a href="?page=showcontacts&contactid=' . $listcontactids[$arrpos] . '">' . $listcontactnames[$arrpos] . '</a>';
     } else {
         return '';
     }

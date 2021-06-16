@@ -68,6 +68,8 @@ include ('content/components/assignFieldList.php');
 
 include("content/components/b2blogic.php");
 
+include ('content/components/convertContactIdToName.php');
+
 ?>
 
             <div class="row">
@@ -88,7 +90,7 @@ include("content/components/b2blogic.php");
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#accreditation" data-toggle="tab" aria-expanded="false" class="nav-link" onclick="javascript:loadAccreditation();" id="navaccreditation">
+                                        <a href="#accreditation" data-toggle="tab" aria-expanded="false" class="nav-link" id="navaccreditation">
                                             <i class="mdi mdi-account mr-1"></i>Accreditation
                                         </a>
                                     </li>
@@ -181,11 +183,11 @@ include("content/components/b2blogic.php");
 
 
                             <div class="tab-pane" id="accreditation">
-                                <div class="row">
-                                    <div class="col-12" id="divAccreditation">
+                                <?php
+                                $currentcategory = 'ACCREDITATION';
+                                include('content/components/fieldstable.php'); ?>
 
-                                    </div>
-                                </div>
+
                             </div>
 
 

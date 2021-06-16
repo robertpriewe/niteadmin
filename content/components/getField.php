@@ -43,6 +43,14 @@ function getField($type, $fieldid, $fieldname, $fieldvalue, $id, $permission, $f
         }
     } else if ($type == "DROPDOWN") {
         return '<a class="changefield" href="#" data-type="select" data-pk="{id:' . $id . ',page:\'' . $table . '\'}" data-prepend="' . $fieldvalue . '" data-source="' . $dropdownvalues . '" data-emptytext="" data-name="' . $fieldname . '">' . $fieldvalue . '</a>';
+    } else if ($type == "CONTACT") {
+        $changebutton = '<button type="button" class="btn btn-primary btn-xs waves-effect waves-light mr-1" onclick="javascript:openModal(\'Assign contact\',\'ajax/ajaxmodalassigncontactaccreditation.php?fieldname=' . $fieldname . '&fieldtype=' . $fieldtype . '&id=' . $id . '\');"><i class="mdi mdi-pen"></i> Change</button>';
+        if ($fieldvalue == "") {
+            return $changebutton;
+        } else {
+            return convertIdToName($fieldvalue) . ' ' . $changebutton;
+        }
+
     }
 }
 

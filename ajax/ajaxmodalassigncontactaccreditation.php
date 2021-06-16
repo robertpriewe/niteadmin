@@ -14,12 +14,18 @@ include ('../modules/sql.php');
                         <select class="form-control select2" id="contactName">
                             <option value="">Select</option>
                             <?php
-                            $query = mysqli_query($mysqli, 'SELECT * FROM contacts_link JOIN contacts ON contacts_link.CONTACTID = contacts.CONTACTID WHERE LINKTABLE = "artists" AND LINKID = "' . $_GET['artistid'] . '" ORDER BY ORDERID ASC');
-                            while($row = $query->fetch_array()) {
-                                echo '<option value="' . $row['CONTACTID'] . '">Team: ' . $row['FIRSTNAME'] . ' ' . $row['LASTNAME'] . ' (' . $row['ROLE'] . ' @ ' . $row['COMPANY'] . ')</option>';
+                            if ($_GET['fieldtype'] == 'events') {
+                                $employeesearch = 'WHERE EMPLOYEE = 1';
+                            } else {
+                                $employeesearch = '';
+                                $query = mysqli_query($mysqli, 'SELECT * FROM contacts_link JOIN contacts ON contacts_link.CONTACTID = contacts.CONTACTID WHERE LINKTABLE = "artists" AND LINKID = "' . $_GET['artistid'] . '" ORDER BY ORDERID ASC');
+                                while($row = $query->fetch_array()) {
+                                    echo '<option value="' . $row['CONTACTID'] . '">Team: ' . $row['FIRSTNAME'] . ' ' . $row['LASTNAME'] . ' (' . $row['ROLE'] . ' @ ' . $row['COMPANY'] . ')</option>';
+                                }
+                                echo '<option value="NA">N/A</option><option value="Artist">Artist</option><option value="">---</option>';
                             }
-                            echo '<option value="NA">N/A</option><option value="Artist">Artist</option><option value="">---</option>';
-                            $query = mysqli_query($mysqli, 'SELECT * FROM contacts ORDER BY FIRSTNAME, LASTNAME ASC');
+
+                            $query = mysqli_query($mysqli, 'SELECT * FROM contacts ' . $employeesearch . ' ORDER BY FIRSTNAME, LASTNAME ASC');
                             while($row = $query->fetch_array()) {
                                 echo '<option value="' . $row['CONTACTID'] . '">' . $row['FIRSTNAME'] . ' ' . $row['LASTNAME'] . ' (' . $row['ROLE'] . ' @ ' . $row['COMPANY'] . ')</option>';
                             }
@@ -46,7 +52,7 @@ function addContactAccreditation() {
         $.ajax({
             type: "POST",
             data: {'contactId': contactId},
-            url: 'ajax/addcontactaccreditation.php?setid=<?php echo $_GET['setid']; ?>&fieldname=<?php echo $_GET['fieldname']; ?>',
+            url: 'ajax/addcontactaccreditation.php?id=<?php echo $_GET['id']; ?>&fieldtype=<?php echo $_GET['fieldtype']; ?>&fieldname=<?php echo $_GET['fieldname']; ?>',
             context: document.body
         }).done(function(response) {
             location.reload();
@@ -61,7 +67,7 @@ function addContactAccreditation() {
 function removeContactAccreditation() {
     $.ajax({
         type: "GET",
-        url: 'ajax/removecontactaccreditation.php?setid=<?php echo $_GET['setid']; ?>&fieldname=<?php echo $_GET['fieldname']; ?>',
+        url: 'ajax/removecontactaccreditation.php?id=<?php echo $_GET['id']; ?>&fieldtype=<?php echo $_GET['fieldtype']; ?>&fieldname=<?php echo $_GET['fieldname']; ?>',
         context: document.body
     }).done(function(response) {
         location.reload();

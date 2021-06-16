@@ -26,11 +26,11 @@ function getPaymentInfo($DEPOSITDUEDATE, $DEPOSITPAYMENTDATE, $PERFORMANCEFEEDUE
         }
     }
     if (isset($PERFORMANCEFEEPAYMENTDATE)) {
-        $performancefee = '<span class="badge badge-success">Fee Paid</span>';
+        $performancefee = '<span class="badge badge-success">Guarantee Paid</span>';
         $totalfeepaid++;
     } else {
         if(!isset($PERFORMANCEFEEDUEDATE)) {
-            $performancefee = '<span class="badge badge-dark">No Fee Date</span>';
+            $performancefee = '<span class="badge badge-dark">No Guarantee Date</span>';
         } else {
             if (date("Y-m-d", strtotime($PERFORMANCEFEEDUEDATE)) < date("Y-m-d")) {
                 $days = Round((time() - strtotime(date("Y-m-d", strtotime($PERFORMANCEFEEDUEDATE))))/(60 * 60 * 24));
@@ -39,9 +39,9 @@ function getPaymentInfo($DEPOSITDUEDATE, $DEPOSITPAYMENTDATE, $PERFORMANCEFEEDUE
             } else {
                 $days = Round((strtotime(date("Y-m-d", strtotime($PERFORMANCEFEEDUEDATE)))-time())/(60 * 60 * 24));
                 if ($days <=7) {
-                    $performancefee = '<span class="badge badge-warning">Fee due: ' . $days . ' days</span>';
+                    $performancefee = '<span class="badge badge-warning">Guarantee due: ' . $days . ' days</span>';
                 } else {
-                    $performancefee = '<span class="badge badge-primary">Fee not paid</span>';
+                    $performancefee = '<span class="badge badge-primary">Guarantee not paid</span>';
                 }
             }
         }

@@ -76,9 +76,26 @@ echo 'As of date: ' . $asofdate;
                 $rank = 1;
             }
 
-            $percentage24h = round(($newplays24h / $row['playcount']) * 100, 1);
-            $percentage3d = round(($newplays3d / $row['playcount']) * 100, 1);
-            $percentage7d = round(($newplays7d / $row['playcount']) * 100, 1);
+            if ($row['plays1DayAgo'] == 0) {
+                $percentage24h = 'N/A';
+            } else {
+                $percentage24h = round(($newplays24h / $row['playcount']) * 100, 1) . '%';
+            }
+
+            if ($row['plays3DaysAgo'] == 0) {
+                $percentage3d = 'N/A';
+            } else {
+                $percentage3d = round(($newplays3d / $row['playcount']) * 100, 1) . '%';
+            }
+
+            if ($row['plays7DaysAgo'] == 0) {
+                $percentage7d = 'N/A';
+            } else {
+                $percentage7d = round(($newplays7d / $row['playcount']) * 100, 1) . '%';
+            }
+
+
+
 
             $score = (($percentage24h*$rank*1.2) + ($percentage3d*$rank*1.3) + ($percentage7d*$rank*1.5))/30;
 
@@ -94,9 +111,9 @@ echo 'As of date: ' . $asofdate;
                 <td title="' . $row['labelname'] .'" data-plugin="tippy" data-placement="top-start" data-tippy-animation="shift-away" data-tippy-arrow="true">' . $labelname . ' <button type="button" class="btn btn-xs btn-danger" onclick="javascript:ignoreLabel(\'' . $row['labelname'] . '\');"><i class="mdi mdi-trash-can"></i></button></td>
                 <td title="' . $row['copyright'] .'" data-plugin="tippy" data-placement="top-start" data-tippy-animation="shift-away" data-tippy-arrow="true">' . substr($row['copyright'], 0, 30) . '</td>
                 <td>' . $row['releasedate'] . '</td>
-                <td title="Plays 24h ago: ' . number_format($row['plays1DayAgo']) .'" data-plugin="tippy" data-placement="top-start" data-tippy-animation="shift-away" data-tippy-arrow="true">' . $percentage24h . '%</td>
-                <td title="Plays 3d ago: ' . number_format($row['plays3DaysAgo']) .'" data-plugin="tippy" data-placement="top-start" data-tippy-animation="shift-away" data-tippy-arrow="true">' . $percentage3d . '%</td>
-                <td title="Plays 7d ago: ' . number_format($row['plays7DaysAgo']) .'" data-plugin="tippy" data-placement="top-start" data-tippy-animation="shift-away" data-tippy-arrow="true">' . $percentage7d . '%</td>
+                <td title="Plays 24h ago: ' . number_format($row['plays1DayAgo']) .'" data-plugin="tippy" data-placement="top-start" data-tippy-animation="shift-away" data-tippy-arrow="true">' . $percentage24h . '</td>
+                <td title="Plays 3d ago: ' . number_format($row['plays3DaysAgo']) .'" data-plugin="tippy" data-placement="top-start" data-tippy-animation="shift-away" data-tippy-arrow="true">' . $percentage3d . '</td>
+                <td title="Plays 7d ago: ' . number_format($row['plays7DaysAgo']) .'" data-plugin="tippy" data-placement="top-start" data-tippy-animation="shift-away" data-tippy-arrow="true">' . $percentage7d . '</td>
                 <td><b style="color: ' . $color . '">' . $playcounts . '</b></td>
                 <td>' . round($score, 0) . '</td>
                 <td>' . $genre . '</td>
